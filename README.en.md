@@ -1,7 +1,7 @@
 # Jiscuss
 
 #### Description
-Jiscuss-java的下一代论坛系统
+Java + Discuss = Jiscuss
 
 #### Software Architecture
 Software architecture description
