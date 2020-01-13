@@ -1,7 +1,8 @@
 # Jiscuss
+Java + Discuss = Jiscuss
 
 #### 介绍
-Jiscuss-java的下一代论坛系统
+Jiscuss-基于java的简单论坛系统
 
 #### 软件架构
 软件架构说明
