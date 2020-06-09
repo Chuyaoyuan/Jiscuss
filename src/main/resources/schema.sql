@@ -1,10 +1,4 @@
-drop table if exists staff;
-CREATE TABLE staff(
-id INTEGER not null primary key,
-name char(20),
-age INTEGER
-);
-
+-- 用户表1
 drop table if exists users;
 CREATE TABLE users(
 id INTEGER not null primary key auto_increment,
@@ -22,7 +16,7 @@ last_seen_time  datetime,
 flag INTEGER,
 level INTEGER
 );
-
+-- 主题表2
 drop table if exists discussions;
 CREATE TABLE discussions(
 id INTEGER  not null  primary key auto_increment,
@@ -44,13 +38,13 @@ ip_address varchar(200),
 create_id INTEGER,
 create_time datetime
 );
-
+-- 主题标签关联表3
 drop table if exists discussionstags;
 CREATE TABLE discussionstags(
 discussion_id INTEGER not null ,
 tag_id INTEGER
 );
-
+-- 评论表4
 drop table if exists posts;
 CREATE TABLE posts(
 id INTEGER not null primary key auto_increment ,
@@ -68,13 +62,13 @@ is_approved INTEGER,
 create_id INTEGER,
 create_time datetime
 );
-
+-- 设置表5
 drop table if exists settings;
 CREATE TABLE settings(
 key varchar(20) primary key,
 value text
 );
-
+-- 标签表6
 drop table if exists tags;
 CREATE TABLE tags(
 id INTEGER not null primary key auto_increment,

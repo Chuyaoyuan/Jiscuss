@@ -1,4 +1,4 @@
-package com.yaoyuan.jiscuss.controller;
+package com.yaoyuan.jiscuss.controller.api;
 
 import java.util.List;
 
