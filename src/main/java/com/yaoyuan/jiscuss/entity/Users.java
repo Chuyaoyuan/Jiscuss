@@ -3,7 +3,9 @@ package com.yaoyuan.jiscuss.entity;
 
 import java.io.Serializable;
 
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,11 +18,13 @@ import javax.persistence.Table;
 
 
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Data
 @Entity
 @Table(name="users")
-public class Users  implements Serializable  {
+public class Users   implements Serializable {
     private static final long serialVersionUID = 1L;
  
     @Id
@@ -65,7 +69,5 @@ public class Users  implements Serializable  {
     
     @Column(name="level")
     private Integer level;
-    
-  
-    
+
 }

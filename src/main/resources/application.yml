@@ -41,6 +41,8 @@ spring:
     # 设置ftl文件路径
     template-loader-path:
       - classpath:/templates
+    settings:
+      classic_compatible: true
   # 设置静态文件路径，js,css等
   mvc:
     static-path-pattern: /static/**

@@ -40,7 +40,7 @@ function loginOut() {
             console.log(data);
             if(data.flag){
                 $('#userlogin').html('');
-                $('#userlogin').html('<a href="javascript:void(0);"  onclick="loginmodel(this)" id="loginmodel">登录 & 注册</a>');
+                $('#userlogin').html('<a href="/login"  id="loginmodel">登录 & 注册</a>');
                 window.alert(username + data.msg);
                 username = null;
             }else{
@@ -51,10 +51,4 @@ function loginOut() {
     });
 }
 
-
-function loginmodel() {	
-    $('.ui.modal.login')
-        .modal('show')
-    ;
-}
 
