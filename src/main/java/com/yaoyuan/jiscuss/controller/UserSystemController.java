@@ -2,37 +2,30 @@ package com.yaoyuan.jiscuss.controller;
 
 import com.yaoyuan.jiscuss.entity.Discussions;
 import com.yaoyuan.jiscuss.entity.Tags;
+import com.yaoyuan.jiscuss.entity.UserInfo;
 import com.yaoyuan.jiscuss.entity.Users;
 import com.yaoyuan.jiscuss.service.IDiscussionsService;
 import com.yaoyuan.jiscuss.service.ITagsService;
 import com.yaoyuan.jiscuss.service.IUsersService;
-import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 用户页面系统控制器
  */
 @Controller
-public class UserSystemController {
+public class UserSystemController extends BaseController {
 
     private static Logger logger = LoggerFactory.getLogger(UserSystemController.class);
 
@@ -47,7 +40,7 @@ public class UserSystemController {
 
     //首页
     @RequestMapping("/")
-    public String home(HttpServletRequest request,Map<String, Object> map) {
+    public String home(HttpServletRequest request, ModelMap map) {
         logger.info(">>> index");
         List<Users> userall = usersService.getAllList();
         logger.info(">>> 第一遍的全部用户："+userall);
@@ -56,26 +49,6 @@ public class UserSystemController {
         logger.info(">>> 第二遍的全部用户："+useral2);
 
         String username ="";
-        //获得session对象
-        HttpSession session = request.getSession();
-        //取出session域中所有属性名
-        Enumeration attributeNames = session.getAttributeNames();
-        while (attributeNames.hasMoreElements()) {
-            System.out.println(attributeNames.nextElement());
-        }
-        //SPRING_SECURITY_CONTEXT
-        Object spring_security_context = session.getAttribute("SPRING_SECURITY_CONTEXT");
-        System.out.println(spring_security_context);
-        SecurityContext securityContext = (SecurityContext) spring_security_context;
-        if(securityContext!=null){
-            //获得认证信息
-            Authentication authentication = securityContext.getAuthentication();
-            //获得用户详情
-            Object principal = authentication.getPrincipal();
-            User user = (User) principal;
-            username = user.getUsername();
-            System.out.println(username);
-        }
 
         //分页获取主题帖子
 //        List<Discussions> allDiscussions = discussionsService.getAllList();
@@ -98,7 +71,11 @@ public class UserSystemController {
         map.put("allDiscussions", allDiscussions);
         map.put("pageDiscussions", pageNumList);
         map.put("allTags", allTags);
-        map.put("username", username);
+        UserInfo user = getUserInfo(request);
+        if(user != null){
+            map.put("username", user.getUsername());
+            map.put("data", "Jiscuss 用户:" + user.getUsername());
+        }
         return "index";
     }
 
@@ -146,7 +123,7 @@ public class UserSystemController {
     //登录页
     @GetMapping("/login")
     public String login(@RequestParam(value = "error", required = false) String error,
-                              @RequestParam(value = "logout", required = false) String logout,Map<String, Object> map) {
+                              @RequestParam(value = "logout", required = false) String logout,ModelMap map) {
         if (error != null) {
             map.put("msg", "您输入的用户名密码错误！");
             return "login";
@@ -160,16 +137,16 @@ public class UserSystemController {
     }
 
     //退出
-    @PostMapping(value = "/loginout")
-    @ResponseBody
-    public String logout(HttpServletRequest request, HttpServletResponse response){
-        JSONObject resultobj = new JSONObject();
-        HttpSession session=request.getSession();
-        session.invalidate();
-        resultobj.put("msg", "用户退出成功");
-        resultobj.put("flag", true);
-        return resultobj.toString(); //
-    }
+//    @PostMapping(value = "/loginout")
+//    @ResponseBody
+//    public String logout(HttpServletRequest request, HttpServletResponse response){
+//        JSONObject resultobj = new JSONObject();
+//        HttpSession session=request.getSession();
+//        session.invalidate();
+//        resultobj.put("msg", "用户退出成功");
+//        resultobj.put("flag", true);
+//        return resultobj.toString(); //
+//    }
 
     //注册
 

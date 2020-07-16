@@ -4,13 +4,14 @@ import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
+import com.yaoyuan.jiscuss.entity.UserInfo;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +29,7 @@ import com.yaoyuan.jiscuss.service.ITagsService;
  * 主题帖子评论控制器
  */
 @Controller
-public class UserPostController {
+public class UserPostController  extends BaseController {
 	
 	private static Logger logger = LoggerFactory.getLogger(UserPostController.class);
 
@@ -47,13 +48,15 @@ public class UserPostController {
 
 	//查看主题详情
     @RequestMapping("/getdiscussionsbyid")
-    public String getDiscussionsById(HttpServletRequest request,Map<String, Object> map,@RequestParam("id") Integer id) {
+    public String getDiscussionsById(HttpServletRequest request, ModelMap map, @RequestParam("id") Integer id) {
         logger.info(">>> getDiscussionsById{}",id);
 
         Discussions discussions = discussionsService.findOne(id);
-        HttpSession session=request.getSession();
         map.put("discussions", discussions);
-        map.put("username", session.getAttribute("username"));
+        UserInfo user = getUserInfo(request);
+        if(user != null){
+            map.put("username", user.getUsername());
+        }
         return "discussions";
     }
 
@@ -66,10 +69,11 @@ public class UserPostController {
 
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes)RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = servletRequestAttributes.getRequest();
-        
-        HttpSession session=request.getSession();
-        discussions.setLast_user_id( (Integer)session.getAttribute("userid"));
-        discussions.setCreate_id( (Integer)session.getAttribute("userid"));
+        UserInfo user = getUserInfo(request);
+        if(user != null){
+            discussions.setLast_user_id( user.getId());
+            discussions.setCreate_id( user.getId());
+        }
         discussions.setCreate_time(new Date());
         
         Discussions saveDiscussions = discussionsService.insert(discussions);
@@ -99,11 +103,13 @@ public class UserPostController {
 
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes)RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = servletRequestAttributes.getRequest();
-        
-        HttpSession session=request.getSession();
-        tags.setCreate_id( (Integer)session.getAttribute("userid"));
+
+        UserInfo user = getUserInfo(request);
+        if(user != null){
+            tags.setCreate_id( user.getId());
+        }
         tags.setCreate_time(new Date());
-        
+
         Tags saveTags = tagsService.insert(tags);
         JSONObject resultobj = new JSONObject();
        

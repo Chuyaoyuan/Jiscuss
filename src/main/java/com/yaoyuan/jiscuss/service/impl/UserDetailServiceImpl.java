@@ -1,5 +1,6 @@
 package com.yaoyuan.jiscuss.service.impl;
 
+import com.yaoyuan.jiscuss.entity.UserInfo;
 import com.yaoyuan.jiscuss.entity.Users;
 import com.yaoyuan.jiscuss.service.IUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserInfo loadUserByUsername(String username) throws UsernameNotFoundException {
         // 通过用户名从数据库获取用户信息
         Users userInfo = userInfoService.getByUsername(username);
         if (userInfo == null) {
@@ -49,11 +50,13 @@ public class UserDetailServiceImpl implements UserDetailsService {
         // 角色必须以`ROLE_`开头，数据库中没有，则在这里加
         authorities.add(new SimpleGrantedAuthority("ROLE_" + role));
 
-        return new User(
-                userInfo.getUsername(),
+        return new UserInfo(
+                authorities,
+                userInfo.getId(),
                 // 因为数据库是明文，所以这里需加密密码
                 passwordEncoder.encode(userInfo.getPassword()),
-                authorities
+                userInfo.getUsername(),
+                userInfo.getPhone()
         );
     }
 }
