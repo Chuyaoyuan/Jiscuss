@@ -1,29 +1,32 @@
 
-
 $("#createNewDiccuss").click(function () {
-    console.log("dianji  createNewDiccuss");
+    console.log("点击  createNewDiccuss");
     console.log(username);
-    if(username&&username!=null){
+
+    if(username && username!=null){
         $('.ui.modal.createNewDiccuss')
             .modal('show')
         ;
         tinymce.init({
             selector: '#discussionscontent',
-
           });
     }else{
-        window.alert('您未登录，请先登录!');
+        massage('您未登录，请先登录!','');
+
     }
 });
 
 
-
 $("#newdiscussions").click(function(){
-	
+
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
+    console.warn(header)
+    console.warn(token)
     var title = $("#discussionstitle").val();
 //     $("#discussionscontent").val();
     console.log(tinyMCE.editors[0].getContent());
-     var content =tinyMCE.editors[0].getContent();
+    var content =tinyMCE.editors[0].getContent();
     console.log(title);
     console.log(content);
     $.ajax({
@@ -34,6 +37,9 @@ $("#newdiscussions").click(function(){
         	content: content
         }),
         contentType: 'application/json',
+        beforeSend: function(request) {
+            request.setRequestHeader(header, token); // 添加  CSRF Token
+        },
         dataType: "JSON",
         success: function (data) {
             console.log(data);
@@ -49,20 +55,19 @@ $("#newdiscussions").click(function(){
 
 });
 
-
 $("#newtags").click(function(){
-	$('#createNewtagsdiv').show();
+	$('#createNewtagsDiv').show();
+    $('#createNewtagsBtn').show();
 	return false;
 });
 
 
-
-
-
 $("#commitnewtags").click(function(){
 
-    var name = $("#tagsname").val();
+    var header = $("meta[name='_csrf_header']").attr("content");
+    var token =$("meta[name='_csrf']").attr("content");
 
+    var name = $("#tagsname").val();
     console.log(name);
     $.ajax({
         type: "POST",
@@ -71,6 +76,9 @@ $("#commitnewtags").click(function(){
         	name: name,
         }),
         contentType: 'application/json',
+        beforeSend : function(xhr) {
+            xhr.setRequestHeader(header, token);
+        },
         dataType: "JSON",
         success: function (data) {
             console.log(data);

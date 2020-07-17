@@ -48,11 +48,7 @@ public class UserSystemController extends BaseController {
         List<Users> useral2 = usersService.getAllList();
         logger.info(">>> 第二遍的全部用户："+useral2);
 
-        String username ="";
-
         //分页获取主题帖子
-//        List<Discussions> allDiscussions = discussionsService.getAllList();
-        
         Page<Discussions> allDiscussionsPage = discussionsService.queryAllDiscussionsList(0,20);
         
         List<Discussions> allDiscussions =allDiscussionsPage.getContent();
@@ -67,6 +63,38 @@ public class UserSystemController extends BaseController {
         logger.info("全部标签==>：{}",allTags);
         
         System.out.println(userall.toString());
+        map.put("data", "Jiscuss 用户");
+        map.put("allDiscussions", allDiscussions);
+        map.put("pageDiscussions", pageNumList);
+        map.put("allTags", allTags);
+        UserInfo user = getUserInfo(request);
+        if(user != null){
+            map.put("username", user.getUsername());
+            map.put("data", "Jiscuss 用户:" + user.getUsername());
+        }
+        return "index";
+    }
+
+
+    //首页main
+    @RequestMapping("/main")
+    public String homePage(HttpServletRequest request, ModelMap map) {
+        logger.info(">>> index");
+
+        //分页获取主题帖子
+        Page<Discussions> allDiscussionsPage = discussionsService.queryAllDiscussionsList(0,20);
+
+        List<Discussions> allDiscussions =allDiscussionsPage.getContent();
+
+        logger.info("全部主题==>：{}",allDiscussions);
+
+        //获取主题帖子的分页数据
+        List<String>  pageNumList = getPageNumList(allDiscussionsPage.getTotalPages());
+
+        //获取所有标签（以后尝试去缓存中取）
+        List<Tags> allTags = tagsService.getAllList();
+        logger.info("全部标签==>：{}",allTags);
+
         map.put("data", "Jiscuss 用户");
         map.put("allDiscussions", allDiscussions);
         map.put("pageDiscussions", pageNumList);

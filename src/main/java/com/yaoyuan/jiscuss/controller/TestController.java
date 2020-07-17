@@ -22,7 +22,6 @@ public class TestController {
 
 
     @RequestMapping("/world")
-
     public String world(Map<String, Object> model) {
         model.put("data","2019");
 //        request.setAttribute("name", "xxxxxxxxx");
