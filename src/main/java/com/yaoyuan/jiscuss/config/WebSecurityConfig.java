@@ -42,8 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				"/css/**",
 				"/js/**",
 				"/images/**",
-				"/static/**",
-				"/index/**"
+				"/static/**"
 				);
 	}
 	/**
@@ -69,7 +68,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			.loginProcessingUrl("/login")  //登录POST请求路径
 			.usernameParameter("username") //登录用户名参数
 			.passwordParameter("password") //登录密码参数
-			.defaultSuccessUrl("/main")   //默认登录成功页面
+			.defaultSuccessUrl("/index")   //默认登录成功页面
 			.and()
 			.exceptionHandling()
 			.accessDeniedHandler(customAccessDeniedHandler) //无权限处理器

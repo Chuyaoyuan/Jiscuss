@@ -39,17 +39,23 @@ public class UserSystemController extends BaseController {
     private ITagsService tagsService;
 
     //首页
-    @RequestMapping("/")
-    public String home(HttpServletRequest request, ModelMap map) {
+    @RequestMapping({"/","/main","/index"})
+    public String home(@RequestParam(defaultValue = "all") String tag, @RequestParam(defaultValue = "all") String type,@RequestParam(defaultValue = "1") Integer
+            pageNum, HttpServletRequest request, ModelMap map) {
         logger.info(">>> index");
+        logger.info(">>> tag:" + tag);
+        logger.info(">>> pageNum:" + pageNum);
         List<Users> userall = usersService.getAllList();
         logger.info(">>> 第一遍的全部用户："+userall);
         
         List<Users> useral2 = usersService.getAllList();
         logger.info(">>> 第二遍的全部用户："+useral2);
 
+        int pageSiz = 5;
+        int pageNumNew = pageNum - 1;
+
         //分页获取主题帖子
-        Page<Discussions> allDiscussionsPage = discussionsService.queryAllDiscussionsList(0,20);
+        Page<Discussions> allDiscussionsPage = discussionsService.queryAllDiscussionsList(pageNumNew,pageSiz);
         
         List<Discussions> allDiscussions =allDiscussionsPage.getContent();
         
@@ -67,6 +73,10 @@ public class UserSystemController extends BaseController {
         map.put("allDiscussions", allDiscussions);
         map.put("pageDiscussions", pageNumList);
         map.put("allTags", allTags);
+
+        map.put("tag", tag);
+        map.put("pageNum", pageNum);
+        map.put("pageNumAll", pageNumList.size());
         UserInfo user = getUserInfo(request);
         if(user != null){
             map.put("username", user.getUsername());
@@ -76,52 +86,43 @@ public class UserSystemController extends BaseController {
     }
 
 
-    //首页main
-    @RequestMapping("/main")
-    public String homePage(HttpServletRequest request, ModelMap map) {
-        logger.info(">>> index");
-
-        //分页获取主题帖子
-        Page<Discussions> allDiscussionsPage = discussionsService.queryAllDiscussionsList(0,20);
-
-        List<Discussions> allDiscussions =allDiscussionsPage.getContent();
-
-        logger.info("全部主题==>：{}",allDiscussions);
-
-        //获取主题帖子的分页数据
-        List<String>  pageNumList = getPageNumList(allDiscussionsPage.getTotalPages());
-
-        //获取所有标签（以后尝试去缓存中取）
-        List<Tags> allTags = tagsService.getAllList();
-        logger.info("全部标签==>：{}",allTags);
-
-        map.put("data", "Jiscuss 用户");
-        map.put("allDiscussions", allDiscussions);
-        map.put("pageDiscussions", pageNumList);
-        map.put("allTags", allTags);
-        UserInfo user = getUserInfo(request);
-        if(user != null){
-            map.put("username", user.getUsername());
-            map.put("data", "Jiscuss 用户:" + user.getUsername());
-        }
-        return "index";
-    }
+//    //首页main
+//    @RequestMapping("/main")
+//    public String homePage(HttpServletRequest request, ModelMap map) {
+//        logger.info(">>> index");
+//
+//        //分页获取主题帖子
+//        Page<Discussions> allDiscussionsPage = discussionsService.queryAllDiscussionsList(0,20);
+//
+//        List<Discussions> allDiscussions =allDiscussionsPage.getContent();
+//
+//        logger.info("全部主题==>：{}",allDiscussions);
+//
+//        //获取主题帖子的分页数据
+//        List<String>  pageNumList = getPageNumList(allDiscussionsPage.getTotalPages());
+//
+//        //获取所有标签（以后尝试去缓存中取）
+//        List<Tags> allTags = tagsService.getAllList();
+//        logger.info("全部标签==>：{}",allTags);
+//
+//        map.put("data", "Jiscuss 用户");
+//        map.put("allDiscussions", allDiscussions);
+//        map.put("pageDiscussions", pageNumList);
+//        map.put("allTags", allTags);
+//        UserInfo user = getUserInfo(request);
+//        if(user != null){
+//            map.put("username", user.getUsername());
+//            map.put("data", "Jiscuss 用户:" + user.getUsername());
+//        }
+//        return "index";
+//    }
 
     
     private List<String>  getPageNumList(int size) {
     	List<String> pageNumList  = new ArrayList<String>();
-		if(size>5) {
-			pageNumList.add("1");
-			pageNumList.add("2");
-			pageNumList.add("...");
-			pageNumList.add(""+(size-1));
-			pageNumList.add(""+(size));
-			
-		}else {
-			for(int  i = 0;i<size;i++) {
-				pageNumList.add(""+(i+1));
-			}
-		}
+        for(int  i = 0;i<size;i++) {
+            pageNumList.add(""+(i+1));
+        }
 		return pageNumList;
 	}
 

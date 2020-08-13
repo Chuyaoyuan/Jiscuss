@@ -32,7 +32,7 @@
 <div class="ui container" id="container">
     <div class="ui info message">
         <i class="close icon"></i>
-        <div class="header">欢迎来到这里，${data},主题数： ${allDiscussions?size} ，主题页数：${pageDiscussions?size}
+        <div class="header">欢迎来到这里，${data},当前页主题数： ${allDiscussions?size} ，主题页数：${pageDiscussions?size}
             ，标签数 ${allTags?size} </div>
         <ul class="list">
             <li>JAVA + DISCUSS = JISCUSS 。</li>
@@ -377,15 +377,21 @@
 
 
             <div class="ui borderless menu">
-                <a class="icon item">
+                <a class="icon item" id="upPage">
                     <i class="left chevron icon"></i>
                 </a>
                 <#list pageDiscussions as page>
-                    <a class="item">
-                        ${page}
-                    </a>
+                    <#if page == pageNum >
+                        <a class="item" style="  background-color: #7d827d;"  href="/?pageNum=${page}">
+                            ${page}
+                        </a>
+                    <#else>
+                        <a class="item" href="/?pageNum=${page}">
+                            ${page}
+                        </a>
+                    </#if>
                 </#list>
-                <a class="icon item"> <i class="right chevron icon"></i>
+                <a class="icon item" id="nextPage"> <i class="right chevron icon"></i>
                 </a>
             </div>
 
@@ -435,6 +441,10 @@
         setusername('${username}');
         console.log('已经登陆：' + username);
         </#if>
+        console.log('pageNum：' + '${pageNum}');
+        console.log('pageNumAll：' + '${pageNumAll}');
+
+        setpageNum('${pageNum}','${pageNumAll}');
 
         var token = $("meta[name='_csrf']").attr("content");
         if(token == '' && username && username != null){
@@ -443,9 +453,6 @@
         }
     });
 
-    function massage(msg,type){
-        window.alert(msg);
-    }
 </script>
 
 <script type="text/javascript" charset="UTF-8" src="/static/js/user/system.js"></script>

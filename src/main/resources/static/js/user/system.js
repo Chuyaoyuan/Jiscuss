@@ -1,4 +1,43 @@
 
+
+let pageNum = null;
+let pageAll = null;
+let pageUrl= '/';
+
+function setpageNum(data,allList) {
+    var url = window.location.href;
+    console.log('当前url：'+url)
+    if(url.indexOf('index') > 0){
+        pageUrl= '/index';
+    }
+    console.log('当前页码：'+data)
+    pageNum = parseInt(data)          // pageNum
+    pageAll = parseInt(allList)
+}
+
+$("#upPage").click(function () {
+    console.log("点击  upPage");
+    console.log('当前页码：'+pageNum);
+    if(pageNum > 1){
+        let page = pageNum - 1
+        window.location.href=pageUrl + "?pageNum=" + page;
+    }else{
+        massage('已经是首页!','');
+    }
+});
+
+$("#nextPage").click(function () {
+    console.log("点击  nextPage");
+    console.log('当前页码：'+pageNum);
+    console.log('当前pageAll页码：'+pageAll);
+    if((pageNum + 1) <= pageAll){
+        let page = pageNum + 1
+        window.location.href=pageUrl + "?pageNum=" + page;
+    }else{
+        massage('已经是尾页!','');
+    }
+});
+
 $("#createNewDiccuss").click(function () {
     console.log("点击  createNewDiccuss");
     console.log(username);
@@ -46,6 +85,7 @@ $("#newdiscussions").click(function(){
             if(data.flag){
             	window.alert(title+',添加成功!');
                 $('.ui.modal.createNewDiccuss').modal('hide');
+                location.reload();
             }else{
                 window.alert(data.msg);
                 return false;

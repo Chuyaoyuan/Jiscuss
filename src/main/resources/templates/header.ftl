@@ -28,7 +28,10 @@
             </div>
             <div class="item" id="userlogin">
                 <#if username??>
-                    ${username} <a href="/logout" id="loginOut">注销</a>
+                    <form class="ui large form" action="/logout"  id="logoutForm" method="post"  style="display: none;">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    </form>
+                    ${username} <a href="javascript:document.getElementById('logoutForm').submit();">注销</a>
                 <#else>
                     <a href="/login" id="loginmodel">登录 & 注册</a>
                 </#if>

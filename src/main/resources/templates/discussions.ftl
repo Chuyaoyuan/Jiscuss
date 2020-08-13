@@ -151,35 +151,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ui borderless menu">
-                        <a class="icon item">
-                            <i class="left chevron icon"></i>
-                        </a>
-                        <a class="item">
-                            1
-                        </a>
-                        <a class="item">
-                            2
-                        </a>
-                        <div class="disabled item">
-                            ...
-                        </div>
-                        <a class="item">
-                            10
-                        </a>
-                        <a class="item">
-                            11
-                        </a>
-                        <a class="icon item"> <i class="right chevron icon"></i>
-                        </a>
-                    </div>
-
-
                     <form class="ui reply form">
                         <div class="field">
-                            <textarea></textarea>
+                            <textarea id="postcontent"></textarea>
                         </div>
-                        <div class="ui blue labeled submit icon button">
+                        <div class="ui blue labeled submit icon button" id="addPost">
                             <i class="icon edit"></i> 添加评论
                         </div>
                     </form>
@@ -301,10 +277,12 @@
         <#if username??>
         console.log('已经登陆：' + username);
         </#if>
+        setDiscussionsId('${discussions.id}');
+
     });
 
 </script>
-
+<script type="text/javascript" charset="UTF-8" src="/static/js/user/discussions.js"></script>
 </body>
 
 </html>

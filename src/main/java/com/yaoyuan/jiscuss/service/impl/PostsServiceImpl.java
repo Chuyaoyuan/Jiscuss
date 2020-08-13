@@ -7,7 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.yaoyuan.jiscuss.entity.Posts;
 import com.yaoyuan.jiscuss.repository.PostsRepository;
 import com.yaoyuan.jiscuss.service.IPostsService;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
+
+@Service
+@Transactional
 public class PostsServiceImpl implements IPostsService {
     @Autowired
     private PostsRepository postsRepository;

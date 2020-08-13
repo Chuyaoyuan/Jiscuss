@@ -5,7 +5,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.yaoyuan.jiscuss.entity.Posts;
 import com.yaoyuan.jiscuss.entity.UserInfo;
+import com.yaoyuan.jiscuss.service.IPostsService;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,8 +41,9 @@ public class UserPostController  extends BaseController {
     
     @Autowired
     private ITagsService tagsService;
-    
 
+    @Autowired
+    private IPostsService postsService;
     
     //首页查看主题列表（各种条件筛选，最热最新标签等）
     
@@ -92,6 +95,28 @@ public class UserPostController  extends BaseController {
     //删除主题
 
     //新建评论
+    @PostMapping(value = "/newpost")
+    @ResponseBody
+    public String newPosts(@RequestBody Posts posts) {
+        logger.info(">>> newpost"+posts);
+
+        ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes)RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = servletRequestAttributes.getRequest();
+
+        UserInfo user = getUserInfo(request);
+        if(user != null){
+            posts.setCreate_id( user.getId());
+        }
+        posts.setCreate_time(new Date());
+
+        Posts savePost = postsService.insert(posts);
+        JSONObject resultobj = new JSONObject();
+
+        logger.info(">>>{}",savePost );
+        resultobj.put("msg", "添加成功");
+        resultobj.put("flag", true);
+        return resultobj.toString(); //
+    }
 
     //删除评论
     
