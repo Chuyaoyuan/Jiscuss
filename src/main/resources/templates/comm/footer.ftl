@@ -46,6 +46,8 @@
 </div>
 <script type="text/javascript">
 function massage(msg,type){
-window.alert(msg);
+// window.alert(msg);
+    toastr.info(msg)
+
 }
 </script>

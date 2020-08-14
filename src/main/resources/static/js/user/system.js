@@ -83,11 +83,11 @@ $("#newdiscussions").click(function(){
         success: function (data) {
             console.log(data);
             if(data.flag){
-            	window.alert(title+',添加成功!');
+            	massage(title+',添加成功!','');
                 $('.ui.modal.createNewDiccuss').modal('hide');
                 location.reload();
             }else{
-                window.alert(data.msg);
+                massage(data.msg,'');
                 return false;
             }
         }
@@ -123,10 +123,10 @@ $("#commitnewtags").click(function(){
         success: function (data) {
             console.log(data);
             if(data.flag){
-            	window.alert(name+',添加成功!');
+            	massage(name+',添加成功!','');
             	return false;
             }else{
-            	window.alert(name+',添加失败!');
+            	massage(name+',添加失败!','');
             	return false;
             }
         }
@@ -147,7 +147,6 @@ $('#context2 .menu .item')
         // special keyword works same as above
         context: 'parent'
     })
-;
 ;
 
 $('.ui.dropdown')

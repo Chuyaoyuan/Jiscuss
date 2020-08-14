@@ -1,6 +1,7 @@
 package com.yaoyuan.jiscuss.controller;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -55,7 +56,10 @@ public class UserPostController  extends BaseController {
         logger.info(">>> getDiscussionsById{}",id);
 
         Discussions discussions = discussionsService.findOne(id);
+
+        List<Posts> posts = postsService.findOneBy(id);
         map.put("discussions", discussions);
+        map.put("posts", posts);
         UserInfo user = getUserInfo(request);
         if(user != null){
             map.put("username", user.getUsername());

@@ -10,26 +10,17 @@
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
 
-    <link crossorigin="anonymous" integrity="sha384-ATvSpJEmy1egycrmomcFxVn4Z0A6rfjwlzDQrts/1QRerQhR9EEpEYtdysLpQPuQ"
-          href="https://lib.baomitu.com/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/static/semanticui/my.css">
-
-    <script crossorigin="anonymous" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh"
-            src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
-    <script crossorigin="anonymous" integrity="sha384-6urqf2sgCGDfIXcoxTUOVIoQV+jFr/Zuc4O2wCRS6Rnd8w0OJ17C4Oo3PuXu8ZtF"
-            src="https://lib.baomitu.com/semantic-ui/2.4.1/semantic.min.js"></script>
-
-
+    <#include "comm/commjs.ftl"/>
 </head>
 <body>
-<#include "header.ftl"/>
+<#include "comm/header.ftl"/>
 
 <div class="ui container" id="container">
     <div class="ui info message">
         <i class="close icon"></i>
         <div class="header">欢迎来到这里</div>
         <ul class="list">
-            <li>JAVA + DISCUSS = JISCUSS 。</li>
+            <li>JAVA + DISCUSS = JISCUSS 。${posts?size}</li>
             <li>简单的，易用的JAVA论坛。</li>
             <li>请享受发帖回帖带来的乐趣吧！</li>
         </ul>
@@ -151,6 +142,9 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="ui section divider"></div>
+
                     <form class="ui reply form">
                         <div class="field">
                             <textarea id="postcontent"></textarea>
@@ -168,13 +162,41 @@
         <div
                 class="widescreen  large screen computer tablet only four wide column">
 
-
             <div class="ui fluid action input">
                 <input type="text" placeholder="搜索...">
                 <div class="ui button">搜索</div>
             </div>
 
             <div class="ui section divider"></div>
+
+            <div class="ui card">
+                <div class="content">
+                    <div class="header">作者</div>
+                </div>
+                <div class="content">
+                    <h4 class="ui sub header">测试人员1</h4>
+                    <div class="ui small feed">
+                        <div class="event">
+                            <div class="content">
+                                <div class="summary">
+                                    <a>Jiscuss</a> 一直， <a>Jiscuss</a> 一感谢支持！
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="event">
+                            <div class="content">
+                                <div class="summary">
+                                    <a>2019</a> 测试内容
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="extra content">
+                    <button class="ui button">预留按钮</button>
+                </div>
+            </div>
 
             <div class="ui card">
                 <div class="content">
@@ -269,7 +291,7 @@
 
 </div>
 
-<#include "footer.ftl"/>
+<#include "comm/footer.ftl"/>
 
 <script type="text/javascript">
 

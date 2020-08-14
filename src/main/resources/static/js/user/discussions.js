@@ -15,8 +15,8 @@ $("#addPost").click(function () {
         var header = $("meta[name='_csrf_header']").attr("content");
         console.warn(header)
         console.warn(token)
-        var title = $("#postcontent").val();
-        console.log(title);
+        var content = $("#postcontent").val();
+        console.log(content);
         $.ajax({
             type: "POST",
             url: "/newpost",
@@ -32,11 +32,10 @@ $("#addPost").click(function () {
             success: function (data) {
                 console.log(data);
                 if(data.flag){
-                    window.alert(title+',添加成功!');
-                    $('.ui.modal.createNewDiccuss').modal('hide');
+                    massage(title+',添加成功!','');
                     location.reload();
                 }else{
-                    window.alert(data.msg);
+                    massage(data.msg,'');
                     return false;
                 }
             }

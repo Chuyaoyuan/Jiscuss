@@ -8,4 +8,6 @@ public interface IPostsService {
     List<Posts> getAllList();
 
     Posts insert(Posts posts);
+
+    List<Posts> findOneBy(Integer id);
 }

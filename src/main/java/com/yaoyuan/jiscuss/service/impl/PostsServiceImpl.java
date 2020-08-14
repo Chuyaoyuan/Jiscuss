@@ -1,6 +1,7 @@
 package com.yaoyuan.jiscuss.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,6 +23,14 @@ public class PostsServiceImpl implements IPostsService {
     public List<Posts> getAllList() {
         return postsRepository.findAll();
     }
+
+    @Override
+    public List<Posts> findOneBy(Integer id) {
+
+        List<Posts> ss = postsRepository.findOneBy(id);
+        return ss;
+    }
+
 
     @Override
     public Posts insert(Posts posts) {

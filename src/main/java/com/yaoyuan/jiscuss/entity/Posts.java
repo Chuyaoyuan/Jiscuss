@@ -39,6 +39,9 @@ public class Posts   implements Serializable{
     
     @Column(name="content")
     private String content;
+
+    @Column(name="parent_id")
+    private Integer parent_id;
     
     @Column(name="edit_time")
     private Date edit_time;

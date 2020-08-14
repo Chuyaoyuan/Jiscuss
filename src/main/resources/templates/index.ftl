@@ -10,24 +10,11 @@
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
 
-    <script crossorigin="anonymous" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh"
-            src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
-    <#--semantic-->
-    <link crossorigin="anonymous" integrity="sha384-ATvSpJEmy1egycrmomcFxVn4Z0A6rfjwlzDQrts/1QRerQhR9EEpEYtdysLpQPuQ"
-          href="https://lib.baomitu.com/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/static/semanticui/my.css">
-    <script crossorigin="anonymous" integrity="sha384-6urqf2sgCGDfIXcoxTUOVIoQV+jFr/Zuc4O2wCRS6Rnd8w0OJ17C4Oo3PuXu8ZtF"
-            src="https://lib.baomitu.com/semantic-ui/2.4.1/semantic.min.js"></script>
-
-    <#--tinymce-->
-    <script crossorigin="anonymous" integrity="sha384-CpsBIlOAWHuSRRN235sCBzEeKN6hLT6SpOGRkGadKpYj0gDP7+s3Q8pC38z8uGHH"
-            src="https://lib.baomitu.com/tinymce/5.1.1/tinymce.min.js"></script>
-    <#--jquery-cookie-->
-    <script src="https://cdn.bootcdn.net/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <#include "comm/commjs.ftl"/>
 
 </head>
 <body>
-<#include "header.ftl"/>
+<#include "comm/header.ftl"/>
 
 <div class="ui container" id="container">
     <div class="ui info message">
@@ -433,7 +420,7 @@
     预留
 </div>
 
-<#include "footer.ftl"/>
+<#include "comm/footer.ftl"/>
 <script type="text/javascript">
 
     $(document).ready(function () {
