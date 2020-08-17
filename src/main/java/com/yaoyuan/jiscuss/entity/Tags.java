@@ -35,20 +35,20 @@ public class Tags   implements Serializable{
     private Integer position;
     
     @Column(name="parent_id")
-    private Integer parent_id;
+    private Integer parentId;
 
     @Column(name="discussions_count")
-    private String discussions_count;
+    private String discussionsCount;
     
     @Column(name="last_time")
-    private Date last_time;
+    private Date lastTime;
     
     @Column(name="last_discussion_id")
-    private Integer last_discussion_id;
+    private Integer lastDiscussionId;
     
     @Column(name="create_id")
-    private Integer create_id;
+    private Integer createId;
     
     @Column(name="create_time")
-    private Date create_time;
+    private Date createTime;
 }

@@ -27,8 +27,20 @@ public class PostsServiceImpl implements IPostsService {
     @Override
     public List<Posts> findOneBy(Integer id) {
 
-        List<Posts> ss = postsRepository.findOneBy(id);
-        return ss;
+        List<Posts> posts = postsRepository.findOneBy(id);
+        return posts;
+    }
+
+    @Override
+    public List<Posts> findAllByDIdAndparentIdNull(Integer dId) {
+        List<Posts> posts = postsRepository.findAllByDIdAndparentIdNull(dId);
+        return posts;
+    }
+
+    @Override
+    public List<Posts> findAllByDIdAndparentIdNotNull(Integer dId) {
+        List<Posts> posts = postsRepository.findAllByDIdAndparentIdNotNull(dId);
+        return posts;
     }
 
 

@@ -16,10 +16,10 @@ public class DiscussionsTags   implements Serializable{
       
     @Id
     @Column(name="discussion_id")
-    private Integer discussion_id;
+    private Integer discussionId;
      
     @Column(name="tag_id")
-    private Integer tag_id;
+    private Integer tagId;
     
    
 }

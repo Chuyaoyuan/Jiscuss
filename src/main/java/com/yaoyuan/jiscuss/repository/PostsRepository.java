@@ -17,7 +17,12 @@ public interface PostsRepository extends JpaRepository<Posts,Integer> {
      * @param dId
      * @return
      */
-    @Query("from Posts where discussion_id = :dId")
+    @Query("from Posts where discussionId = :dId")
     List<Posts> findOneBy(@Param("dId")Integer dId);
 
+    @Query("from Posts where parentId is null and discussionId = :dId")
+    List<Posts> findAllByDIdAndparentIdNull(@Param("dId")Integer dId);
+
+    @Query("from Posts where parentId is not null and discussionId = :dId")
+    List<Posts> findAllByDIdAndparentIdNotNull(@Param("dId")Integer dId);
 }

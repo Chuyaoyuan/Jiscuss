@@ -53,13 +53,15 @@ public class UserSystemController extends BaseController {
 
         int pageSiz = 5;
         int pageNumNew = pageNum - 1;
-
+        Discussions discussions = new Discussions();
         //分页获取主题帖子
-        Page<Discussions> allDiscussionsPage = discussionsService.queryAllDiscussionsList(pageNumNew,pageSiz);
+        Page<Discussions> allDiscussionsPage = discussionsService.queryAllDiscussionsList(discussions,pageNumNew,pageSiz);
         
         List<Discussions> allDiscussions =allDiscussionsPage.getContent();
         
         logger.info("全部主题==>：{}",allDiscussions);
+
+        Long total = allDiscussionsPage.getTotalElements();
         
         //获取主题帖子的分页数据
         List<String>  pageNumList = getPageNumList(allDiscussionsPage.getTotalPages());
@@ -73,10 +75,13 @@ public class UserSystemController extends BaseController {
         map.put("allDiscussions", allDiscussions);
         map.put("pageDiscussions", pageNumList);
         map.put("allTags", allTags);
-
         map.put("tag", tag);
+        map.put("type", type);
+
+        map.put("pageSize",pageSiz);
+        map.put("pageTotal", total);
         map.put("pageNum", pageNum);
-        map.put("pageNumAll", pageNumList.size());
+        map.put("pageTotalPages", allDiscussionsPage.getTotalPages());
         UserInfo user = getUserInfo(request);
         if(user != null){
             map.put("username", user.getUsername());
@@ -84,38 +89,6 @@ public class UserSystemController extends BaseController {
         }
         return "index";
     }
-
-
-//    //首页main
-//    @RequestMapping("/main")
-//    public String homePage(HttpServletRequest request, ModelMap map) {
-//        logger.info(">>> index");
-//
-//        //分页获取主题帖子
-//        Page<Discussions> allDiscussionsPage = discussionsService.queryAllDiscussionsList(0,20);
-//
-//        List<Discussions> allDiscussions =allDiscussionsPage.getContent();
-//
-//        logger.info("全部主题==>：{}",allDiscussions);
-//
-//        //获取主题帖子的分页数据
-//        List<String>  pageNumList = getPageNumList(allDiscussionsPage.getTotalPages());
-//
-//        //获取所有标签（以后尝试去缓存中取）
-//        List<Tags> allTags = tagsService.getAllList();
-//        logger.info("全部标签==>：{}",allTags);
-//
-//        map.put("data", "Jiscuss 用户");
-//        map.put("allDiscussions", allDiscussions);
-//        map.put("pageDiscussions", pageNumList);
-//        map.put("allTags", allTags);
-//        UserInfo user = getUserInfo(request);
-//        if(user != null){
-//            map.put("username", user.getUsername());
-//            map.put("data", "Jiscuss 用户:" + user.getUsername());
-//        }
-//        return "index";
-//    }
 
     
     private List<String>  getPageNumList(int size) {
@@ -126,28 +99,6 @@ public class UserSystemController extends BaseController {
 		return pageNumList;
 	}
 
-
-	//登录
-//    @PostMapping(value = "/login")
-//    @ResponseBody
-//    public String login(@RequestParam("username") String username, @RequestParam("password") String password,
-//                        HttpSession session) {
-//        JSONObject resultobj = new JSONObject();
-//        Users user = usersService.checkByUsernameAndPassword(username, password);
-//        if (user!=null) {
-//            //用户名和密码完成校验
-//            session.setAttribute("username", username);  //缓存session
-//            session.setAttribute("userid", user.getId());  //缓存session
-//            resultobj.put("username", username);
-//            resultobj.put("msg", "登录成功");
-//            resultobj.put("flag", true);
-//        } else {
-//            //用户名和密码未完成校验
-//            resultobj.put("msg", "用户名或密码错误");
-//            resultobj.put("flag", false);
-//        }
-//        return resultobj.toString();
-//    }
 
     //登录页
     @GetMapping("/login")
@@ -165,17 +116,6 @@ public class UserSystemController extends BaseController {
         return "login";
     }
 
-    //退出
-//    @PostMapping(value = "/loginout")
-//    @ResponseBody
-//    public String logout(HttpServletRequest request, HttpServletResponse response){
-//        JSONObject resultobj = new JSONObject();
-//        HttpSession session=request.getSession();
-//        session.invalidate();
-//        resultobj.put("msg", "用户退出成功");
-//        resultobj.put("flag", true);
-//        return resultobj.toString(); //
-//    }
 
     //注册
 

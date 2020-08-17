@@ -47,3 +47,21 @@ values (11, '测试主题11', '测试内容3测试测试测试测试测试测试
 insert into tags
 values (1, '测试标签1',null,null,null,null,null,null,null,null,null);
 
+
+insert into posts
+values (1, 1, 1,null,1,null,'评论内容222',null,null,1,null,null,null,null);
+
+insert into posts
+values (2, 1, 2,null,1,null,'评论内容333',null,null,1,null,null,null,null);
+
+insert into posts
+values (3, 1, 3,null,1,1,'评论内容444',null,null,1,null,null,null,null);
+
+insert into posts
+values (4, 1, 4,null,1,1,'评论内容555',null,null,1,null,null,null,null);
+
+insert into posts
+values (5, 1, 5,null,1,2,'评论内容666',null,null,1,null,null,null,null);
+
+insert into posts
+values (6, 1, 6,null,1,5,'评论内容777',null,null,1,null,null,null,null);

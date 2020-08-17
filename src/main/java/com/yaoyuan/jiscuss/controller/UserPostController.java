@@ -1,17 +1,20 @@
 package com.yaoyuan.jiscuss.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.yaoyuan.jiscuss.common.Node;
 import com.yaoyuan.jiscuss.entity.Posts;
 import com.yaoyuan.jiscuss.entity.UserInfo;
 import com.yaoyuan.jiscuss.service.IPostsService;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -58,6 +61,27 @@ public class UserPostController  extends BaseController {
         Discussions discussions = discussionsService.findOne(id);
 
         List<Posts> posts = postsService.findOneBy(id);
+
+        //查询id为1且parentId为null的评论
+        List<Posts> firstList = postsService.findAllByDIdAndparentIdNull(1);
+        //查询id为1且parentId不为null的评论
+        List<Posts> thenList = postsService.findAllByDIdAndparentIdNotNull(1);
+        //新建一个Node集合。
+        ArrayList<Node> nodes = new ArrayList<>();
+        //将第一层评论都添加都Node集合中
+        for (Posts post : firstList) {
+            Node node = new Node();
+            BeanUtils.copyProperties(post, node);
+            nodes.add(node);
+        }
+        //将回复添加到对应的位置
+        List list = Node.addAllNode(nodes, thenList);
+        System.out.println();
+        //打印回复链表
+        Node.show(list);
+
+
+
         map.put("discussions", discussions);
         map.put("posts", posts);
         UserInfo user = getUserInfo(request);
@@ -78,10 +102,10 @@ public class UserPostController  extends BaseController {
         HttpServletRequest request = servletRequestAttributes.getRequest();
         UserInfo user = getUserInfo(request);
         if(user != null){
-            discussions.setLast_user_id( user.getId());
-            discussions.setCreate_id( user.getId());
+            discussions.setLastUserId( user.getId());
+            discussions.setCreateId( user.getId());
         }
-        discussions.setCreate_time(new Date());
+        discussions.setCreateTime(new Date());
         
         Discussions saveDiscussions = discussionsService.insert(discussions);
         JSONObject resultobj = new JSONObject();
@@ -109,9 +133,9 @@ public class UserPostController  extends BaseController {
 
         UserInfo user = getUserInfo(request);
         if(user != null){
-            posts.setCreate_id( user.getId());
+            posts.setCreateId( user.getId());
         }
-        posts.setCreate_time(new Date());
+        posts.setCreateTime(new Date());
 
         Posts savePost = postsService.insert(posts);
         JSONObject resultobj = new JSONObject();
@@ -135,9 +159,9 @@ public class UserPostController  extends BaseController {
 
         UserInfo user = getUserInfo(request);
         if(user != null){
-            tags.setCreate_id( user.getId());
+            tags.setCreateId( user.getId());
         }
-        tags.setCreate_time(new Date());
+        tags.setCreateTime(new Date());
 
         Tags saveTags = tagsService.insert(tags);
         JSONObject resultobj = new JSONObject();

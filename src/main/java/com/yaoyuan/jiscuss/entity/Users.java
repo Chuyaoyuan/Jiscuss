@@ -44,7 +44,7 @@ public class Users   implements Serializable {
     private String password;
     
     @Column(name="join_time")
-    private Date join_time;
+    private Date joinTime;
  
     @Column(name="age")
     private Integer age;
@@ -56,13 +56,13 @@ public class Users   implements Serializable {
     private String phone;
     
     @Column(name="discussions_count")
-    private Integer discussions_count;
+    private Integer discussionsCount;
     
     @Column(name="comments_count")
-    private Integer comments_count;
+    private Integer commentsCount;
     
     @Column(name="last_seen_time")
-    private Date last_seen_time;
+    private Date lastSeenTime;
  
     @Column(name="flag")
     private Integer flag;

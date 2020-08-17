@@ -381,6 +381,13 @@
                 <a class="icon item" id="nextPage"> <i class="right chevron icon"></i>
                 </a>
             </div>
+            <!--pager-->
+            <div class="ui borderless menu">
+                <ul class="pagination">
+                    <#import "./comm/page.ftl" as page />
+                    <@page.fpage page=pageNum pagesize=pageSize totalpages=pageTotalPages totalrecords=pageTotal url="/?type="+${type}+"&tag="+${tag}+"" />
+                </ul>
+            </div>
 
         </div>
 

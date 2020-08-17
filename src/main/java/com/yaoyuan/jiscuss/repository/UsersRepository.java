@@ -29,12 +29,6 @@ public interface UsersRepository extends JpaRepository<Users,Integer> {
 
    /**
     *
-    * @param id
-    */
-   void deleteById(Integer id);
-
-   /**
-    *
     * @param username
     * @return
     */

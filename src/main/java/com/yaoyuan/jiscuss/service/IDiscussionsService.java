@@ -14,6 +14,6 @@ public interface IDiscussionsService {
 
     Discussions findOne(Integer id);
     
-    Page<Discussions> queryAllDiscussionsList(int pageNum,int pageSize);
+    Page<Discussions> queryAllDiscussionsList(Discussions discussions,int pageNum,int pageSize);
 
 }

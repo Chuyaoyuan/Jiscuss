@@ -23,7 +23,7 @@ public class Posts   implements Serializable{
     private Integer id;
     
     @Column(name="discussion_id")
-    private Integer discussion_id;
+    private Integer discussionId;
     
     @Column(name="number")
     private Integer number;
@@ -32,7 +32,7 @@ public class Posts   implements Serializable{
     private Date time;
     
     @Column(name="user_id")
-    private Integer user_id;
+    private Integer userId;
     
     @Column(name="type")
     private String type;
@@ -41,27 +41,27 @@ public class Posts   implements Serializable{
     private String content;
 
     @Column(name="parent_id")
-    private Integer parent_id;
+    private Integer parentId;
     
     @Column(name="edit_time")
-    private Date edit_time;
+    private Date editTime;
     
     @Column(name="edit_user_id")
-    private Integer edit_user_id;
+    private Integer editUserId;
     
     @Column(name="ip_address")
-    private String ip_address;
+    private String ipAddress;
     
     @Column(name="copyright")
     private String copyright;
     
     @Column(name="is_approved")
-    private Integer is_approved;
+    private Integer isApproved;
     
     @Column(name="create_id")
-    private Integer create_id;
+    private Integer createId;
     
     @Column(name="create_time")
-    private Date create_time;
+    private Date createTime;
 }
 

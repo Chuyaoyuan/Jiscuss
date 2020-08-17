@@ -5,10 +5,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import com.yaoyuan.jiscuss.entity.Discussions;
@@ -40,10 +37,13 @@ public class DiscussionsServiceImpl implements IDiscussionsService {
     }
 
 	@Override
-	public Page<Discussions> queryAllDiscussionsList(int pageNum, int pageSize) {
+	public Page<Discussions> queryAllDiscussionsList(Discussions discussions,int pageNum, int pageSize) {
         Sort sort=new Sort(Sort.Direction.DESC,"id");
         @SuppressWarnings("deprecation")
 		Pageable pageable=new PageRequest(pageNum,pageSize,sort);
-        return discussionsRepository.findAll(pageable);
+        //将匹配对象封装成Example对象
+        Example<Discussions> example = Example.of(discussions);
+
+        return  discussionsRepository.findAll(example,pageable);
     }
 }

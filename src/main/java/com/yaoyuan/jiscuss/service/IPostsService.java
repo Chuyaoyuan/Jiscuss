@@ -10,4 +10,8 @@ public interface IPostsService {
     Posts insert(Posts posts);
 
     List<Posts> findOneBy(Integer id);
+
+    List<Posts> findAllByDIdAndparentIdNull(Integer dId);
+
+    List<Posts> findAllByDIdAndparentIdNotNull(Integer dId);
 }

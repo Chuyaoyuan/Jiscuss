@@ -29,49 +29,49 @@ public class Discussions   implements Serializable {
 	    private String content;
 	    
 	    @Column(name="comments_count")
-	    private Integer comments_count;
+	    private Integer commentsCount;
 	    
 	    @Column(name="participants_count")
-	    private Integer participants_count;
+	    private Integer participantsCount;
 	    
 	    @Column(name="number_index")
-	    private Integer number_index;
+	    private Integer numberIndex;
 	    
 	    @Column(name="start_time")
-	    private Date start_time;
+	    private Date startTime;
 	    
 	    @Column(name="start_user_id")
-	    private Integer start_user_id;
+	    private Integer startUserId;
 	    
 	    @Column(name="start_post_id")
-	    private Integer start_post_id;
+	    private Integer startPostId;
 	    
 	    @Column(name="last_time")
-	    private Date last_time;
+	    private Date lastTime;
 	    
 	    @Column(name="last_user_id")
-	    private Integer last_user_id;
+	    private Integer lastUserId;
 	    
 	    @Column(name="last_post_id")
-	    private Integer last_post_id;
+	    private Integer lastPostId;
 	    
 	    @Column(name="last_post_number")
-	    private Integer last_post_number;
+	    private Integer lastPostNumber;
 	    
 	    @Column(name="is_approved")
-	    private Integer is_approved;
+	    private Integer isApproved;
 	    
 	    @Column(name="like_count")
-	    private Integer like_count;
+	    private Integer likeCount;
 	    
 	    
 	    @Column(name="ip_address")
-	    private String ip_address;
+	    private String ipAddress;
 	    
 	    @Column(name="create_id")
-	    private Integer create_id;
+	    private Integer createId;
 	    
 	    @Column(name="create_time")
-	    private Date create_time;
+	    private Date createTime;
 	      
 }
