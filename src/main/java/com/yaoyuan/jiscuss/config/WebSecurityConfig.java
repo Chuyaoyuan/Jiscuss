@@ -42,7 +42,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				"/css/**",
 				"/js/**",
 				"/images/**",
-				"/static/**"
+				"/static/**",
+				"/h2-console/**"
 				);
 	}
 	/**

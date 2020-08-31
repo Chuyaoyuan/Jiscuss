@@ -368,12 +368,23 @@
                     <i class="left chevron icon"></i>
                 </a>
                 <#list pageDiscussions as page>
-                    <#if page == pageNum >
+                    <#if page == pageNum && !(username)??>
                         <a class="item" style="  background-color: #7d827d;"  href="/?pageNum=${page}">
                             ${page}
                         </a>
-                    <#else>
+                     </#if>
+                    <#if page != pageNum && !(username)??>
                         <a class="item" href="/?pageNum=${page}">
+                            ${page}
+                        </a>
+                    </#if>
+                    <#if page == pageNum && username??>
+                        <a class="item" style="  background-color: #7d827d;"  href="/main?pageNum=${page}">
+                            ${page}
+                        </a>
+                    </#if>
+                    <#if page != pageNum  && username??>
+                        <a class="item" href="/main?pageNum=${page}">
                             ${page}
                         </a>
                     </#if>
@@ -382,12 +393,12 @@
                 </a>
             </div>
             <!--pager-->
-            <div class="ui borderless menu">
+            <#--<div class="ui borderless menu">
                 <ul class="pagination">
                     <#import "./comm/page.ftl" as page />
-                    <@page.fpage page=pageNum pagesize=pageSize totalpages=pageTotalPages totalrecords=pageTotal url="/?type="+${type}+"&tag="+${tag}+"" />
+                    <@page.fpage page=pageNum pagesize=pageSize totalpages=pageTotalPages totalrecords=pageTotal url="/" />
                 </ul>
-            </div>
+            </div>-->
 
         </div>
 

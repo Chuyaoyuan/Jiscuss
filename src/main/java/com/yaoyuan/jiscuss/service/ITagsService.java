@@ -9,4 +9,6 @@ public interface ITagsService {
     List<Tags> getAllList();
 
     Tags insert(Tags tags);
+
+    List<Tags> findByDId(Integer id);
 }

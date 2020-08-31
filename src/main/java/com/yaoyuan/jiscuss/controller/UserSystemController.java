@@ -7,8 +7,11 @@ import com.yaoyuan.jiscuss.entity.Users;
 import com.yaoyuan.jiscuss.service.IDiscussionsService;
 import com.yaoyuan.jiscuss.service.ITagsService;
 import com.yaoyuan.jiscuss.service.IUsersService;
+import com.yaoyuan.jiscuss.util.DelTagsUtil;
+import org.apache.catalina.mbeans.MBeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -51,13 +54,28 @@ public class UserSystemController extends BaseController {
         List<Users> useral2 = usersService.getAllList();
         logger.info(">>> 第二遍的全部用户："+useral2);
 
-        int pageSiz = 5;
+        int pageSiz = 10;
         int pageNumNew = pageNum - 1;
         Discussions discussions = new Discussions();
         //分页获取主题帖子
         Page<Discussions> allDiscussionsPage = discussionsService.queryAllDiscussionsList(discussions,pageNumNew,pageSiz);
         
-        List<Discussions> allDiscussions =allDiscussionsPage.getContent();
+        List<Discussions> allDiscussions = allDiscussionsPage.getContent();
+        List<Discussions> newAllD = new ArrayList<>();
+
+        for (Discussions dd : allDiscussions){
+            Discussions newdd = new Discussions();
+            BeanUtils.copyProperties(dd , newdd);
+            String newCon = "";
+            String content = DelTagsUtil.getTextFromHtml(newdd.getContent());
+            if(null != content && content.length()>30){
+                newCon = content.substring(0,29);
+            }else{
+                newCon = content;
+            }
+            newdd.setContent(newCon);
+            newAllD.add(newdd);
+        }
         
         logger.info("全部主题==>：{}",allDiscussions);
 
@@ -72,7 +90,7 @@ public class UserSystemController extends BaseController {
         
         System.out.println(userall.toString());
         map.put("data", "Jiscuss 用户");
-        map.put("allDiscussions", allDiscussions);
+        map.put("allDiscussions", newAllD);
         map.put("pageDiscussions", pageNumList);
         map.put("allTags", allTags);
         map.put("tag", tag);

@@ -47,4 +47,4 @@ spring:
   mvc:
     static-path-pattern: /static/**
 server:
-  port: 8081
+  port: 80

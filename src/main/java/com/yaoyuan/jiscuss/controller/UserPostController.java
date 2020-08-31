@@ -62,6 +62,8 @@ public class UserPostController  extends BaseController {
 
         List<Posts> posts = postsService.findOneBy(id);
 
+        List<Tags> tags = tagsService.findByDId(id);
+
         //查询id为1且parentId为null的评论
         List<Posts> firstList = postsService.findAllByDIdAndparentIdNull(1);
         //查询id为1且parentId不为null的评论

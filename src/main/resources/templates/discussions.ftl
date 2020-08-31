@@ -35,7 +35,7 @@
             <div id="context2">
 
                 <h2 class="ui header">
-                    <i class="settings icon"></i>
+                    <i class="save outline"></i>
                     <div class="content">
                         ${discussions.title}
                         <div class="sub header">某某标签分类</div>
@@ -57,12 +57,12 @@
                             <div class="summary">
                                 用户 <a>测试人员1</a> 发布于
                                 <div class="date">
-                                    3 days ago
+                                    ${discussions.createTime}
                                 </div>
                             </div>
                             <div class="meta">
                                 <a class="like">
-                                    <i class="like icon"></i> 4 喜欢
+                                    <i class="like icon"></i> 0 喜欢
                                 </a>
                             </div>
                         </div>
