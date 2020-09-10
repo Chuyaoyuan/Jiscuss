@@ -4,7 +4,7 @@
             <img class="logo" src="static/assets/images/logo.png">
             &nbsp;Jiscuss
         </div>
-        <a class=" item borderless">首页</a>
+        <a class=" item borderless" href="/">首页</a>
         <a class="active borderless item">论坛</a>
         <div class="ui dropdown item borderless" tabindex="0">
             更多
