@@ -36,6 +36,7 @@ $("#addPost").click(function () {
                 if(data.flag){
                     massage(content+',添加成功!','');
                     location.reload();
+                    massage('评论添加成功!','');
                 }else{
                     massage(data.msg,'');
                     return false;
