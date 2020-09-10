@@ -82,7 +82,8 @@
                 <div class="ui threaded comments">
                     <h3 class="ui dividing header">评论区</h3>
                     <input type="hidden" name="postId" id="postId" value=""/>
-                    <#list posts as post>
+
+                    <#--<#list posts as post>
                         <div class="comment">
                             <a class="avatar">
                                 <img src="/static/assets/images/logo.png">
@@ -100,7 +101,7 @@
                                 </div>
                             </div>
 
-                            <#list post.child as child>
+                            <#list post.nextNodes as child>
                                 <div class="comments">
                                     <div class="comment">
                                         <a class="avatar">
@@ -122,7 +123,59 @@
                                 </div>
                             </#list>
                         </div>
-                    </#list>
+                    </#list>-->
+
+                    <!-- 定义遍历方法 -->
+                    <#macro bpTree posts>
+                        <#if posts?? && posts?size gt 0> <!-- 判断是否为空，并且长度是否大于0 -->
+                            <!-- 不为空 开始遍历 -->
+                            <#list posts as post>
+                                <#if post.nextNodes?? && post.nextNodes?size gt 0>
+                                    <!-- 如果是拥有子节点 -->
+                                    <div class="comment">
+                                        <a class="avatar">
+                                            <img src="/static/assets/images/logo.png">
+                                        </a>
+                                        <div class="content">
+                                            <a class="author">${post.username}</a>
+                                            <div class="metadata">
+                                                <span class="date">${post.createTime}</span>
+                                            </div>
+                                            <div class="text">
+                                                ${post.content}
+                                            </div>
+                                            <div class="actions">
+                                                <a class="reply" onclick="replyThis('${post.username}', '${post.id}')">回复</a>
+                                            </div>
+                                        </div>
+                                        <div class="comments">
+                                            <@bpTree posts=post.nextNodes />
+                                        </div>
+                                    </div>
+                                <#else>
+                                    <!-- 没有子节点！ -->
+                                    <div class="comment">
+                                        <a class="avatar">
+                                            <img src="/static/assets/images/logo.png">
+                                        </a>
+                                        <div class="content">
+                                            <a class="author">${post.username}</a>
+                                            <div class="metadata">
+                                                <span class="date">${post.createTime}</span>
+                                            </div>
+                                            <div class="text">
+                                                ${post.content}
+                                            </div>
+                                            <div class="actions">
+                                                <a class="reply" onclick="replyThis('${post.username}', '${post.id}')">回复</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </#if>
+                            </#list>
+                        </#if>
+                    </#macro>
+                    <@bpTree posts=posts /> <!-- 调用方法 -->
 
                     <div class="ui">
 

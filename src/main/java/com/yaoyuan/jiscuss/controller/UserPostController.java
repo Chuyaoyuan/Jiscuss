@@ -80,7 +80,7 @@ public class UserPostController  extends BaseController {
 
         List<Tag> tags = tagsService.findByDId(id);
 
-        List<PostCustom> postsObj = postsService.findPostCustomById(id);
+        List postsObj = postsService.findPostCustomById(id);
 
         map.put("tags", tags);
 

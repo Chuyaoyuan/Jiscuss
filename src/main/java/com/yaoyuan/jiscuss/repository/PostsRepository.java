@@ -30,9 +30,29 @@ public interface PostsRepository extends JpaRepository<Post,Integer> {
             , nativeQuery = true)
     List<Map<String, Object>> findPostCustomById(@Param("dId")Integer dId);
 
-    @Query("from Post where parentId is null and discussionId = :dId")
-    List<Post> findAllByDIdAndparentIdNull(@Param("dId")Integer dId);
 
-    @Query("from Post where parentId is not null and discussionId = :dId")
-    List<Post> findAllByDIdAndparentIdNotNull(@Param("dId")Integer dId);
+    @Query(value = "select p.*,u.avatar as user_avatar ,u.username as user_username ,u.realname as user_realname ," +
+            "u2.avatar as create_avatar ,u2.username as create_username ,u2.realname as create_realname  \n" +
+            "from Post p  \n" +
+            "left join User u on p.user_id = u.id \n" +
+            "left join User u2 on p.create_id = u2.id \n" +
+            "where p.discussion_id = :dId and p.parent_id is null order by p.create_time desc"
+            , nativeQuery = true)
+    List<Map<String, Object>>  findAllByDIdAndparentIdNull(@Param("dId")Integer dId);
+
+    @Query(value = "select p.*,u.avatar as user_avatar ,u.username as user_username ,u.realname as user_realname ," +
+            "u2.avatar as create_avatar ,u2.username as create_username ,u2.realname as create_realname  \n" +
+            "from Post p  \n" +
+            "left join User u on p.user_id = u.id \n" +
+            "left join User u2 on p.create_id = u2.id \n" +
+            "where p.discussion_id = :dId and p.parent_id is not null order by p.create_time desc"
+            , nativeQuery = true)
+    List<Map<String, Object>>  findAllByDIdAndparentIdNotNull(@Param("dId")Integer dId);
+
+
+//    @Query("from Post where parentId is null and discussionId = :dId")
+//    List<Post> findAllByDIdAndparentIdNull(@Param("dId")Integer dId);
+//
+//    @Query("from Post where parentId is not null and discussionId = :dId")
+//    List<Post> findAllByDIdAndparentIdNotNull(@Param("dId")Integer dId);
 }

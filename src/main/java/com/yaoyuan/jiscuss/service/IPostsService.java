@@ -13,10 +13,6 @@ public interface IPostsService {
 
     List<Post> findOneBy(Integer id);
 
-    List<Post> findAllByDIdAndparentIdNull(Integer dId);
-
-    List<Post> findAllByDIdAndparentIdNotNull(Integer dId);
-
     List<PostCustom> findPostCustomById(Integer id);
 
     Post findOneByid(Integer parentId);

@@ -6,10 +6,7 @@ import org.springframework.beans.BeanUtils;
 import java.io.BufferedReader;
 import java.io.Reader;
 import java.sql.Clob;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author yaoyuan2.chu
@@ -20,6 +17,44 @@ import java.util.Map;
  */
 public class PostCommonUtil {
 
+
+    public static List<PostCustom> getNewPostsObjMap(List<Map<String, Object>> posts) {
+
+        List<PostCustom> postCustomList = new ArrayList<>();
+        for (Map<String, Object> mapObj : posts) {
+            PostCustom postCustom = new PostCustom();
+            postCustom.setId(Integer.parseInt(String.valueOf(mapObj.get("id"))));
+            postCustom.setParentId(mapObj.get("parent_id") != null ? Integer.parseInt(String.valueOf(mapObj.get("parent_id"))) : null);
+            if (null != mapObj.get("create_time")) {
+                postCustom.setCreateTime((Date) mapObj.get("create_time"));
+            }
+            String content = "";
+            if (mapObj.get("content") != null) {
+                Clob clob = (Clob) mapObj.get("content");
+                content = PostCommonUtil.clobToString(clob);
+            }
+            postCustom.setContent(content);
+            String avatar = "";
+            if (mapObj.get("create_avatar") != null) {
+                Clob clob = (Clob) mapObj.get("create_avatar");
+                avatar = PostCommonUtil.clobToString(clob);
+            }
+            postCustom.setAvatar(avatar);
+            postCustom.setUsername(mapObj.get("create_username") != null ? String.valueOf(mapObj.get("create_username")) : null);
+            postCustom.setRealname(mapObj.get("create_realname") != null ? String.valueOf(mapObj.get("create_realname")) : null);
+            String avatarReply = "";
+            if (mapObj.get("user_avatar") != null) {
+                Clob clob = (Clob) mapObj.get("user_avatar");
+                avatarReply = PostCommonUtil.clobToString(clob);
+            }
+            postCustom.setAvatarReply(avatarReply);
+            postCustom.setUsernameReply(mapObj.get("user_username") != null ? String.valueOf(mapObj.get("user_username")) : null);
+            postCustom.setRealnameReply(mapObj.get("user_realname") != null ? String.valueOf(mapObj.get("user_realname")) : null);
+
+            postCustomList.add(postCustom);
+        }
+        return postCustomList;
+    }
 
     public static List<PostCustom> getNewPostsObjCustom(List<PostCustom> postCustomList) {
         List<PostCustom> mainList = new ArrayList<>();

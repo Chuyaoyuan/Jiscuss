@@ -5,6 +5,7 @@ import java.io.Reader;
 import java.sql.Clob;
 import java.util.*;
 
+import com.yaoyuan.jiscuss.common.Node;
 import com.yaoyuan.jiscuss.common.PostCommonUtil;
 import com.yaoyuan.jiscuss.entity.Discussion;
 import com.yaoyuan.jiscuss.entity.custom.DiscussionCustom;
@@ -49,60 +50,47 @@ public class PostsServiceImpl implements IPostsService {
     }
 
     @Override
-    public List<PostCustom> findPostCustomById(Integer id) {
+    public List findPostCustomById(Integer id) {
+        //查询id为1且parentId为null的评论
+        List<Map<String, Object>> firstposts = postsRepository.findAllByDIdAndparentIdNull(id);
 
-        List<Map<String, Object>> posts = postsRepository.findPostCustomById(id);
-//        List<Map<String, Object>> postsObjNew = this.getNewPostsObj(posts);
+        List<PostCustom> firstpostCustomList = PostCommonUtil.getNewPostsObjMap(firstposts);
 
-        List<PostCustom> postCustomList = new ArrayList<>();
-        for(Map<String, Object> mapObj : posts){
-            PostCustom postCustom = new PostCustom();
-            postCustom.setId(Integer.parseInt(String.valueOf(mapObj.get("id"))));
-            postCustom.setParentId(mapObj.get("parent_id") != null ? Integer.parseInt(String.valueOf(mapObj.get("parent_id"))) : null);
-            if(null !=  mapObj.get("create_time")){
-                postCustom.setCreateTime((Date) mapObj.get("create_time"));
-            }
-            String content = "";
-            if(mapObj.get("content") != null){
-                Clob clob = (Clob) mapObj.get("content");
-                content = PostCommonUtil.clobToString(clob);
-            }
-            postCustom.setContent(content);
-            String avatar = "";
-            if(mapObj.get("create_avatar") != null){
-                Clob clob = (Clob) mapObj.get("create_avatar");
-                avatar = PostCommonUtil.clobToString(clob);
-            }
-            postCustom.setAvatar(avatar);
-            postCustom.setUsername(mapObj.get("create_username") != null ? String.valueOf(mapObj.get("create_username")): null);
-            postCustom.setRealname(mapObj.get("create_realname") != null ? String.valueOf(mapObj.get("create_realname")): null);
-            String avatarReply = "";
-            if(mapObj.get("user_avatar") != null){
-                Clob clob = (Clob) mapObj.get("user_avatar");
-                avatarReply = PostCommonUtil.clobToString(clob);
-            }
-            postCustom.setAvatarReply(avatarReply);
-            postCustom.setUsernameReply(mapObj.get("user_username") != null ? String.valueOf(mapObj.get("user_username")): null);
-            postCustom.setRealnameReply(mapObj.get("user_realname") != null ? String.valueOf(mapObj.get("user_realname")): null);
+//        List<PostCustom> firstpostCustomListNew = PostCommonUtil.getNewPostsObjCustom(firstpostCustomList);
 
-            postCustomList.add(postCustom);
+        //查询id为1且parentId不为null的评论
+        List<Map<String, Object>> thenposts = postsRepository.findAllByDIdAndparentIdNotNull(id);
+
+        List<PostCustom> thenpostCustomList = PostCommonUtil.getNewPostsObjMap(thenposts);
+
+//        List<PostCustom> thenpostCustomListNew = PostCommonUtil.getNewPostsObjCustom(thenpostCustomList);
+
+
+
+        //新建一个Node集合。
+        ArrayList<Node> nodes = new ArrayList<>();
+        //将第一层评论都添加都Node集合中
+        for (PostCustom post : firstpostCustomList) {
+            Node node = new Node();
+            BeanUtils.copyProperties(post, node);
+            nodes.add(node);
         }
+        //将回复添加到对应的位置
+        List list = Node.addAllNode(nodes, thenpostCustomList);
+        System.out.println();
+        //打印回复链表
+        Node.show(list);
 
-        List<PostCustom> postCustomListNew = PostCommonUtil.getNewPostsObjCustom(postCustomList);
 
-        return postCustomListNew;
-    }
 
-   @Override
-    public List<Post> findAllByDIdAndparentIdNull(Integer dId) {
-        List<Post> posts = postsRepository.findAllByDIdAndparentIdNull(dId);
-        return posts;
-    }
 
-    @Override
-    public List<Post> findAllByDIdAndparentIdNotNull(Integer dId) {
-        List<Post> posts = postsRepository.findAllByDIdAndparentIdNotNull(dId);
-        return posts;
+//        List<Map<String, Object>> posts = postsRepository.findPostCustomById(id);
+//
+//        List<PostCustom> postCustomList = PostCommonUtil.getNewPostsObjMap(posts);
+//
+//        List<PostCustom> postCustomListNew = PostCommonUtil.getNewPostsObjCustom(postCustomList);
+
+        return list;
     }
 
 
