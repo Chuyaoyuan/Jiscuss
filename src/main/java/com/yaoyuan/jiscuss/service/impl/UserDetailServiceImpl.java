@@ -1,13 +1,11 @@
 package com.yaoyuan.jiscuss.service.impl;
 
 import com.yaoyuan.jiscuss.entity.UserInfo;
-import com.yaoyuan.jiscuss.entity.Users;
+import com.yaoyuan.jiscuss.entity.User;
 import com.yaoyuan.jiscuss.service.IUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -37,7 +35,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
     @Override
     public UserInfo loadUserByUsername(String username) throws UsernameNotFoundException {
         // 通过用户名从数据库获取用户信息
-        Users userInfo = userInfoService.getByUsername(username);
+        User userInfo = userInfoService.getByUsername(username);
         if (userInfo == null) {
             throw new UsernameNotFoundException("用户不存在");
         }

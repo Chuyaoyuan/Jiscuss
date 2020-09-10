@@ -1,16 +1,14 @@
 package com.yaoyuan.jiscuss.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.yaoyuan.jiscuss.common.Node;
-import com.yaoyuan.jiscuss.entity.Posts;
-import com.yaoyuan.jiscuss.entity.UserInfo;
+import com.yaoyuan.jiscuss.entity.*;
+import com.yaoyuan.jiscuss.entity.custom.DiscussionCustom;
+import com.yaoyuan.jiscuss.entity.custom.PostCustom;
 import com.yaoyuan.jiscuss.service.IPostsService;
+import com.yaoyuan.jiscuss.service.IUsersService;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,8 +24,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.yaoyuan.jiscuss.entity.Discussions;
-import com.yaoyuan.jiscuss.entity.Tags;
 import com.yaoyuan.jiscuss.service.IDiscussionsService;
 import com.yaoyuan.jiscuss.service.ITagsService;
 
@@ -48,7 +44,11 @@ public class UserPostController  extends BaseController {
 
     @Autowired
     private IPostsService postsService;
-    
+
+    @Autowired
+    private IUsersService usersService;
+
+
     //首页查看主题列表（各种条件筛选，最热最新标签等）
     
     
@@ -58,34 +58,34 @@ public class UserPostController  extends BaseController {
     public String getDiscussionsById(HttpServletRequest request, ModelMap map, @RequestParam("id") Integer id) {
         logger.info(">>> getDiscussionsById{}",id);
 
-        Discussions discussions = discussionsService.findOne(id);
+        Discussion discussion = discussionsService.findOne(id);
+        // 获取此主题下的评论
+        List<Post> posts = postsService.findOneBy(id);
 
-        List<Posts> posts = postsService.findOneBy(id);
-
-        List<Tags> tags = tagsService.findByDId(id);
-
-        //查询id为1且parentId为null的评论
-        List<Posts> firstList = postsService.findAllByDIdAndparentIdNull(1);
-        //查询id为1且parentId不为null的评论
-        List<Posts> thenList = postsService.findAllByDIdAndparentIdNotNull(1);
-        //新建一个Node集合。
-        ArrayList<Node> nodes = new ArrayList<>();
-        //将第一层评论都添加都Node集合中
-        for (Posts post : firstList) {
-            Node node = new Node();
-            BeanUtils.copyProperties(post, node);
-            nodes.add(node);
+        DiscussionCustom newdd = new DiscussionCustom();
+        BeanUtils.copyProperties(discussion , newdd);
+        if (null != newdd.getStartUserId()){
+            User startUser = usersService.findOne(newdd.getStartUserId());
+            newdd.setAvatar(startUser.getAvatar());
+            newdd.setRealname(startUser.getRealname());
+            newdd.setUsername(startUser.getUsername());
         }
-        //将回复添加到对应的位置
-        List list = Node.addAllNode(nodes, thenList);
-        System.out.println();
-        //打印回复链表
-        Node.show(list);
+        if (null != newdd.getLastUserId()){
+            User lastUser = usersService.findOne(newdd.getLastUserId());
+            newdd.setAvatarLast(lastUser.getAvatar());
+            newdd.setRealnameLast(lastUser.getRealname());
+            newdd.setUsernameLast(lastUser.getUsername());
+        }
 
 
+        List<Tag> tags = tagsService.findByDId(id);
 
-        map.put("discussions", discussions);
-        map.put("posts", posts);
+        List<PostCustom> postsObj = postsService.findPostCustomById(id);
+
+        map.put("tags", tags);
+
+        map.put("discussions", newdd);
+        map.put("posts", postsObj);
         UserInfo user = getUserInfo(request);
         if(user != null){
             map.put("username", user.getUsername());
@@ -93,26 +93,27 @@ public class UserPostController  extends BaseController {
         return "discussions";
     }
 
-	
+
+
     //新建主题
     @PostMapping(value = "/newdiscussions")
     @ResponseBody
-    public String newDiscussions(@RequestBody Discussions discussions) {
-        logger.info(">>> newPost"+discussions);
+    public String newDiscussions(@RequestBody Discussion discussion) {
+        logger.info(">>> newPost"+ discussion);
 
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes)RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = servletRequestAttributes.getRequest();
         UserInfo user = getUserInfo(request);
         if(user != null){
-            discussions.setLastUserId( user.getId());
-            discussions.setCreateId( user.getId());
+            discussion.setLastUserId( user.getId());
+            discussion.setCreateId( user.getId());
         }
-        discussions.setCreateTime(new Date());
+        discussion.setCreateTime(new Date());
         
-        Discussions saveDiscussions = discussionsService.insert(discussions);
+        Discussion saveDiscussion = discussionsService.insert(discussion);
         JSONObject resultobj = new JSONObject();
        
-        logger.info(">>>{}",saveDiscussions );
+        logger.info(">>>{}", saveDiscussion);
         resultobj.put("msg", "添加成功");
         resultobj.put("flag", true);
         return resultobj.toString(); //
@@ -127,19 +128,24 @@ public class UserPostController  extends BaseController {
     //新建评论
     @PostMapping(value = "/newpost")
     @ResponseBody
-    public String newPosts(@RequestBody Posts posts) {
-        logger.info(">>> newpost"+posts);
+    public String newPosts(@RequestBody Post post) {
+        logger.info(">>> newpost"+ post);
 
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes)RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = servletRequestAttributes.getRequest();
 
         UserInfo user = getUserInfo(request);
         if(user != null){
-            posts.setCreateId( user.getId());
+            post.setCreateId( user.getId());
         }
-        posts.setCreateTime(new Date());
+        post.setCreateTime(new Date());
+        if(null != post.getParentId()){
+            Post temp =postsService.findOneByid(post.getParentId());
+            post.setUserId(temp.getCreateId());
 
-        Posts savePost = postsService.insert(posts);
+        }
+
+        Post savePost = postsService.insert(post);
         JSONObject resultobj = new JSONObject();
 
         logger.info(">>>{}",savePost );
@@ -153,22 +159,22 @@ public class UserPostController  extends BaseController {
     //新建标签
     @PostMapping(value = "/newtags")
     @ResponseBody
-    public String newTags(@RequestBody Tags tags) {
-        logger.info(">>> newTags"+tags);
+    public String newTags(@RequestBody Tag tag) {
+        logger.info(">>> newTags"+ tag);
 
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes)RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = servletRequestAttributes.getRequest();
 
         UserInfo user = getUserInfo(request);
         if(user != null){
-            tags.setCreateId( user.getId());
+            tag.setCreateId( user.getId());
         }
-        tags.setCreateTime(new Date());
+        tag.setCreateTime(new Date());
 
-        Tags saveTags = tagsService.insert(tags);
+        Tag saveTag = tagsService.insert(tag);
         JSONObject resultobj = new JSONObject();
        
-        logger.info(">>>{}",saveTags );
+        logger.info(">>>{}", saveTag);
         resultobj.put("msg", "添加成功");
         resultobj.put("flag", true);
         return resultobj.toString(); //

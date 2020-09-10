@@ -4,29 +4,29 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 
-import com.yaoyuan.jiscuss.entity.Users;
+import com.yaoyuan.jiscuss.entity.User;
 
 public interface IUsersService {
 
-    List<Users> getAllList();
+    List<User> getAllList();
 
-    Page<Users> queryAllUsersList(int pageNum,int pageSize);
+    Page<User> queryAllUsersList(int pageNum, int pageSize);
 
-    List<Users> getByUsernameIsLike(String name);
+    List<User> getByUsernameIsLike(String name);
  
 //    @Cacheable("myCache")
-    Users findOne(Integer id);
+    User findOne(Integer id);
 
-    Users insert(Users user);
+    User insert(User user);
 
     void remove(Integer id);
 
     void deleteAll();
     
-	Users getByUsername(String username);
+	User getByUsername(String username);
 
-	Users checkByUsernameAndPassword(String username, String password);
+	User checkByUsernameAndPassword(String username, String password);
 
-    Users update(Users user, Integer id);
+    User update(User user, Integer id);
 
 }

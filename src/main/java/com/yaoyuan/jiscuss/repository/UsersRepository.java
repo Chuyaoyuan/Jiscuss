@@ -7,33 +7,33 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.yaoyuan.jiscuss.entity.Users;
+import com.yaoyuan.jiscuss.entity.User;
 
 
 @Repository
-public interface UsersRepository extends JpaRepository<Users,Integer> {
+public interface UsersRepository extends JpaRepository<User,Integer> {
    /**
     *
     * @param username
     * @return
     */
-   @Query("from Users where username like %:username%")
-   List<Users> getByUsernameIsLike(@Param("username")String username);
+   @Query("from User where username like %:username%")
+   List<User> getByUsernameIsLike(@Param("username")String username);
 
    /**
     *
     * @param id
     * @return
     */
-   Users getById(Integer id);
+   User getById(Integer id);
 
    /**
     *
     * @param username
     * @return
     */
-   @Query("from Users where username = :username")
-   Users getByUsername(String username);
+   @Query("from User where username = :username")
+   User getByUsername(String username);
 
    /**
     *
@@ -41,7 +41,7 @@ public interface UsersRepository extends JpaRepository<Users,Integer> {
     * @param password
     * @return
     */
-   @Query("from Users where username = :username and password = :password")
-   Users checkByUsernameAndPassword(String username, String password);
+   @Query("from User where username = :username and password = :password")
+   User checkByUsernameAndPassword(String username, String password);
    
 }

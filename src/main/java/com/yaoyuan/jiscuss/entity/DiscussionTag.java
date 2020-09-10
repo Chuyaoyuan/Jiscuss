@@ -10,8 +10,8 @@ import javax.persistence.Table;
 import lombok.Data;
 @Data
 @Entity
-@Table(name="discussionstags")
-public class DiscussionsTags   implements Serializable{
+@Table(name="discussiontag")
+public class DiscussionTag implements Serializable{
     private static final long serialVersionUID = 1L;
       
     @Id

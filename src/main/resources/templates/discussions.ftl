@@ -35,10 +35,13 @@
             <div id="context2">
 
                 <h2 class="ui header">
-                    <i class="save outline"></i>
+                    <i class="settings icon"></i>
                     <div class="content">
                         ${discussions.title}
                         <div class="sub header">某某标签分类</div>
+                        <#list tags as tag>
+                            <div class="sub header">${tag.name}</div>
+                        </#list>
                     </div>
                 </h2>
 
@@ -55,9 +58,15 @@
                         </div>
                         <div class="content">
                             <div class="summary">
-                                用户 <a>测试人员1</a> 发布于
+                                用户 <a>${discussions.realname}</a> 发布于
                                 <div class="date">
-                                    ${discussions.createTime}
+                                    ${discussions.startTime}
+                                </div>
+                            </div>
+                            <div class="summary">
+                                用户 <a>${discussions.realnameLast}</a> 最后回复于
+                                <div class="date">
+                                    ${discussions.lastTime}
                                 </div>
                             </div>
                             <div class="meta">
@@ -70,84 +79,57 @@
                 </div>
 
 
-                <div class="ui minimal comments">
+                <div class="ui threaded comments">
                     <h3 class="ui dividing header">评论区</h3>
-                    <div class="comment">
-                        <a class="avatar">
-                            <img src="/static/assets/images/logo.png">
-                        </a>
-                        <div class="content">
-                            <a class="author">用户6</a>
-                            <div class="metadata">
-                                <span class="date">Today at 5:42PM</span>
-                            </div>
-                            <div class="text">
-                                测试测试6666!
-                            </div>
-                            <div class="actions">
-                                <a class="reply">回复</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="comment">
-                        <a class="avatar">
-                            <img src="/static/assets/images/logo.png">
-                        </a>
-                        <div class="content">
-                            <a class="author">用户7</a>
-                            <div class="metadata">
-                                <span class="date">Yesterday at 12:30AM</span>
-                            </div>
-                            <div class="text">
-                                <p>测试评论!</p>
-                            </div>
-                            <div class="actions">
-                                <a class="reply">回复</a>
-                            </div>
-                        </div>
-                        <div class="comments">
-                            <div class="comment">
-                                <a class="avatar">
-                                    <img src="/static/assets/images/logo.png">
-                                </a>
-                                <div class="content">
-                                    <a class="author">用户8</a>
-                                    <div class="metadata">
-                                        <span class="date">Just now</span>
-                                    </div>
-                                    <div class="text">
-                                        测试平路8 :)
-                                    </div>
-                                    <div class="actions">
-                                        <a class="reply">回复</a>
-                                    </div>
+                    <input type="hidden" name="postId" id="postId" value=""/>
+                    <#list posts as post>
+                        <div class="comment">
+                            <a class="avatar">
+                                <img src="/static/assets/images/logo.png">
+                            </a>
+                            <div class="content">
+                                <a class="author">${post.username}</a>
+                                <div class="metadata">
+                                    <span class="date">${post.createTime}</span>
+                                </div>
+                                <div class="text">
+                                    ${post.content}
+                                </div>
+                                <div class="actions">
+                                    <a class="reply" onclick="replyThis('${post.username}', '${post.id}')">回复</a>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="comment">
-                        <a class="avatar">
-                            <img src="/static/assets/images/logo.png">
-                        </a>
-                        <div class="content">
-                            <a class="author">测试用户999n</a>
-                            <div class="metadata">
-                                <span class="date">5 days ago</span>
-                            </div>
-                            <div class="text">
-                                哈哈哈哈, 测试评论
-                            </div>
-                            <div class="actions">
-                                <a class="reply">回复</a>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="ui section divider"></div>
+                            <#list post.child as child>
+                                <div class="comments">
+                                    <div class="comment">
+                                        <a class="avatar">
+                                            <img src="/static/assets/images/logo.png">
+                                        </a>
+                                        <div class="content">
+                                            <a class="author">${child.username}</a>
+                                            <div class="metadata">
+                                                <span class="date">${child.createTime}</span>
+                                            </div>
+                                            <div class="text">
+                                                ${child.content}
+                                            </div>
+                                            <div class="actions">
+                                                <a class="reply" onclick="replyThis('${child.username}', '${child.id}')">回复</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </#list>
+                        </div>
+                    </#list>
 
+                    <div class="ui">
+
+                    </div>
                     <form class="ui reply form">
                         <div class="field">
-                            <textarea id="postcontent"></textarea>
+                            <textarea id="postContent"></textarea>
                         </div>
                         <div class="ui blue labeled submit icon button" id="addPost">
                             <i class="icon edit"></i> 添加评论
@@ -155,13 +137,10 @@
                     </form>
                 </div>
 
-
             </div>
         </div>
 
-        <div
-                class="widescreen  large screen computer tablet only four wide column">
-
+        <div class="widescreen  large screen computer tablet only four wide column">
             <div class="ui fluid action input">
                 <input type="text" placeholder="搜索...">
                 <div class="ui button">搜索</div>
@@ -200,30 +179,32 @@
 
             <div class="ui card">
                 <div class="content">
-                    <div class="header">预留功能</div>
+                    <div class="header">作者的热门主题</div>
                 </div>
                 <div class="content">
-                    <h4 class="ui sub header">Jiscuss</h4>
-                    <div class="ui small feed">
-                        <div class="event">
+                    <div class="ui middle aligned divided list">
+                        <div class="item">
+                            <img class="ui avatar image" src="/static/assets/images/logo.png">
                             <div class="content">
-                                <div class="summary">
-                                    <a>Jiscuss</a> 一直持续更新， <a>Jiscuss</a> 一直更新完善，感谢支持！
-                                </div>
+                                <a class="header">他的测试主题1</a>
                             </div>
                         </div>
-
-                        <div class="event">
+                        <div class="item">
+                            <img class="ui avatar image" src="/static/assets/images/logo.png">
                             <div class="content">
-                                <div class="summary">
-                                    <a>2019</a> 测试内容
-                                </div>
+                                <a class="header">他的测试主题2</a>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img class="ui avatar image" src="/static/assets/images/logo.png">
+                            <div class="content">
+                                <a class="header">他的测试主题3</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="extra content">
-                    <button class="ui button">预留按钮</button>
+                    <p>预留信息</p>
                 </div>
             </div>
 
@@ -297,6 +278,7 @@
 
     $(document).ready(function () {
         <#if username??>
+        setusername('${username}');
         console.log('已经登陆：' + username);
         </#if>
         setDiscussionsId('${discussions.id}');

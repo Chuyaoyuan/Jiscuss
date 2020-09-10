@@ -2,11 +2,11 @@ package com.yaoyuan.jiscuss.service;
 
 import java.util.List;
 
-import com.yaoyuan.jiscuss.entity.Settings;
+import com.yaoyuan.jiscuss.entity.Setting;
 
 public interface ISettingsService {
 
-    List<Settings> getAllList();
+    List<Setting> getAllList();
 
-    Settings insert(Settings settings);
+    Setting insert(Setting setting);
 }

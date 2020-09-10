@@ -5,10 +5,9 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
-import com.yaoyuan.jiscuss.entity.Tags;
+import com.yaoyuan.jiscuss.entity.Tag;
 import com.yaoyuan.jiscuss.repository.TagsRepository;
 import com.yaoyuan.jiscuss.service.ITagsService;
 
@@ -19,17 +18,17 @@ public class TagsServiceImpl implements ITagsService {
     private TagsRepository tagsRepository;
 
     @Override
-    public List<Tags> getAllList() {
+    public List<Tag> getAllList() {
         return tagsRepository.findAll();
     }
 
     @Override
-    public Tags insert(Tags tags) {
-        return tagsRepository.save(tags);
+    public Tag insert(Tag tag) {
+        return tagsRepository.save(tag);
     }
 
     @Override
-    public List<Tags> findByDId(Integer id) {
+    public List<Tag> findByDId(Integer id) {
         return tagsRepository.findByDId(id);
     }
 }

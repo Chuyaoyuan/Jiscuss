@@ -1,6 +1,6 @@
 -- 用户表1
-drop table if exists users;
-CREATE TABLE users(
+drop table if exists user;
+CREATE TABLE user(
 id INTEGER not null primary key auto_increment,
 username varchar(20),
 realname varchar(20),
@@ -8,6 +8,7 @@ email varchar(20),
 password varchar(20),
 join_time datetime,
 age INTEGER,
+avatar text,
 gender char(20),
 phone char(20),
 discussions_count INTEGER,
@@ -17,8 +18,8 @@ flag INTEGER,
 level INTEGER
 );
 -- 主题表2
-drop table if exists discussions;
-CREATE TABLE discussions(
+drop table if exists discussion;
+CREATE TABLE discussion(
 id INTEGER  not null  primary key auto_increment,
 title varchar(200),
 content text,
@@ -39,14 +40,14 @@ create_id INTEGER,
 create_time datetime
 );
 -- 主题标签关联表3
-drop table if exists discussionstags;
-CREATE TABLE discussionstags(
+drop table if exists discussiontag;
+CREATE TABLE discussiontag(
 discussion_id INTEGER not null ,
 tag_id INTEGER
 );
 -- 评论表4
-drop table if exists posts;
-CREATE TABLE posts(
+drop table if exists post;
+CREATE TABLE post(
 id INTEGER not null primary key auto_increment ,
 discussion_id INTEGER,
 number INTEGER,
@@ -64,14 +65,14 @@ create_id INTEGER,
 create_time datetime
 );
 -- 设置表5
-drop table if exists settings;
-CREATE TABLE settings(
+drop table if exists setting;
+CREATE TABLE setting(
 key varchar(20) primary key,
 value text
 );
 -- 标签表6
-drop table if exists tags;
-CREATE TABLE tags(
+drop table if exists tag;
+CREATE TABLE tag(
 id INTEGER not null primary key auto_increment,
 name varchar(200),
 description varchar(200),

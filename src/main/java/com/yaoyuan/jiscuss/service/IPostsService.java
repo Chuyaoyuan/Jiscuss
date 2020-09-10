@@ -1,17 +1,23 @@
 package com.yaoyuan.jiscuss.service;
 
 import java.util.List;
+import java.util.Map;
 
-import com.yaoyuan.jiscuss.entity.Posts;
+import com.yaoyuan.jiscuss.entity.Post;
+import com.yaoyuan.jiscuss.entity.custom.PostCustom;
 
 public interface IPostsService {
-    List<Posts> getAllList();
+    List<Post> getAllList();
 
-    Posts insert(Posts posts);
+    Post insert(Post post);
 
-    List<Posts> findOneBy(Integer id);
+    List<Post> findOneBy(Integer id);
 
-    List<Posts> findAllByDIdAndparentIdNull(Integer dId);
+    List<Post> findAllByDIdAndparentIdNull(Integer dId);
 
-    List<Posts> findAllByDIdAndparentIdNotNull(Integer dId);
+    List<Post> findAllByDIdAndparentIdNotNull(Integer dId);
+
+    List<PostCustom> findPostCustomById(Integer id);
+
+    Post findOneByid(Integer parentId);
 }

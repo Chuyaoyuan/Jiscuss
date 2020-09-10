@@ -17,7 +17,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.cache.annotation.Cacheable;
 
-import com.yaoyuan.jiscuss.entity.Users;
+import com.yaoyuan.jiscuss.entity.User;
 import com.yaoyuan.jiscuss.repository.UsersRepository;
 import com.yaoyuan.jiscuss.service.IUsersService;
  
@@ -33,7 +33,7 @@ public class UsersServiceImpl implements IUsersService {
      */
     @Cacheable(value = "user")
     @Override
-    public List<Users> getAllList() {
+    public List<User> getAllList() {
         return usersRepository.findAll();
     }
 
@@ -44,7 +44,7 @@ public class UsersServiceImpl implements IUsersService {
      * @return
      */
     @Override
-    public Page<Users> queryAllUsersList(int pageNum,int pageSize) {
+    public Page<User> queryAllUsersList(int pageNum, int pageSize) {
         Sort sort=new Sort(Sort.Direction.DESC,"id");
         @SuppressWarnings("deprecation")
 		Pageable pageable=new PageRequest(pageNum,pageSize,sort);
@@ -57,7 +57,7 @@ public class UsersServiceImpl implements IUsersService {
      * @return
      */
     @Override
-    public List<Users> getByUsernameIsLike(String name) {
+    public List<User> getByUsernameIsLike(String name) {
         return usersRepository.getByUsernameIsLike(name);
     }
 
@@ -68,7 +68,7 @@ public class UsersServiceImpl implements IUsersService {
      */
     @Cacheable(value = "user", key = "#id")
     @Override
-    public Users findOne(Integer id) {
+    public User findOne(Integer id) {
         return usersRepository.getById(id);
     }
 
@@ -79,7 +79,7 @@ public class UsersServiceImpl implements IUsersService {
      */
     @CachePut(value = "user", key = "#user.id")
     @Override
-    public Users insert(Users user) {
+    public User insert(User user) {
         return usersRepository.save(user);
     }
 
@@ -91,7 +91,7 @@ public class UsersServiceImpl implements IUsersService {
      */
     @CachePut(value = "user", key = "#user.id")
     @Override
-    public Users update(Users user, Integer id) {
+    public User update(User user, Integer id) {
         return usersRepository.saveAndFlush(user);
     }
 
@@ -119,7 +119,7 @@ public class UsersServiceImpl implements IUsersService {
      * @return
      */
 	@Override
-	public Users getByUsername(String username) {
+	public User getByUsername(String username) {
 		return usersRepository.getByUsername(username);
 	}
 
@@ -130,7 +130,7 @@ public class UsersServiceImpl implements IUsersService {
      * @return
      */
 	@Override
-	public Users checkByUsernameAndPassword(String username,String password) {
+	public User checkByUsernameAndPassword(String username, String password) {
 		return usersRepository.checkByUsernameAndPassword(username,password);
 	}
 

@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yaoyuan.jiscuss.entity.Settings;
+import com.yaoyuan.jiscuss.entity.Setting;
 import com.yaoyuan.jiscuss.repository.SettingsRepository;
 import com.yaoyuan.jiscuss.service.ISettingsService;
 
@@ -18,12 +18,12 @@ public class SettingsServiceImpl implements ISettingsService {
     private SettingsRepository settingsRepository;
 
     @Override
-    public List<Settings> getAllList() {
+    public List<Setting> getAllList() {
         return settingsRepository.findAll();
     }
 
     @Override
-    public Settings insert(Settings settings) {
-        return settingsRepository.save(settings);
+    public Setting insert(Setting setting) {
+        return settingsRepository.save(setting);
     }
 }

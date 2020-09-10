@@ -23,8 +23,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Data
 @Entity
-@Table(name="users")
-public class Users   implements Serializable {
+@Table(name="user")
+public class User implements Serializable {
     private static final long serialVersionUID = 1L;
  
     @Id
@@ -51,6 +51,9 @@ public class Users   implements Serializable {
     
     @Column(name="gender")
     private String gender;
+
+    @Column(name="avatar")
+    private String avatar;
     
     @Column(name="phone")
     private String phone;

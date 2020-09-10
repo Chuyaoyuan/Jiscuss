@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yaoyuan.jiscuss.entity.DiscussionsTags;
+import com.yaoyuan.jiscuss.entity.DiscussionTag;
 import com.yaoyuan.jiscuss.repository.DiscussionsTagsRepository;
 import com.yaoyuan.jiscuss.service.IDiscussionsTagsService;
 
@@ -18,13 +18,13 @@ public class DiscussionsTagsServiceImpl implements IDiscussionsTagsService {
     private DiscussionsTagsRepository discussionsTagsRepository;
 
     @Override
-    public List<DiscussionsTags> getAllList() {
+    public List<DiscussionTag> getAllList() {
         return discussionsTagsRepository.findAll();
     }
 
     @Override
-    public DiscussionsTags insert(DiscussionsTags discussionsTags) {
-        return discussionsTagsRepository.save(discussionsTags);
+    public DiscussionTag insert(DiscussionTag discussionTag) {
+        return discussionsTagsRepository.save(discussionTag);
     }
 
 

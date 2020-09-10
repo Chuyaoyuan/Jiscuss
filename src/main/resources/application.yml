@@ -28,7 +28,32 @@ spring:
       initial-size: 5
       max-active: 10
       max-wait: 5000
-      validation-query: select 1
+      validation-query: select 1SS
+      # 状态监控
+      filter:
+        stat:
+        enabled: true
+        db-type: h2
+        log-slow-sql: true
+        slow-sql-millis: 2000
+      # 监控过滤器
+      web-stat-filter:
+        enabled: true
+        exclusions:
+          - "*.js"
+          - "*.gif"
+          - "*.jpg"
+          - "*.png"
+          - "*.css"
+          - "*.ico"
+          - "/druid/*"
+      # druid 监控页面
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+#          reset-enable: false
+#          login-username: root
+#          login-password: root
   freemarker:
     # 设置模板后缀名
     suffix: .ftl

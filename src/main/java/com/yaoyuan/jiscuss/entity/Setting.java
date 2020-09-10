@@ -11,8 +11,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="settings")
-public class Settings   implements Serializable{
+@Table(name="setting")
+public class Setting implements Serializable{
     /**
 	 * 
 	 */

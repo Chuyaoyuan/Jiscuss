@@ -4,16 +4,16 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 
-import com.yaoyuan.jiscuss.entity.Discussions;
+import com.yaoyuan.jiscuss.entity.Discussion;
 
 public interface IDiscussionsService {
 
-    List<Discussions> getAllList();
+    List<Discussion> getAllList();
 
-    Discussions insert(Discussions discussions);
+    Discussion insert(Discussion discussion);
 
-    Discussions findOne(Integer id);
+    Discussion findOne(Integer id);
     
-    Page<Discussions> queryAllDiscussionsList(Discussions discussions,int pageNum,int pageSize);
+    Page<Discussion> queryAllDiscussionsList(Discussion discussion, int pageNum, int pageSize);
 
 }

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yaoyuan.jiscuss.entity.Users;
+import com.yaoyuan.jiscuss.entity.User;
 import com.yaoyuan.jiscuss.exception.BaseException;
 import com.yaoyuan.jiscuss.response.ResponseCode;
 import com.yaoyuan.jiscuss.service.IUsersService;
@@ -34,8 +34,8 @@ public class RestUserController {
 
 	@PostMapping("/user")
 	@ApiOperation("新增用户")
-	public Users save(@RequestBody Users user) {
-		Users saveUser = usersService.insert(user);
+	public User save(@RequestBody User user) {
+		User saveUser = usersService.insert(user);
 		if (saveUser!=null) {
 			return saveUser;
 		} else {
@@ -58,8 +58,8 @@ public class RestUserController {
 
 	@PutMapping("/user/{id}")
 	@ApiOperation("修改用户")
-	public Users update(@RequestBody Users user, @PathVariable Integer id) {
-		Users updateuser = usersService.update(user, id);
+	public User update(@RequestBody User user, @PathVariable Integer id) {
+		User updateuser = usersService.update(user, id);
 		if (updateuser!=null) {
 			return updateuser;
 		} else {
@@ -69,15 +69,15 @@ public class RestUserController {
 
 	@GetMapping("/user/{id}")
 	@ApiOperation("获取用户")
-	public Users getUser(@PathVariable Integer id) {
-		Users user = usersService.findOne(id);
+	public User getUser(@PathVariable Integer id) {
+		User user = usersService.findOne(id);
 		return user;
 	}
 
 	@GetMapping("/user")
 	@ApiOperation("获取全部用户")
-	public List<Users> getUser(Users user) {
-		List<Users> userall = usersService.getAllList();
+	public List<User> getUser(User user) {
+		List<User> userall = usersService.getAllList();
 		logger.info("全部用户==>：{}",userall);
 		return userall;
 	}

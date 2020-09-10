@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yaoyuan.jiscuss.entity.Discussions;
+import com.yaoyuan.jiscuss.entity.Discussion;
 import com.yaoyuan.jiscuss.exception.BaseException;
 import com.yaoyuan.jiscuss.response.ResponseCode;
 import com.yaoyuan.jiscuss.service.IDiscussionsService;
@@ -31,10 +31,10 @@ public class RestPostController {
 
     @PostMapping("/discussion")
     @ApiOperation("新增主题")
-    public Discussions save(@RequestBody Discussions discussions) {
-        Discussions saveDiscussions = discussionsService.insert(discussions);
-        if (saveDiscussions!=null) {
-            return saveDiscussions;
+    public Discussion save(@RequestBody Discussion discussion) {
+        Discussion saveDiscussion = discussionsService.insert(discussion);
+        if (saveDiscussion !=null) {
+            return saveDiscussion;
         } else {
             throw new BaseException(ResponseCode.RESOURCES_NOT_EXIST);
         }
@@ -43,15 +43,15 @@ public class RestPostController {
 
     @GetMapping("/discussion/{id}")
     @ApiOperation("获取主题")
-    public Discussions getDiscussions(@PathVariable Integer id) {
-        Discussions discussions = discussionsService.findOne(id);
-        return discussions;
+    public Discussion getDiscussions(@PathVariable Integer id) {
+        Discussion discussion = discussionsService.findOne(id);
+        return discussion;
     }
 
     @GetMapping("/discussions")
     @ApiOperation("获取全部主题")
-    public List<Discussions> getAllDiscussions() {
-        List<Discussions> allDiscussions = discussionsService.getAllList();
+    public List<Discussion> getAllDiscussions() {
+        List<Discussion> allDiscussions = discussionsService.getAllList();
         logger.info("全部主题==>：{}",allDiscussions);
         return allDiscussions;
     }

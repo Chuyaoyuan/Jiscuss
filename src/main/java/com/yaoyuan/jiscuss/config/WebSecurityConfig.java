@@ -43,7 +43,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 				"/js/**",
 				"/images/**",
 				"/static/**",
-				"/h2-console/**"
+				"/h2-console/**",
+				"/druid/**"
 				);
 	}
 	/**

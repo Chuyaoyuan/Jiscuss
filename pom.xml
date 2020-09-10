@@ -68,13 +68,14 @@
 			<version>2.9.2</version>
 		</dependency>
 
-
+		<!-- lombok -->
 		<dependency>
 		    <groupId>org.projectlombok</groupId>
 		    <artifactId>lombok</artifactId>
 		    <scope>compile</scope>
 		</dependency>
-		 <!-- 阿里系的Druid依赖包 -->
+
+		<!-- 阿里系的Druid依赖包 -->
 		<dependency>
 		    <groupId>com.alibaba</groupId>
 		    <artifactId>druid-spring-boot-starter</artifactId>

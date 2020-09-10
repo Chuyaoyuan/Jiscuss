@@ -1,14 +1,14 @@
 package com.yaoyuan.jiscuss.controller;
 
-import com.yaoyuan.jiscuss.entity.Discussions;
-import com.yaoyuan.jiscuss.entity.Tags;
+import com.yaoyuan.jiscuss.entity.Discussion;
+import com.yaoyuan.jiscuss.entity.Tag;
 import com.yaoyuan.jiscuss.entity.UserInfo;
-import com.yaoyuan.jiscuss.entity.Users;
+import com.yaoyuan.jiscuss.entity.User;
+import com.yaoyuan.jiscuss.entity.custom.DiscussionCustom;
 import com.yaoyuan.jiscuss.service.IDiscussionsService;
 import com.yaoyuan.jiscuss.service.ITagsService;
 import com.yaoyuan.jiscuss.service.IUsersService;
 import com.yaoyuan.jiscuss.util.DelTagsUtil;
-import org.apache.catalina.mbeans.MBeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -48,23 +48,23 @@ public class UserSystemController extends BaseController {
         logger.info(">>> index");
         logger.info(">>> tag:" + tag);
         logger.info(">>> pageNum:" + pageNum);
-        List<Users> userall = usersService.getAllList();
+        List<User> userall = usersService.getAllList();
         logger.info(">>> 第一遍的全部用户："+userall);
         
-        List<Users> useral2 = usersService.getAllList();
+        List<User> useral2 = usersService.getAllList();
         logger.info(">>> 第二遍的全部用户："+useral2);
 
         int pageSiz = 10;
         int pageNumNew = pageNum - 1;
-        Discussions discussions = new Discussions();
+        Discussion discussion = new Discussion();
         //分页获取主题帖子
-        Page<Discussions> allDiscussionsPage = discussionsService.queryAllDiscussionsList(discussions,pageNumNew,pageSiz);
+        Page<Discussion> allDiscussionsPage = discussionsService.queryAllDiscussionsList(discussion,pageNumNew,pageSiz);
         
-        List<Discussions> allDiscussions = allDiscussionsPage.getContent();
-        List<Discussions> newAllD = new ArrayList<>();
+        List<Discussion> allDiscussions = allDiscussionsPage.getContent();
+        List<DiscussionCustom> newAllD = new ArrayList<>();
 
-        for (Discussions dd : allDiscussions){
-            Discussions newdd = new Discussions();
+        for (Discussion dd : allDiscussions){
+            DiscussionCustom newdd = new DiscussionCustom();
             BeanUtils.copyProperties(dd , newdd);
             String newCon = "";
             String content = DelTagsUtil.getTextFromHtml(newdd.getContent());
@@ -74,6 +74,19 @@ public class UserSystemController extends BaseController {
                 newCon = content;
             }
             newdd.setContent(newCon);
+            if (null != newdd.getStartUserId()){
+                User startUser = usersService.findOne(newdd.getStartUserId());
+                newdd.setAvatar(startUser.getAvatar());
+                newdd.setRealname(startUser.getRealname());
+                newdd.setUsername(startUser.getUsername());
+            }
+            if (null != newdd.getLastUserId()){
+                User lastUser = usersService.findOne(newdd.getLastUserId());
+                newdd.setAvatarLast(lastUser.getAvatar());
+                newdd.setRealnameLast(lastUser.getRealname());
+                newdd.setUsernameLast(lastUser.getUsername());
+            }
+
             newAllD.add(newdd);
         }
         
@@ -85,7 +98,7 @@ public class UserSystemController extends BaseController {
         List<String>  pageNumList = getPageNumList(allDiscussionsPage.getTotalPages());
 
         //获取所有标签（以后尝试去缓存中取） 
-        List<Tags> allTags = tagsService.getAllList();
+        List<Tag> allTags = tagsService.getAllList();
         logger.info("全部标签==>：{}",allTags);
         
         System.out.println(userall.toString());

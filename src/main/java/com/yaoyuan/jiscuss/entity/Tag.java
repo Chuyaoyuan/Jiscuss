@@ -14,8 +14,8 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="tags")
-public class Tags   implements Serializable{
+@Table(name="tag")
+public class Tag implements Serializable{
     private static final long serialVersionUID = 1L;
     
     @Id

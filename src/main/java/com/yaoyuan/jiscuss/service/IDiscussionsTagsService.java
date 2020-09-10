@@ -2,11 +2,11 @@ package com.yaoyuan.jiscuss.service;
 
 import java.util.List;
 
-import com.yaoyuan.jiscuss.entity.DiscussionsTags;
+import com.yaoyuan.jiscuss.entity.DiscussionTag;
 
 public interface IDiscussionsTagsService {
 
-    List<DiscussionsTags> getAllList();
+    List<DiscussionTag> getAllList();
 
-    DiscussionsTags insert(DiscussionsTags discussionsTags);
+    DiscussionTag insert(DiscussionTag discussionTag);
 }

@@ -2,13 +2,13 @@ package com.yaoyuan.jiscuss.service;
 
 import java.util.List;
 
-import com.yaoyuan.jiscuss.entity.Tags;
+import com.yaoyuan.jiscuss.entity.Tag;
 
 public interface ITagsService {
 
-    List<Tags> getAllList();
+    List<Tag> getAllList();
 
-    Tags insert(Tags tags);
+    Tag insert(Tag tag);
 
-    List<Tags> findByDId(Integer id);
+    List<Tag> findByDId(Integer id);
 }
