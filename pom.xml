@@ -48,6 +48,13 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- mysql -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.12</version>
+		</dependency>
+
 		<!-- json -->
 		<dependency>
 		    <groupId>org.json</groupId>
