@@ -2,10 +2,7 @@ package com.yaoyuan.jiscuss.entity;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.Data;
 
@@ -19,9 +16,12 @@ public class Setting implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="key")
-    private String key;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+
+	@Column(name="setting_key")
+    private String settingKey;
     
-    @Column(name="value")
-    private String value;
+    @Column(name="setting_value")
+    private String settingValue;
 }

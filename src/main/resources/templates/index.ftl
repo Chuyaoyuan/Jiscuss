@@ -56,12 +56,10 @@
                         </div>
                         <div class="field">
                             <label>选择标签</label>
-                            <select multiple="" class="ui dropdown">
+                            <select multiple="" class="ui dropdown" id="selectTag">
                                 <option value="">选择标签</option>
-
                                 <#list allTags as tags>
                                     <option value=${tags.id}>${tags.name}</option>
-
                                 </#list>
                             </select>
                         </div>
@@ -74,15 +72,65 @@
                             <label>标签名</label>
                             <input type="text" placeholder="标签名" id="tagsname">
                         </div>
+                        <div class="field" id="createNewtagsDiv" style="display:none">
+                            <label>父标签</label>
+                            <select class="ui fluid dropdown" id="parentTag">
+                                <#list allTags as tag>
+                                    <option value="{tag.id}">{tag.name}</option>
+                                </#list>
+                            </select>
+                        </div>
+                        <div class="two fields">
+                            <div class="field">
+                                <label>选择颜色</label>
+                                <div class="ui fluid search selection dropdown">
+                                    <input type="hidden" id="tagColor">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">选择颜色</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="red"><div class="ui red empty circular label"></div>红色</div>
+                                        <div class="item" data-value="orange"><div class="ui orange empty circular label"></div>橙色</div>
+                                        <div class="item" data-value="yellow"><div class="ui yellow empty circular label"></div>黄色</div>
+                                        <div class="item" data-value="olive"><div class="ui olive empty circular label"></div>橄榄绿</div>
+                                        <div class="item" data-value="green"><div class="ui green empty circular label"></div>纯绿</div>
+                                        <div class="item" data-value="teal"><div class="ui teal empty circular label"></div>水鸭蓝</div>
+                                        <div class="item" data-value="blue"><div class="ui blue empty circular label"></div>纯蓝</div>
+                                        <div class="item" data-value="violet"><div class="ui violet empty circular label"></div>紫罗兰</div>
+                                        <div class="item" data-value="purple"><div class="ui purple empty circular label"></div>纯紫</div>
+                                        <div class="item" data-value="pink"><div class="ui pink empty circular label"></div>粉红</div>
+                                        <div class="item" data-value="brown"><div class="ui brown empty circular label"></div>棕色</div>
+                                        <div class="item" data-value="grey"><div class="ui grey empty circular label"></div>灰色</div>
+                                        <div class="item" data-value="black"><div class="ui black empty circular label"></div>黑色</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>选择图标</label>
+                                <div class="ui fluid search selection dropdown">
+                                    <input type="hidden" id="tagIcon">
+                                    <i class="dropdown icon"></i>
+                                    <div class="default text">选择图标</div>
+                                    <div class="menu">
+                                        <div class="item" data-value="bullhorn"><i class="bullhorn"></i>bullhorn</div>
+                                        <div class="item" data-value="coffee"><i class="coffee"></i>coffee</div>
+                                        <div class="item" data-value="edit"><i class="edit"></i>edit</div>
+                                        <div class="item" data-value="fax"><i class="fax"></i>fax</div>
+                                        <div class="item" data-value="bug"><i class="bug"></i>bug</div>
+                                        <div class="item" data-value="keyboard"><i class="keyboard"></i>keyboard</div>
+                                        <div class="item" data-value="folder open outline"><i class="folder open outline"></i>folder open outline</div>
+                                        <div class="item" data-value="comment outline"><i class="comment outline"></i>comment outline</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="field" id="createNewtagsBtn" style="display:none">
                             <button class="ui teal button" id="commitnewtags">保存</button>
+                            <button class="ui grey button" id="cancelnewtags">取消</button>
                         </div>
 
                         <div class="field">
                             <label>内容</label>
                             <textarea id="discussionscontent"></textarea>
-
-
                         </div>
 
                         <div class="ui fluid large blue  button" id="newdiscussions">提交内容</div>
@@ -90,72 +138,90 @@
                 </div>
             </div>
 
+            <div class="ui section divider"></div>
 
-            <div class="ui list">
-                <div class="item">下面这个按钮可以过滤帖子呦</div>
-            </div>
-
-            <div class="fluid ui floating dropdown labeled icon orange button">
-                <i class="filter icon"></i> <span class="text">过滤帖子标签</span>
-                <div class="menu">
-                    <div class="ui icon search input">
-                        <i class="search icon"></i> <input type="text"
-                                                           placeholder="搜索标签...">
-                    </div>
-                    <div class="divider"></div>
-                    <div class="header">
-                        <i class="tags icon"></i> 标签
-                    </div>
-                    <div class="scrolling menu">
+            <div class="ui card red ">
+                <div class="content">
+                    <div class="header">全部标签</div>
+                </div>
+                <div class="content">
+                    <div class="ui ordered list">
                         <div class="item">
-                            <div class="ui red empty circular label"></div>
-                            重要
+                            <i class="folder icon"></i>
+                            <div class="content">
+                                <div class="header">src</div>
+                                <div class="description">Source files for project</div>
+                                <div class="list">
+                                    <div class="item">
+                                        <i class="folder icon"></i>
+                                        <div class="content">
+                                            <div class="header">site</div>
+                                            <div class="description">Your site's theme</div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <i class="blue folder icon"></i>
+                                        <div class="content">
+                                            <div class="header">themes</div>
+                                            <div class="description">Packaged theme files</div>
+                                            <div class="list">
+                                                <div class="item">
+                                                    <i class="folder icon"></i>
+                                                    <div class="content">
+                                                        <div class="header">default</div>
+                                                        <div class="description">Default packaged theme</div>
+                                                    </div>
+                                                </div>
+                                                <div class="item">
+                                                    <i class="folder icon"></i>
+                                                    <div class="content">
+                                                        <div class="header">my_theme</div>
+                                                        <div class="description">Packaged themes are also available in
+                                                            this folder
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <i class="file icon"></i>
+                                        <div class="content">
+                                            <a class="header">theme.config</a>
+                                            <div class="description">Config file for setting packaged themes</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="item">
-                            <div class="ui blue empty circular label"></div>
-                            通知
+                            <i class="red folder icon"></i>
+                            <div class="content">
+                                <a class="header">dist</a>
+                                <div class="description">Compiled CSS and JS files</div>
+                                <div class="list">
+                                    <div class="item">
+                                        <i class="folder icon"></i>
+                                        <div class="content">
+                                            <a class="header">components</a>
+                                            <div class="description">Individual component CSS and JS</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="item">
-                            <div class="ui black empty circular label"></div>
-                            无法修复
-                        </div>
-                        <div class="item">
-                            <div class="ui purple empty circular label"></div>
-                            新闻
-                        </div>
-                        <div class="item">
-                            <div class="ui orange empty circular label"></div>
-                            交换
-                        </div>
-                        <div class="item">
-                            <div class="ui empty circular label"></div>
-                            改变下降
-                        </div>
-                        <div class="item">
-                            <div class="ui yellow empty circular label"></div>
-                            题外话
-                        </div>
-                        <div class="item">
-                            <div class="ui pink empty circular label"></div>
-                            有趣
-                        </div>
-                        <div class="item">
-                            <div class="ui green empty circular label"></div>
-                            讨论
+                            <i class="file icon red"></i>
+                            <div class="content">
+                                <div class="header">semantic.json</div>
+                                <div class="description">Contains build settings for gulp</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="ui section divider"></div>
-
-            <div class="ui fluid action input">
-                <input type="text" placeholder="搜索...">
-                <div class="ui button">搜索</div>
-            </div>
-
-
-            <div class="ui card">
+            <div class="ui card black ">
                 <div class="content">
                     <div class="header">预留功能</div>
                 </div>
@@ -185,7 +251,7 @@
             </div>
 
 
-            <div class="ui card">
+            <div class="ui card violet ">
                 <div class="content">
                     <img class="right floated mini ui image"
                          src="static/assets/images/logo.png">
@@ -369,17 +435,17 @@
                 </a>
                 <#list pageDiscussions as page>
                     <#if page == pageNum && !(username)??>
-                        <a class="item" style="  background-color: #7d827d;"  href="/?pageNum=${page}">
+                        <a class="item" style="  background-color: #7d827d;" href="/?pageNum=${page}">
                             ${page}
                         </a>
-                     </#if>
+                    </#if>
                     <#if page != pageNum && !(username)??>
                         <a class="item" href="/?pageNum=${page}">
                             ${page}
                         </a>
                     </#if>
                     <#if page == pageNum && username??>
-                        <a class="item" style="  background-color: #7d827d;"  href="/main?pageNum=${page}">
+                        <a class="item" style="  background-color: #7d827d;" href="/main?pageNum=${page}">
                             ${page}
                         </a>
                     </#if>
@@ -430,13 +496,11 @@
 
     </div>
 
-
+    <div class="ui button" data-tooltip="预留" data-position="top center">
+        预留
+    </div>
 </div>
 
-
-<div class="ui button" data-tooltip="预留" data-position="top center">
-    预留
-</div>
 
 <#include "comm/footer.ftl"/>
 <script type="text/javascript">
@@ -449,12 +513,12 @@
         console.log('pageNum：' + '${pageNum}');
         console.log('pageNumAll：' + '${pageNumAll}');
 
-        setpageNum('${pageNum}','${pageNumAll}');
+        setpageNum('${pageNum}', '${pageNumAll}');
 
         var token = $("meta[name='_csrf']").attr("content");
-        if(token == '' && username && username != null){
+        if (token == '' && username && username != null) {
             console.log('因为默认页没有_csrf_token，跳页');
-            location.href="/main";
+            location.href = "/main";
         }
     });
 

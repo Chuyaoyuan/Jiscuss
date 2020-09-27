@@ -20,9 +20,10 @@ public class BaseController {
 
     /**
      * 获取当前用户
+     *
      * @return
      */
-    protected UserInfo getUserInfo(HttpServletRequest request){
+    protected UserInfo getUserInfo(HttpServletRequest request) {
         UserInfo user = null;
         //获得session对象
         HttpSession session = request.getSession();
@@ -35,7 +36,7 @@ public class BaseController {
         Object spring_security_context = session.getAttribute("SPRING_SECURITY_CONTEXT");
         System.out.println(spring_security_context);
         SecurityContext securityContext = (SecurityContext) spring_security_context;
-        if(securityContext!=null){
+        if (securityContext != null) {
             //获得认证信息
             Authentication authentication = securityContext.getAuthentication();
             //获得用户详情

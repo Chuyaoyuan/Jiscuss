@@ -30,22 +30,34 @@ public class PostCommonUtil {
             }
             String content = "";
             if (mapObj.get("content") != null) {
-                Clob clob = (Clob) mapObj.get("content");
-                content = PostCommonUtil.clobToString(clob);
+                if (mapObj.get("content") instanceof Clob) {
+                    Clob clob = (Clob) mapObj.get("content");
+                    content = PostCommonUtil.clobToString(clob);
+                } else if (mapObj.get("content") instanceof String) {
+                    content = String.valueOf(mapObj.get("content"));
+                }
             }
             postCustom.setContent(content);
             String avatar = "";
             if (mapObj.get("create_avatar") != null) {
-                Clob clob = (Clob) mapObj.get("create_avatar");
-                avatar = PostCommonUtil.clobToString(clob);
+                if (mapObj.get("create_avatar") instanceof Clob) {
+                    Clob clob = (Clob) mapObj.get("create_avatar");
+                    avatar = PostCommonUtil.clobToString(clob);
+                } else if (mapObj.get("create_avatar") instanceof String) {
+                    avatar = String.valueOf(mapObj.get("create_avatar"));
+                }
             }
             postCustom.setAvatar(avatar);
             postCustom.setUsername(mapObj.get("create_username") != null ? String.valueOf(mapObj.get("create_username")) : null);
             postCustom.setRealname(mapObj.get("create_realname") != null ? String.valueOf(mapObj.get("create_realname")) : null);
             String avatarReply = "";
             if (mapObj.get("user_avatar") != null) {
-                Clob clob = (Clob) mapObj.get("user_avatar");
-                avatarReply = PostCommonUtil.clobToString(clob);
+                if (mapObj.get("user_avatar") instanceof Clob) {
+                    Clob clob = (Clob) mapObj.get("user_avatar");
+                    avatarReply = PostCommonUtil.clobToString(clob);
+                } else if (mapObj.get("user_avatar") instanceof String) {
+                    avatarReply = String.valueOf(mapObj.get("user_avatar"));
+                }
             }
             postCustom.setAvatarReply(avatarReply);
             postCustom.setUsernameReply(mapObj.get("user_username") != null ? String.valueOf(mapObj.get("user_username")) : null);
@@ -59,29 +71,29 @@ public class PostCommonUtil {
     public static List<PostCustom> getNewPostsObjCustom(List<PostCustom> postCustomList) {
         List<PostCustom> mainList = new ArrayList<>();
         Map<String, Object> postMap = new LinkedHashMap<>();
-        for(PostCustom mapObj : postCustomList){
-            if(null == mapObj.getParentId() ){
+        for (PostCustom mapObj : postCustomList) {
+            if (null == mapObj.getParentId()) {
                 mainList.add(mapObj);
-            }else{
+            } else {
                 List<PostCustom> tempList = new ArrayList<>();
-                if(postMap.containsKey(String.valueOf(mapObj.getParentId()))){
+                if (postMap.containsKey(String.valueOf(mapObj.getParentId()))) {
                     tempList = (List<PostCustom>) postMap.get(String.valueOf(mapObj.getParentId()));
                     tempList.add(mapObj);
-                    postMap.put(String.valueOf(mapObj.getParentId()),tempList);
-                }else{
+                    postMap.put(String.valueOf(mapObj.getParentId()), tempList);
+                } else {
                     tempList.add(mapObj);
-                    postMap.put(String.valueOf(mapObj.getParentId()),tempList);
+                    postMap.put(String.valueOf(mapObj.getParentId()), tempList);
                 }
             }
         }
         List<PostCustom> mainListResult = new ArrayList<>();
-        for(PostCustom mapObj : mainList){
-            if(postMap.containsKey(String.valueOf(mapObj.getId()))){
+        for (PostCustom mapObj : mainList) {
+            if (postMap.containsKey(String.valueOf(mapObj.getId()))) {
                 PostCustom newObj = new PostCustom();
-                BeanUtils.copyProperties(mapObj , newObj);
+                BeanUtils.copyProperties(mapObj, newObj);
                 newObj.setChild((List<PostCustom>) postMap.get(String.valueOf(mapObj.getId())));
                 mainListResult.add(newObj);
-            }else{
+            } else {
                 mainListResult.add(mapObj);
             }
         }

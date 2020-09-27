@@ -50,6 +50,15 @@
                     ${discussions.content}
                 </div>
 
+                <div class="ui labeled button" tabindex="0">
+                    <div class="ui red button">
+                        <i class="heart icon"></i> 赞这个主题
+                    </div>
+                    <a class="ui basic red left pointing label">
+                        1,048
+                    </a>
+                </div>
+
 
                 <div class="ui feed">
                     <div class="event">
@@ -71,7 +80,7 @@
                             </div>
                             <div class="meta">
                                 <a class="like">
-                                    <i class="like icon"></i> 0 喜欢
+                                    <i class="like icon"></i> 0 喜欢作者
                                 </a>
                             </div>
                         </div>

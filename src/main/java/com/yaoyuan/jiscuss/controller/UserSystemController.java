@@ -37,50 +37,50 @@ public class UserSystemController extends BaseController {
 
     @Autowired
     private IDiscussionsService discussionsService;
-    
+
     @Autowired
     private ITagsService tagsService;
 
     //首页
-    @RequestMapping({"/","/main","/index"})
-    public String home(@RequestParam(defaultValue = "all") String tag, @RequestParam(defaultValue = "all") String type,@RequestParam(defaultValue = "1") Integer
+    @RequestMapping({"/", "/main", "/index"})
+    public String home(@RequestParam(defaultValue = "all") String tag, @RequestParam(defaultValue = "all") String type, @RequestParam(defaultValue = "1") Integer
             pageNum, HttpServletRequest request, ModelMap map) {
         logger.info(">>> index");
         logger.info(">>> tag:" + tag);
         logger.info(">>> pageNum:" + pageNum);
         List<User> userall = usersService.getAllList();
-        logger.info(">>> 第一遍的全部用户："+userall);
-        
+        logger.info(">>> 第一遍的全部用户：" + userall);
+
         List<User> useral2 = usersService.getAllList();
-        logger.info(">>> 第二遍的全部用户："+useral2);
+        logger.info(">>> 第二遍的全部用户：" + useral2);
 
         int pageSiz = 10;
         int pageNumNew = pageNum - 1;
         Discussion discussion = new Discussion();
         //分页获取主题帖子
-        Page<Discussion> allDiscussionsPage = discussionsService.queryAllDiscussionsList(discussion,pageNumNew,pageSiz);
-        
+        Page<Discussion> allDiscussionsPage = discussionsService.queryAllDiscussionsList(discussion, pageNumNew, pageSiz);
+
         List<Discussion> allDiscussions = allDiscussionsPage.getContent();
         List<DiscussionCustom> newAllD = new ArrayList<>();
 
-        for (Discussion dd : allDiscussions){
+        for (Discussion dd : allDiscussions) {
             DiscussionCustom newdd = new DiscussionCustom();
-            BeanUtils.copyProperties(dd , newdd);
+            BeanUtils.copyProperties(dd, newdd);
             String newCon = "";
             String content = DelTagsUtil.getTextFromHtml(newdd.getContent());
-            if(null != content && content.length()>30){
-                newCon = content.substring(0,29);
-            }else{
+            if (null != content && content.length() > 30) {
+                newCon = content.substring(0, 29);
+            } else {
                 newCon = content;
             }
             newdd.setContent(newCon);
-            if (null != newdd.getStartUserId()){
+            if (null != newdd.getStartUserId()) {
                 User startUser = usersService.findOne(newdd.getStartUserId());
                 newdd.setAvatar(startUser.getAvatar());
                 newdd.setRealname(startUser.getRealname());
                 newdd.setUsername(startUser.getUsername());
             }
-            if (null != newdd.getLastUserId()){
+            if (null != newdd.getLastUserId()) {
                 User lastUser = usersService.findOne(newdd.getLastUserId());
                 newdd.setAvatarLast(lastUser.getAvatar());
                 newdd.setRealnameLast(lastUser.getRealname());
@@ -89,18 +89,18 @@ public class UserSystemController extends BaseController {
 
             newAllD.add(newdd);
         }
-        
-        logger.info("全部主题==>：{}",allDiscussions);
+
+        logger.info("全部主题==>：{}", allDiscussions);
 
         Long total = allDiscussionsPage.getTotalElements();
-        
+
         //获取主题帖子的分页数据
-        List<String>  pageNumList = getPageNumList(allDiscussionsPage.getTotalPages());
+        List<String> pageNumList = getPageNumList(allDiscussionsPage.getTotalPages());
 
         //获取所有标签（以后尝试去缓存中取） 
         List<Tag> allTags = tagsService.getAllList();
-        logger.info("全部标签==>：{}",allTags);
-        
+        logger.info("全部标签==>：{}", allTags);
+
         System.out.println(userall.toString());
         map.put("data", "Jiscuss 用户");
         map.put("allDiscussions", newAllD);
@@ -109,32 +109,38 @@ public class UserSystemController extends BaseController {
         map.put("tag", tag);
         map.put("type", type);
 
-        map.put("pageSize",pageSiz);
+        map.put("pageSize", pageSiz);
         map.put("pageTotal", total);
         map.put("pageNum", pageNum);
         map.put("pageTotalPages", allDiscussionsPage.getTotalPages());
         UserInfo user = getUserInfo(request);
-        if(user != null){
+        if (user != null) {
             map.put("username", user.getUsername());
             map.put("data", "Jiscuss 用户:" + user.getUsername());
         }
         return "index";
     }
 
-    
-    private List<String>  getPageNumList(int size) {
-    	List<String> pageNumList  = new ArrayList<String>();
-        for(int  i = 0;i<size;i++) {
-            pageNumList.add(""+(i+1));
+
+    private List<String> getPageNumList(int size) {
+        List<String> pageNumList = new ArrayList<String>();
+        for (int i = 0; i < size; i++) {
+            pageNumList.add("" + (i + 1));
         }
-		return pageNumList;
-	}
+        return pageNumList;
+    }
+
+    //登录页
+    @GetMapping("/test")
+    public String test() {
+        return "test";
+    }
 
 
     //登录页
     @GetMapping("/login")
     public String login(@RequestParam(value = "error", required = false) String error,
-                              @RequestParam(value = "logout", required = false) String logout,ModelMap map) {
+                        @RequestParam(value = "logout", required = false) String logout, ModelMap map) {
         if (error != null) {
             map.put("msg", "您输入的用户名密码错误！");
             return "login";

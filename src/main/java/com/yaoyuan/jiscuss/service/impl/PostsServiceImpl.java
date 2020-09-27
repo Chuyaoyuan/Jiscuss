@@ -42,7 +42,7 @@ public class PostsServiceImpl implements IPostsService {
 
     @Override
     public Post findOneByid(Integer id) {
-        Post post =new Post();
+        Post post = new Post();
         post.setId(id);
         Example<Post> example = Example.of(post);
         Optional<Post> postRes = postsRepository.findOne(example);
@@ -66,7 +66,6 @@ public class PostsServiceImpl implements IPostsService {
 //        List<PostCustom> thenpostCustomListNew = PostCommonUtil.getNewPostsObjCustom(thenpostCustomList);
 
 
-
         //新建一个Node集合。
         ArrayList<Node> nodes = new ArrayList<>();
         //将第一层评论都添加都Node集合中
@@ -80,8 +79,6 @@ public class PostsServiceImpl implements IPostsService {
         System.out.println();
         //打印回复链表
         Node.show(list);
-
-
 
 
 //        List<Map<String, Object>> posts = postsRepository.findPostCustomById(id);

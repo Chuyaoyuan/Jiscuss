@@ -36,14 +36,14 @@ public class DiscussionsServiceImpl implements IDiscussionsService {
         return discussionsRepository.getOne(id);
     }
 
-	@Override
-	public Page<Discussion> queryAllDiscussionsList(Discussion discussion, int pageNum, int pageSize) {
-        Sort sort=new Sort(Sort.Direction.DESC,"id");
+    @Override
+    public Page<Discussion> queryAllDiscussionsList(Discussion discussion, int pageNum, int pageSize) {
+        Sort sort = new Sort(Sort.Direction.DESC, "id");
         @SuppressWarnings("deprecation")
-		Pageable pageable=new PageRequest(pageNum,pageSize,sort);
+        Pageable pageable = new PageRequest(pageNum, pageSize, sort);
         //将匹配对象封装成Example对象
         Example<Discussion> example = Example.of(discussion);
 
-        return  discussionsRepository.findAll(example,pageable);
+        return discussionsRepository.findAll(example, pageable);
     }
 }

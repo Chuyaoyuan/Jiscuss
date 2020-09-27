@@ -10,7 +10,7 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/jiscuss?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&autoReconnect=true&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/jiscuss?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&useSSL=false
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver

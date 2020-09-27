@@ -1,22 +1,29 @@
-#mysql 配置
+#h2 配置
 spring:
   cache:
     type: ehcache
     ehcache:
       config: classpath:ehcache.xml
   jpa:
-    database: MYSQL
+    generate-ddl: false
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+      settings:
+        web-allow-others: true
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/jiscuss?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&autoReconnect=true&useSSL=false
-    username: root
-    password: 123456
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    platform: h2
+    url: jdbc:h2:~/testjiscuss
+    username: sa
+    password:
+    schema: classpath:schema.sql
+    data: classpath:data.sql
+    driver-class-name: org.h2.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-    tomcat:
-      init-s-q-l: SET NAMES utf8mb4
     druid:
       min-idle: 2
       initial-size: 5
@@ -27,7 +34,7 @@ spring:
       filter:
         stat:
         enabled: true
-        db-type: mysql
+        db-type: h2
         log-slow-sql: true
         slow-sql-millis: 2000
       # 监控过滤器
@@ -45,9 +52,9 @@ spring:
       stat-view-servlet:
         enabled: true
         url-pattern: /druid/*
-  #          reset-enable: false
-  #          login-username: root
-  #          login-password: root
+#          reset-enable: false
+#          login-username: root
+#          login-password: root
   freemarker:
     # 设置模板后缀名
     suffix: .ftl

@@ -1,4 +1,5 @@
 package com.yaoyuan.jiscuss.common;
+
 import com.yaoyuan.jiscuss.entity.custom.PostCustom;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
@@ -7,6 +8,7 @@ import javax.persistence.Column;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 /**
  * @author yaoyuan2.chu
  * @Title:
@@ -77,7 +79,7 @@ public class Node {
      */
     public static boolean addNode(List<Node> list, Node node) {
         for (Node node1 : list) {   //循环添加
-            if (node1.getId() .equals(node.getParentId()) ) {   //判断留言的上一段是都是这条留言
+            if (node1.getId().equals(node.getParentId())) {   //判断留言的上一段是都是这条留言
                 node1.getNextNodes().add(node);   //是，添加，返回true;
                 System.out.println("添加了一个");
                 return true;

@@ -63,6 +63,7 @@ $("#newdiscussions").click(function(){
     console.warn(header)
     console.warn(token)
     var title = $("#discussionstitle").val();
+    var tag = $("#selectTag").val();
 //     $("#discussionscontent").val();
     console.log(tinyMCE.editors[0].getContent());
     var content =tinyMCE.editors[0].getContent();
@@ -107,7 +108,16 @@ $("#commitnewtags").click(function(){
     var header = $("meta[name='_csrf_header']").attr("content");
     var token =$("meta[name='_csrf']").attr("content");
 
+
+
     var name = $("#tagsname").val();
+
+    var tagColor = $("#tagColor").val();
+    var tagIcon = $("#tagIcon").val();
+    var parentTag = $("#parentTag").val();
+    console.log(tagColor);
+    console.log(tagIcon);
+    console.log(parentTag);
     console.log(name);
     $.ajax({
         type: "POST",
@@ -124,10 +134,9 @@ $("#commitnewtags").click(function(){
             console.log(data);
             if(data.flag){
             	massage(name+',添加成功!','');
-            	return false;
+                $("#selectTag").html("");
             }else{
             	massage(name+',添加失败!','');
-            	return false;
             }
         }
     });

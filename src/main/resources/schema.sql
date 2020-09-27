@@ -67,8 +67,9 @@ create_time datetime
 -- 设置表5
 drop table if exists setting;
 CREATE TABLE setting(
-key varchar(20) primary key,
-value text
+id INTEGER not null primary key auto_increment ,
+setting_key varchar(20) ,
+setting_value text
 );
 -- 标签表6
 drop table if exists tag;

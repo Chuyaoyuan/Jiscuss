@@ -1,7 +1,8 @@
-<div class="ui section divider"></div>
+<#--<div class="ui section divider"></div>-->
 
 <div class="ui  vertical footer segment">
     <div class="ui center aligned container">
+        <div class="ui  section divider"></div>
         <div class="ui stackable  divided grid">
             <div class="three wide column">
                 <h4 class="ui  header">关于遥远</h4>
