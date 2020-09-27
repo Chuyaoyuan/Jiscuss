@@ -72,6 +72,11 @@
                             <label>标签名</label>
                             <input type="text" placeholder="标签名" id="tagsname">
                         </div>
+                        <div class="two fields">
+                        <div class="field" id="createNewtagsDiv" style="display:none">
+                            <label>描述</label>
+                            <input type="text" placeholder="描述" id="tagdescription">
+                        </div>
                         <div class="field" id="createNewtagsDiv" style="display:none">
                             <label>父标签</label>
                             <select class="ui fluid dropdown" id="parentTag">
@@ -79,6 +84,7 @@
                                     <option value="{tag.id}">{tag.name}</option>
                                 </#list>
                             </select>
+                        </div>
                         </div>
                         <div class="two fields">
                             <div class="field">
