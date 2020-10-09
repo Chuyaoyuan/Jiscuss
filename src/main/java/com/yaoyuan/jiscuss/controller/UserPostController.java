@@ -112,7 +112,10 @@ public class UserPostController extends BaseController {
         discussion.setStartTime(new Date());
         discussion.setLastTime(new Date());
 
-        Discussion saveDiscussion = discussionsService.insert(discussion);
+        Discussion discussionOne = new Discussion();
+        BeanUtils.copyProperties(discussion, discussionOne);
+
+        Discussion saveDiscussion = discussionsService.insert(discussionOne);
 
         if (null != discussion.getTag()) {
             //执行组装标签

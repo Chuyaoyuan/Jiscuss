@@ -73,11 +73,11 @@
                             <input type="text" placeholder="标签名" id="tagsname">
                         </div>
                         <div class="two fields">
-                        <div class="field" id="createNewtagsDiv" style="display:none">
+                        <div class="field" id="tagDescriptionDiv" style="display:none">
                             <label>描述</label>
                             <input type="text" placeholder="描述" id="tagdescription">
                         </div>
-                        <div class="field" id="createNewtagsDiv" style="display:none">
+                        <div class="field" id="parentTagDiv" style="display:none">
                             <label>父标签</label>
                             <select class="ui fluid dropdown" id="parentTag">
                                 <#list allTags as tag>
@@ -86,7 +86,7 @@
                             </select>
                         </div>
                         </div>
-                        <div class="two fields">
+                        <div class="two fields" id="colorIconDiv" style="display:none">
                             <div class="field">
                                 <label>选择颜色</label>
                                 <div class="ui fluid search selection dropdown">
@@ -130,8 +130,8 @@
                             </div>
                         </div>
                         <div class="field" id="createNewtagsBtn" style="display:none">
-                            <button class="ui teal button" id="commitnewtags">保存</button>
-                            <button class="ui grey button" id="cancelnewtags">取消</button>
+                            <a class="ui teal button" id="commitnewtags">保存</a>
+                            <a class="ui grey button" id="cancelnewtags">取消</a>
                         </div>
 
                         <div class="field">
@@ -223,6 +223,16 @@
                                 <div class="description">Contains build settings for gulp</div>
                             </div>
                         </div>
+                        <#list allTags as tags>
+                            <div class="item">
+                                <i class="icon ${tags.icon} ${tags.color}"></i>
+                                <div class="content">
+                                    <a class="header" onclick="onTags(${tags.id})">${tags.name}</a>
+                                    <div class="description">${tags.description}</div>
+                                </div>
+                            </div>
+                        </#list>
+
                     </div>
                 </div>
             </div>

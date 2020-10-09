@@ -94,12 +94,24 @@ $("#newdiscussions").click(function () {
 
 });
 
-$("#newtags").click(function () {
-    $('#createNewtagsDiv').show();
-    $('#createNewtagsBtn').show();
-    return false;
+$("#cancelnewtags").click(function () {
+    $('#createNewtagsDiv').hide();
+    $('#tagDescriptionDiv').hide();
+    $('#parentTagDiv').hide();
+    $('#colorIconDiv').hide();
 });
 
+$("#newtags").click(function () {
+    $('#createNewtagsDiv').show();
+    $('#tagDescriptionDiv').show();
+    $('#parentTagDiv').show();
+    $('#colorIconDiv').show();
+});
+
+function onTags(data) {
+    console.log('123');
+    console.log(data);
+}
 
 $("#commitnewtags").click(function () {
 

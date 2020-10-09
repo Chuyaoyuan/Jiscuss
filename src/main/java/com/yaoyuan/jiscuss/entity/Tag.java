@@ -30,6 +30,9 @@ public class Tag implements Serializable{
     
     @Column(name="color")
     private String color;
+
+    @Column(name="icon")
+    private String icon;
     
     @Column(name="position")
     private Integer position;
