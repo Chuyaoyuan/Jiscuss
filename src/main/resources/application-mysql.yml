@@ -1,0 +1,69 @@
+#mysql 配置
+spring:
+  cache:
+    type: ehcache
+    ehcache:
+      config: classpath:ehcache.xml
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/jiscuss?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&autoReconnect=true&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    tomcat:
+      init-s-q-l: SET NAMES utf8mb4
+    druid:
+      min-idle: 2
+      initial-size: 5
+      max-active: 10
+      max-wait: 5000
+      validation-query: select 1SS
+      # 状态监控
+      filter:
+        stat:
+        enabled: true
+        db-type: mysql
+        log-slow-sql: true
+        slow-sql-millis: 2000
+      # 监控过滤器
+      web-stat-filter:
+        enabled: true
+        exclusions:
+          - "*.js"
+          - "*.gif"
+          - "*.jpg"
+          - "*.png"
+          - "*.css"
+          - "*.ico"
+          - "/druid/*"
+      # druid 监控页面
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+  #          reset-enable: false
+  #          login-username: root
+  #          login-password: root
+  freemarker:
+    # 设置模板后缀名
+    suffix: .ftl
+    # 设置文档类型
+    content-type: text/html
+    # 设置页面编码格式
+    charset: UTF-8
+    # 设置页面缓存
+    cache: false
+    # 设置ftl文件路径
+    template-loader-path:
+      - classpath:/templates
+    settings:
+      classic_compatible: true
+  # 设置静态文件路径，js,css等
+  mvc:
+    static-path-pattern: /static/**
+server:
+  port: 80
