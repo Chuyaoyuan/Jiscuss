@@ -2,16 +2,7 @@
 <html>
 <title>Jiscuss Demo</title>
 <head>
-    <!-- <link rel="stylesheet" type="text/css" href="static/semanticui/semantic.css"> -->
-    <!-- <script src="static/jquery/jquery-3.4.1.min.js"></script> -->
-    <!-- <script src="static/semanticui/semantic.min.js"></script> -->
-    <link crossorigin="anonymous" integrity="sha384-ATvSpJEmy1egycrmomcFxVn4Z0A6rfjwlzDQrts/1QRerQhR9EEpEYtdysLpQPuQ"
-          href="https://lib.baomitu.com/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/static/semanticui/my.css">
-    <script crossorigin="anonymous" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh"
-            src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
-    <script crossorigin="anonymous" integrity="sha384-6urqf2sgCGDfIXcoxTUOVIoQV+jFr/Zuc4O2wCRS6Rnd8w0OJ17C4Oo3PuXu8ZtF"
-            src="https://lib.baomitu.com/semantic-ui/2.4.1/semantic.min.js"></script>
+    <#include "comm/commjs.ftl"/>
 
     <style type="text/css">
         body {
@@ -69,7 +60,7 @@
         </form>
 
         <div class="ui message">
-            <a href="/"><——Jiscuss首页</a> 新用户？ <a href="login.php#">注册</a>
+            <a href="/"><——Jiscuss首页</a> 新用户？ <a href="/register">注册</a>
         </div>
     </div>
 </div>

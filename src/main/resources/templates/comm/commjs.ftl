@@ -14,10 +14,18 @@
         src="https://lib.baomitu.com/tinymce/5.1.1/tinymce.min.js"></script>
 
 <#--toastr-->
-<link crossorigin="anonymous" integrity="sha384-YzEqZ2pBV0i9OmlTyoz75PqwTR8If8GsXBv7HLQclEVqIC3VxIt98/U94ES6CJTR"
-      href="https://lib.baomitu.com/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">
+<#--<link crossorigin="anonymous" integrity="sha384-YzEqZ2pBV0i9OmlTyoz75PqwTR8If8GsXBv7HLQclEVqIC3VxIt98/U94ES6CJTR"-->
+<#--      href="https://lib.baomitu.com/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">-->
 
-<script crossorigin="anonymous" integrity="sha384-VDls8ImYGI8SwVxpmjX2Bn27U2TcNodzTNROTusVEWO55+lmL+H9NczoQJk6mwZR"
-        src="https://lib.baomitu.com/toastr.js/2.1.4/toastr.min.js"></script>
+<#--<script crossorigin="anonymous" integrity="sha384-VDls8ImYGI8SwVxpmjX2Bn27U2TcNodzTNROTusVEWO55+lmL+H9NczoQJk6mwZR"-->
+<#--        src="https://lib.baomitu.com/toastr.js/2.1.4/toastr.min.js"></script>-->
+
+<#--layx-->
+<link href="static/layx/layx.min.css?b14794a8a3baf3e8b58e" rel="stylesheet">
+
+<script type="text/javascript" src="static/layx/layx.min.js?b14794a8a3baf3e8b58e"></script>
+
+<script type="text/javascript" charset="UTF-8" src="/static/js/comm/util.js"></script>
+
 
 

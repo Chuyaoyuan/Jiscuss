@@ -38,7 +38,6 @@
                     <i class="settings icon"></i>
                     <div class="content">
                         ${discussions.title}
-                        <div class="sub header">某某标签分类</div>
                         <#list tags as tag>
                             <div class="sub header">${tag.name}</div>
                         </#list>

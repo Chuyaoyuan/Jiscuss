@@ -19,7 +19,7 @@
 <div class="ui container" id="container">
     <div class="ui info message">
         <i class="close icon"></i>
-        <div class="header">欢迎来到这里，${data},当前页主题数： ${allDiscussions?size} ，主题页数：${pageDiscussions?size}
+        <div class="header">欢迎来到这里，${data} ，当前页主题数： ${allDiscussions?size} ，主题页数：${pageDiscussions?size}
             ，标签数 ${allTags?size} </div>
         <ul class="list">
             <li>JAVA + DISCUSS = JISCUSS 。</li>
@@ -30,10 +30,9 @@
 
     <h3 class="ui center aligned header"></h3>
     <div class="ui four column grid">
-        <div
-                class="widescreen  large screen computer tablet only four wide column">
+        <div class="widescreen  large screen computer tablet only four wide column">
 
-            <div class="fluid ui animated fade primary button" tabindex="0" id='createNewDiccuss'>
+            <div class="fluid ui animated fade primary button" tabindex="0" id="createNewDiccuss2" style=" margin-bottom: 20px;">
                 <div class="visible content">
                     <i class="pen square icon"></i>创建新帖
                 </div>
@@ -42,12 +41,12 @@
                 </div>
             </div>
 
-            <div class="ui modal createNewDiccuss">
+            <div class="ui modal createNewDiccuss" id = "createNewDiccussContent">
                 <i class="close icon"></i>
                 <div class="header">
                     创建新帖
                 </div>
-                <div class=" content">
+                <div class=" content" >
                     <form class="ui form">
 
                         <div class="field">
@@ -65,26 +64,28 @@
                         </div>
 
                         <div class="field">
-                            <button class="ui teal button" id="newtags">新增标签</button>
+<#--                            <button class="ui teal button" id="newtags">新增标签</button>-->
+<#--                            <a href="/login" id="loginmodel">登录&nbsp;&nbsp;&&nbsp;&nbsp;注册</a>-->
+                            &nbsp;<a  onclick="onNewtags()">新增标签</a>
                         </div>
 
                         <div class="field" id="createNewtagsDiv" style="display:none">
                             <label>标签名</label>
                             <input type="text" placeholder="标签名" id="tagsname">
                         </div>
-                        <div class="two fields">
-                        <div class="field" id="tagDescriptionDiv" style="display:none">
-                            <label>描述</label>
-                            <input type="text" placeholder="描述" id="tagdescription">
-                        </div>
-                        <div class="field" id="parentTagDiv" style="display:none">
-                            <label>父标签</label>
-                            <select class="ui fluid dropdown" id="parentTag">
-                                <#list allTags as tag>
-                                    <option value="{tag.id}">{tag.name}</option>
-                                </#list>
-                            </select>
-                        </div>
+                        <div class="two fields" id="tagDescriptionDiv" style="display:none">
+                            <div class="field"  >
+                                <label>描述</label>
+                                <input type="text" placeholder="描述" id="tagdescription">
+                            </div>
+                            <div class="field"  >
+                                <label>父标签</label>
+                                <select class="ui fluid dropdown" id="parentTag">
+                                    <#list allTags as tag>
+                                        <option value="{tag.id}">{tag.name}</option>
+                                    </#list>
+                                </select>
+                            </div>
                         </div>
                         <div class="two fields" id="colorIconDiv" style="display:none">
                             <div class="field">
@@ -144,7 +145,7 @@
                 </div>
             </div>
 
-            <div class="ui section divider"></div>
+<#--            <div class="ui section divider"></div>-->
 
             <div class="ui card red ">
                 <div class="content">
@@ -155,72 +156,17 @@
                         <div class="item">
                             <i class="folder icon"></i>
                             <div class="content">
-                                <div class="header">src</div>
-                                <div class="description">Source files for project</div>
+                                <div class="header">test</div>
+                                <div class="description">test files for test</div>
                                 <div class="list">
                                     <div class="item">
                                         <i class="folder icon"></i>
                                         <div class="content">
-                                            <div class="header">site</div>
-                                            <div class="description">Your site's theme</div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <i class="blue folder icon"></i>
-                                        <div class="content">
-                                            <div class="header">themes</div>
-                                            <div class="description">Packaged theme files</div>
-                                            <div class="list">
-                                                <div class="item">
-                                                    <i class="folder icon"></i>
-                                                    <div class="content">
-                                                        <div class="header">default</div>
-                                                        <div class="description">Default packaged theme</div>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <i class="folder icon"></i>
-                                                    <div class="content">
-                                                        <div class="header">my_theme</div>
-                                                        <div class="description">Packaged themes are also available in
-                                                            this folder
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <i class="file icon"></i>
-                                        <div class="content">
-                                            <a class="header">theme.config</a>
-                                            <div class="description">Config file for setting packaged themes</div>
+                                            <div class="header">test2</div>
+                                            <div class="description">Test2 site's test</div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <i class="red folder icon"></i>
-                            <div class="content">
-                                <a class="header">dist</a>
-                                <div class="description">Compiled CSS and JS files</div>
-                                <div class="list">
-                                    <div class="item">
-                                        <i class="folder icon"></i>
-                                        <div class="content">
-                                            <a class="header">components</a>
-                                            <div class="description">Individual component CSS and JS</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <i class="file icon red"></i>
-                            <div class="content">
-                                <div class="header">semantic.json</div>
-                                <div class="description">Contains build settings for gulp</div>
                             </div>
                         </div>
                         <#list allTags as tags>
@@ -281,13 +227,13 @@
                     <div class="ui two buttons">
                         <div class="ui basic red button">
                             <div class="ui mini statistic">
-                                <div class="value">1</div>
+                                <div class="value"> ${allUser?size}</div>
                                 <div class="label">用户数</div>
                             </div>
                         </div>
                         <div class="ui basic green button">
                             <div class="ui mini statistic">
-                                <div class="value">10</div>
+                                <div class="value"> ${allDiscussions?size}</div>
                                 <div class="label">发帖数</div>
                             </div>
                         </div>
@@ -297,20 +243,31 @@
             </div>
 
         </div>
-        <div
-                class="widescreen  large screen computer tablet only twelve wide column">
+        <div class="widescreen  large screen computer tablet only twelve wide column">
 
             <div id="context2">
                 <div class="ui secondary menu">
-                    <a class="item active" data-tab="fourth"> <i class="icon mail"></i>
-                        最新回复
-                        <div class="floating ui red label">22</div>
-                    </a> <a class="item "
-                            data-tab="fifth">热门</a> <a class="item " data-tab="sixth">新帖</a>
-                </div>
-                <div class="ui active tab segment" data-tab="fourth">
-                    <div class="ui large feed">
 
+                    <#if username??>
+                        <a class="item ${typeAll}"  href="/main?type=all">
+                            <i class="icon mail"></i>
+                            最新回复
+                            <div class="floating ui red label">1</div>
+                        </a>
+                        <a class="item ${typeHot}"   href="/main?type=hot">热门</a>
+                        <a class="item ${typeNew}" href="/main?type=new">新帖</a>
+                    <#else>
+                        <a class="item ${typeAll}"  href="/?type=all" > <i class="icon mail"></i>
+                            最新回复
+                            <div class="floating ui red label">1</div>
+                        </a>
+                        <a class="item ${typeHot}" href="/?type=hot">热门</a>
+                        <a class="item ${typeNew}"  href="/?type=new">新帖</a>
+                    </#if>
+
+                </div>
+                <div class="ui ${typeAll} tab segment" data-tab="fourth">
+                    <div class="ui large feed">
                         <#list allDiscussions as discussions>
                             <div class="event">
                                 <div class="label">
@@ -323,15 +280,14 @@
                                         </a>
 
                                         <div class="date">
-                                            3 days ago
+                                            ${discussions.startTime}
                                         </div>
                                         <div class="nullright">
-                                            <a class="ui teal label">
-                                                标签1
-                                            </a>
-                                            <a class="ui purple label">
-                                                标签2
-                                            </a>
+                                            <#list  discussions.tagList as tags>
+                                                <a class="ui ${tags.color} label">
+                                                    ${tags.name}
+                                                </a>
+                                            </#list>
                                         </div>
                                     </div>
                                     <div class="extra text"
@@ -339,109 +295,122 @@
                                         ${discussions.content}
                                     </div>
                                     <div class="meta">
-                                        <div class=" description "><i class="edit icon"></i> <a><b>用户1</b></a>&nbsp;&nbsp;•&nbsp;&nbsp;
-                                            <i class="reply icon"></i>最后由 <a><b>${discussions.last_user_id}</b></a>
-                                            回复于10 hours ago.
+                                        <div class=" description "><i class="edit icon"></i> <a><b>${discussions.username}</b></a>&nbsp;&nbsp;•&nbsp;&nbsp;
+                                            <i class="reply icon"></i>最后由 <a><b>${discussions.usernameLast}</b></a>
+                                            回复于${discussions.lastTime}.
                                         </div>
                                     </div>
                                     <div class="nullright  meta">
                                         <a class="like ">
-                                            <i class="like icon"></i> 11 喜欢
+                                            <i class="like icon"></i> ${discussions.likeCount} 喜欢
                                         </a>
                                         <a class="comment ">
-                                            <i class="comment icon"></i> 22 回复
+                                            <i class="comment icon"></i> ${discussions.commentsCount} 回复
                                         </a>
                                     </div>
                                 </div>
                             </div>
                             <div class="ui fitted divider"></div>
                         </#list>
-
-                    </div>
-
-                </div>
-
-                <div class="ui  tab segment" data-tab="fifth">
-                    <div class="ui divided items">
-                        <div class="item">
-                            <div class="ui tiny image">
-                                <img src="static/assets/images/logo.png">
-                            </div>
-                            <div class="content">
-
-                                <h4 class="header">置顶测试帖222</h4>
-                                <div class="meta">
-                                    <span class="cinema">测试广场 14</span>
-                                </div>
-                                <div class="description">
-                                    <p>123234324</p>
-                                </div>
-                                <div class="extra">
-                                    <div class="ui label">IMAX</div>
-                                    <div class="ui label">
-                                        <i class="globe icon"></i> 附加的留言
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="ui tiny image">
-                                <img src="static/assets/images/logo.png">
-                            </div>
-                            <div class="content">
-                                <a class="header">龙猫</a>
-                                <div class="meta">
-                                    <span class="cinema">测试帖1111</span>
-                                </div>
-                                <div class="description">
-                                    <p></p>
-                                </div>
-                                <div class="extra">
-                                    <div class="ui right floated primary button">
-                                        Jiscuss测试内容，测试内容 <i class="right chevron icon"></i>
-                                    </div>
-                                    <div class="ui label">限制的</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class=" ui tiny image">
-                                <img src="static/assets/images/logo.png">
-                            </div>
-                            <div class="content">
-                                <a class="header">测试帖子</a>
-                                <div class="meta">
-                                    <span class="cinema">xxx于什么时候最新回复</span>
-                                </div>
-                                <div class="meta">
-                                    <span class="cinema">IFC2222222。。。。</span>
-                                </div>
-                                <div class="description">
-                                    <p></p>
-                                </div>
-                                <div class="extra">
-                                    <div class="mini ui right floated labeled button" tabindex="0">
-                                        <div class="mini ui red button">
-                                            <i class="heart icon"></i> 喜欢
-                                        </div>
-                                        <a class="ui basic red left pointing label"> 1,048 </a>
-                                    </div>
-                                    <div class="mini ui right floated labeled button" tabindex="0">
-                                        <div class=" mini ui basic blue button">
-                                            <i class="fork icon"></i>评论
-                                        </div>
-                                        <a class="ui basic left pointing blue label"> 1,048 </a>
-                                    </div>
-                                    <div class="ui label">限制的2</div>
-                                    <div class="ui label">限制的3</div>
-                                    <div class="ui label">限制的4</div>
-                                </div>
-
-                            </div>
-                        </div>
                     </div>
                 </div>
-                <div class="ui tab segment" data-tab="sixth">6</div>
+
+                <div class="ui ${typeHot} tab segment" data-tab="fifth">
+                    <div class="ui large feed">
+                        <#list allDiscussions as discussions>
+                            <div class="event">
+                                <div class="label">
+                                    <img src="static/assets/images/logo.png">
+                                </div>
+                                <div class="content">
+                                    <div class="summary">
+                                        <a href="/getdiscussionsbyid?id=${discussions.id}">
+                                            ${discussions.title}
+                                        </a>
+
+                                        <div class="date">
+                                            ${discussions.startTime}
+                                        </div>
+                                        <div class="nullright">
+                                            <#list  discussions.tagList as tags>
+                                                <a class="ui ${tags.color} label">
+                                                    ${tags.name}
+                                                </a>
+                                            </#list>
+                                        </div>
+                                    </div>
+                                    <div class="extra text"
+                                         style="width: 300px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+                                        ${discussions.content}
+                                    </div>
+                                    <div class="meta">
+                                        <div class=" description "><i class="edit icon"></i> <a><b>${discussions.username}</b></a>&nbsp;&nbsp;•&nbsp;&nbsp;
+                                            <i class="reply icon"></i>最后由 <a><b>${discussions.usernameLast}</b></a>
+                                            回复于${discussions.lastTime}.
+                                        </div>
+                                    </div>
+                                    <div class="nullright  meta">
+                                        <a class="like ">
+                                            <i class="like icon"></i> ${discussions.likeCount} 喜欢
+                                        </a>
+                                        <a class="comment ">
+                                            <i class="comment icon"></i> ${discussions.commentsCount} 回复
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui fitted divider"></div>
+                        </#list>
+                    </div>
+                </div>
+                <div class="ui ${typeNew} tab segment" data-tab="sixth">
+                    <div class="ui large feed">
+                        <#list allDiscussions as discussions>
+                            <div class="event">
+                                <div class="label">
+                                    <img src="static/assets/images/logo.png">
+                                </div>
+                                <div class="content">
+                                    <div class="summary">
+                                        <a href="/getdiscussionsbyid?id=${discussions.id}">
+                                            ${discussions.title}
+                                        </a>
+
+                                        <div class="date">
+                                            ${discussions.startTime}
+                                        </div>
+                                        <div class="nullright">
+                                            <#list  discussions.tagList as tags>
+                                                <a class="ui ${tags.color} label">
+                                                    ${tags.name}
+                                                </a>
+                                            </#list>
+                                        </div>
+                                    </div>
+                                    <div class="extra text"
+                                         style="width: 300px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">
+                                        ${discussions.content}
+                                    </div>
+                                    <div class="meta">
+                                        <div class=" description "><i class="edit icon"></i> <a><b>${discussions.username}</b></a>&nbsp;&nbsp;•&nbsp;&nbsp;
+                                            <i class="reply icon"></i>最后由 <a><b>${discussions.usernameLast}</b></a>
+                                            回复于${discussions.lastTime}.
+                                        </div>
+                                    </div>
+                                    <div class="nullright  meta">
+                                        <a class="like ">
+                                            <i class="like icon"></i> ${discussions.likeCount} 喜欢
+                                        </a>
+                                        <a class="comment ">
+                                            <i class="comment icon"></i> ${discussions.commentsCount} 回复
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui fitted divider"></div>
+                        </#list>
+                    </div>
+                </div>
             </div>
 
 
@@ -512,11 +481,11 @@
 
     </div>
 
+    <br>
     <div class="ui button" data-tooltip="预留" data-position="top center">
         预留
     </div>
 </div>
-
 
 <#include "comm/footer.ftl"/>
 <script type="text/javascript">

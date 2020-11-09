@@ -42,6 +42,7 @@ create_time datetime
 -- 主题标签关联表3
 drop table if exists discussiontag;
 CREATE TABLE discussiontag(
+id INTEGER not null primary key auto_increment,
 discussion_id INTEGER not null ,
 tag_id INTEGER
 );
@@ -87,3 +88,21 @@ last_discussion_id INTEGER,
 create_id INTEGER,
 create_time datetime
 );
+-- 喜欢收藏表7
+drop table if exists likecollect;
+CREATE TABLE likecollect(
+id INTEGER not null primary key auto_increment,
+discussion_id INTEGER  ,
+discussion_name varchar(200),
+tag_id INTEGER ,
+post_id INTEGER ,
+post_content text,
+user_id INTEGER ,
+user_name varchar(200),
+type varchar(20),
+like_type varchar(20),
+collect_type varchar(20),
+create_id INTEGER,
+create_time datetime
+);
+

@@ -37,13 +37,25 @@ public class DiscussionsServiceImpl implements IDiscussionsService {
     }
 
     @Override
-    public Page<Discussion> queryAllDiscussionsList(Discussion discussion, int pageNum, int pageSize) {
+    public Page<Discussion> queryAllDiscussionsList(Discussion discussion, int pageNum, int pageSize,String tag,String type) {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
+        if(type.equals("hot")){
+            sort = new Sort(Sort.Direction.DESC, "likeCount");
+        }else if(type.equals("new")){
+            sort = new Sort(Sort.Direction.DESC, "startTime");
+        }
         @SuppressWarnings("deprecation")
         Pageable pageable = new PageRequest(pageNum, pageSize, sort);
         //将匹配对象封装成Example对象
         Example<Discussion> example = Example.of(discussion);
+        if(null!=tag && !"all".equals(tag)){
+            Page<Discussion> pageList=  discussionsRepository.findByQuery(tag, pageable);
+            return pageList;
+        }else{
+            Page<Discussion> pageList=  discussionsRepository.findAll(example, pageable);
+            return pageList;
+        }
 
-        return discussionsRepository.findAll(example, pageable);
+
     }
 }

@@ -36,7 +36,7 @@ public class DiscussionCustom extends Discussion {
 
     private String tag;
 
-    private List<Tag> tagList;
+    private List<TagCustom> tagList;
 
 
 }

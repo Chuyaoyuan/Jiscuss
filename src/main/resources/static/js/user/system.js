@@ -20,7 +20,7 @@ $("#upPage").click(function () {
         let page = pageNum - 1
         window.location.href = pageUrl + "?pageNum=" + page;
     } else {
-        massage('已经是首页!', '');
+        massage('已经是首页!','warn', '');
     }
 });
 
@@ -32,133 +32,52 @@ $("#nextPage").click(function () {
         let page = pageNum + 1
         window.location.href = pageUrl + "?pageNum=" + page;
     } else {
-        massage('已经是尾页!', '');
+        massage('已经是尾页!','warn', '');
     }
 });
 
-$("#createNewDiccuss").click(function () {
-    console.log("点击  createNewDiccuss");
+
+
+
+$("#createNewDiccuss2").click(function () {
+    console.log("点击  createNewDiccuss2");
     console.log(username);
 
     if (username && username != null) {
-        $('.ui.modal.createNewDiccuss')
-            .modal('show')
-        ;
-        tinymce.init({
-            selector: '#discussionscontent',
+
+        layx.iframe('createNewDiccussContent','新建主题','./newDiscussionsPage',{
+            shadable:0.8,
+            event: {
+                ondestroy: {
+                    before: function (layxWindow, winform, inside, escKey) {
+                        massage('操作成功!','success', '')
+                        console.log(new Date() + "关闭之前~")
+                        console.log(winform);
+                        console.log("=============分割线===============")
+                    },
+                    after: function () {
+                        location.reload();
+                        console.log(new Date() + "关闭之后~")
+                        massage('操作成功!','success', '')
+                        console.log("=============分割线===============")
+                    }
+                }
+            }
         });
+
     } else {
-        massage('您未登录，请先登录!', '');
+        massage('您未登录，请先登录!','error', '');
 
     }
 });
 
-
-$("#newdiscussions").click(function () {
-
-    var token = $("meta[name='_csrf']").attr("content");
-    var header = $("meta[name='_csrf_header']").attr("content");
-    console.warn(header)
-    console.warn(token)
-    var title = $("#discussionstitle").val();
-    var tag = $("#selectTag").val();
-//     $("#discussionscontent").val();
-    console.log(tinyMCE.editors[0].getContent());
-    var content = tinyMCE.editors[0].getContent();
-    console.log(title);
-    console.log(content);
-    $.ajax({
-        type: "POST",
-        url: "/newdiscussions",
-        data: JSON.stringify({
-            title: title,
-            content: content
-        }),
-        contentType: 'application/json',
-        beforeSend: function (request) {
-            request.setRequestHeader(header, token); // 添加  CSRF Token
-        },
-        dataType: "JSON",
-        success: function (data) {
-            console.log(data);
-            if (data.flag) {
-                massage(title + ',添加成功!', '');
-                $('.ui.modal.createNewDiccuss').modal('hide');
-                location.reload();
-            } else {
-                massage(data.msg, '');
-                return false;
-            }
-        }
-    });
-
-});
-
-$("#cancelnewtags").click(function () {
-    $('#createNewtagsDiv').hide();
-    $('#tagDescriptionDiv').hide();
-    $('#parentTagDiv').hide();
-    $('#colorIconDiv').hide();
-});
-
-$("#newtags").click(function () {
-    $('#createNewtagsDiv').show();
-    $('#tagDescriptionDiv').show();
-    $('#parentTagDiv').show();
-    $('#colorIconDiv').show();
-});
 
 function onTags(data) {
     console.log('123');
     console.log(data);
 }
 
-$("#commitnewtags").click(function () {
 
-    var header = $("meta[name='_csrf_header']").attr("content");
-    var token = $("meta[name='_csrf']").attr("content");
-
-    var name = $("#tagsname").val();
-
-    var tagColor = $("#tagColor").val();
-    var tagIcon = $("#tagIcon").val();
-    var parentTag = $("#parentTag").val();
-
-    let coloricon = tagColor + ',' + tagIcon
-    var tagdescription = $("#tagdescription").val();
-
-    console.log(tagColor);
-    console.log(tagIcon);
-    console.log(parentTag);
-    console.log(tagdescription);
-    console.log(name);
-    $.ajax({
-        type: "POST",
-        url: "/newtags",
-        data: JSON.stringify({
-            name: name,
-            color: coloricon,
-            description: tagdescription,
-            parentId: parentTag
-        }),
-        contentType: 'application/json',
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader(header, token);
-        },
-        dataType: "JSON",
-        success: function (data) {
-            console.log(data);
-            if (data.flag) {
-                massage(name + ',添加成功!', '');
-                $("#selectTag").html("");
-            } else {
-                massage(name + ',添加失败!', '');
-            }
-        }
-    });
-
-
-});
 
 
 $('#menu')

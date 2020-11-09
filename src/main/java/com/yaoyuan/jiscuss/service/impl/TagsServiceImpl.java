@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import com.yaoyuan.jiscuss.entity.custom.TagCustom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,11 @@ public class TagsServiceImpl implements ITagsService {
     @Override
     public List<Tag> findByDId(Integer id) {
         return tagsRepository.findByDId(id);
+    }
+
+    @Override
+    public List<TagCustom> findByDiscussionIdlistId(List<Integer> discussionIdLsit) {
+        return tagsRepository.findByDiscussionIdlistId(discussionIdLsit);
     }
 }
 

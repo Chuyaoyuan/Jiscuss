@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.yaoyuan.jiscuss.entity.*;
 import com.yaoyuan.jiscuss.entity.custom.DiscussionCustom;
-import com.yaoyuan.jiscuss.entity.custom.PostCustom;
 import com.yaoyuan.jiscuss.service.*;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -93,7 +92,7 @@ public class UserPostController extends BaseController {
 
 
     //新建主题
-    @PostMapping(value = "/newdiscussions")
+    @PostMapping(value = "/newDiscussions")
     @ResponseBody
     public String newDiscussions(@RequestBody DiscussionCustom discussion) {
         logger.info(">>> newPost" + discussion);
@@ -143,7 +142,7 @@ public class UserPostController extends BaseController {
     //删除主题
 
     //新建评论
-    @PostMapping(value = "/newpost")
+    @PostMapping(value = "/newPost")
     @ResponseBody
     public String newPosts(@RequestBody Post post) {
         logger.info(">>> newpost" + post);
@@ -199,4 +198,47 @@ public class UserPostController extends BaseController {
     }
 
     //排行榜等
+
+    /**
+     * 新建主题页
+     * @param request
+     * @param map
+     * @return
+     */
+    @RequestMapping({"/newDiscussionsPage"})
+    public String newdiccuss( HttpServletRequest request, ModelMap map) {
+
+        //获取所有标签（以后尝试去缓存中取）
+        List<Tag> allTags = tagsService.getAllList();
+        map.put("allTags", allTags);
+
+        UserInfo user = getUserInfo(request);
+        if (user != null) {
+            map.put("username", user.getUsername());
+            map.put("data", "Jiscuss 用户:" + user.getUsername());
+        }
+        return "newdiccuss";
+    }
+
+    /**
+     * 新建标签页
+     * @param request
+     * @param map
+     * @return
+     */
+    @RequestMapping({"/newTagPage"})
+    public String newtag( HttpServletRequest request, ModelMap map) {
+
+        //获取所有标签（以后尝试去缓存中取）
+        List<Tag> allTags = tagsService.getAllList();
+        map.put("allTags", allTags);
+
+        UserInfo user = getUserInfo(request);
+        if (user != null) {
+            map.put("username", user.getUsername());
+            map.put("data", "Jiscuss 用户:" + user.getUsername());
+        }
+        return "newtag";
+    }
+
 }

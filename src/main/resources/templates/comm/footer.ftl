@@ -45,10 +45,4 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-function massage(msg,type){
-// window.alert(msg);
-    toastr.info(msg)
 
-}
-</script>

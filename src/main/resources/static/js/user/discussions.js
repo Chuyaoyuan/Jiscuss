@@ -20,7 +20,7 @@ $("#addPost").click(function () {
         console.log(content);
         $.ajax({
             type: "POST",
-            url: "/newpost",
+            url: "/newPost",
             data: JSON.stringify({
                 content: content,
                 discussionId: discussionsId,
@@ -34,17 +34,17 @@ $("#addPost").click(function () {
             success: function (data) {
                 console.log(data);
                 if(data.flag){
-                    massage(content+',添加成功!','');
+                    massage(content+',添加成功!','success','');
                     location.reload();
-                    massage('评论添加成功!','');
+                    massage('评论添加成功!','success','');
                 }else{
-                    massage(data.msg,'');
+                    massage(data.msg,'error','');
                     return false;
                 }
             }
         });
     }else{
-        massage('您未登录，请先登录!','');
+        massage('您未登录，请先登录!','error','');
 
     }
 });

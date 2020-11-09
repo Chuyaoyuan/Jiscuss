@@ -1,4 +1,4 @@
-<div class="ui main  menu" id="menu">
+<div class="ui main  menu" >
     <div class="ui container">
         <div href="/" class="header borderless item">
             <img class="logo" src="static/assets/images/logo.png">
