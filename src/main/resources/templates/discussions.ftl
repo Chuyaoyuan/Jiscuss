@@ -35,7 +35,7 @@
             <div id="context2">
 
                 <h2 class="ui header">
-                    <i class="settings icon"></i>
+                    <i class="edit outline icon"></i>
                     <div class="content">
                         ${discussions.title}
                         <#list tags as tag>
@@ -49,7 +49,7 @@
                     ${discussions.content}
                 </div>
 
-                <div class="ui labeled button" tabindex="0">
+                <div class="ui labeled button" tabindex="0" style=" margin-top: 30px;">
                     <div class="ui red button">
                         <i class="heart icon"></i> 赞这个主题
                     </div>
@@ -71,67 +71,28 @@
                                     ${discussions.startTime}
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui feed">
+                    <div class="event">
+                        <div class="label">
+                            <img src="/static/assets/images/logo.png">
+                        </div>
+                        <div class="content">
                             <div class="summary">
                                 用户 <a>${discussions.realnameLast}</a> 最后回复于
                                 <div class="date">
                                     ${discussions.lastTime}
                                 </div>
                             </div>
-                            <div class="meta">
-                                <a class="like">
-                                    <i class="like icon"></i> 0 喜欢作者
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
 
-
                 <div class="ui threaded comments">
                     <h3 class="ui dividing header">评论区</h3>
                     <input type="hidden" name="postId" id="postId" value=""/>
-
-                    <#--<#list posts as post>
-                        <div class="comment">
-                            <a class="avatar">
-                                <img src="/static/assets/images/logo.png">
-                            </a>
-                            <div class="content">
-                                <a class="author">${post.username}</a>
-                                <div class="metadata">
-                                    <span class="date">${post.createTime}</span>
-                                </div>
-                                <div class="text">
-                                    ${post.content}
-                                </div>
-                                <div class="actions">
-                                    <a class="reply" onclick="replyThis('${post.username}', '${post.id}')">回复</a>
-                                </div>
-                            </div>
-
-                            <#list post.nextNodes as child>
-                                <div class="comments">
-                                    <div class="comment">
-                                        <a class="avatar">
-                                            <img src="/static/assets/images/logo.png">
-                                        </a>
-                                        <div class="content">
-                                            <a class="author">${child.username}</a>
-                                            <div class="metadata">
-                                                <span class="date">${child.createTime}</span>
-                                            </div>
-                                            <div class="text">
-                                                ${child.content}
-                                            </div>
-                                            <div class="actions">
-                                                <a class="reply" onclick="replyThis('${child.username}', '${child.id}')">回复</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </#list>
-                        </div>
-                    </#list>-->
 
                     <!-- 定义遍历方法 -->
                     <#macro bpTree posts>
