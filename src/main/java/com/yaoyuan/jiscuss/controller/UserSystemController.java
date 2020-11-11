@@ -41,6 +41,7 @@ public class UserSystemController extends BaseController {
 
     /**
      * 首页index
+     *
      * @param tag
      * @param type
      * @param pageNum
@@ -49,8 +50,8 @@ public class UserSystemController extends BaseController {
      * @return
      */
     @RequestMapping({"/", "/main", "/index"})
-    public String home(@RequestParam(defaultValue = "all") String tag, @RequestParam(defaultValue = "all") String type, @RequestParam(defaultValue = "1") Integer
-            pageNum, HttpServletRequest request, ModelMap map) {
+    public String home(@RequestParam(defaultValue = "all") String tag, @RequestParam(defaultValue = "all") String type,
+                       @RequestParam(defaultValue = "1") Integer pageNum, HttpServletRequest request, ModelMap map) {
         logger.info(">>> index");
         logger.info(">>> tag:" + tag);
         logger.info(">>> pageNum:" + pageNum);
@@ -64,7 +65,7 @@ public class UserSystemController extends BaseController {
         List<Discussion> allDiscussions = allDiscussionsPage.getContent();
         List<DiscussionCustom> newAllD = new ArrayList<>();
 
-        setTagAndUserList(newAllD,allDiscussions);
+        setTagAndUserList(newAllD, allDiscussions);
 
         logger.info("全部主题==>：{}", allDiscussions);
 
@@ -76,6 +77,12 @@ public class UserSystemController extends BaseController {
         //获取所有标签（以后尝试去缓存中取） 
         List<Tag> allTags = tagsService.getAllList();
         logger.info("全部标签==>：{}", allTags);
+
+        if(!tag.equals("all")){
+            //获取是否有子标签
+            List<Tag> allChildTags = tagsService.findByParentId(tag);
+            map.put("allChildTags", allChildTags);
+        }
 
         map.put("data", "Jiscuss 用户");
         map.put("allDiscussions", newAllD);
@@ -108,6 +115,7 @@ public class UserSystemController extends BaseController {
 
     /**
      * 组装DiscussionCustom
+     *
      * @param newAllD
      * @param allDiscussions
      */
@@ -122,13 +130,13 @@ public class UserSystemController extends BaseController {
         Map<Integer, List<TagCustom>> tagMap = new HashMap<>();
         for (TagCustom tc : TagCustomList) {
             List<TagCustom> tagCustomListTemp = new ArrayList<>();
-            if(tagMap.containsKey(tc.getDiscussionId())){
+            if (tagMap.containsKey(tc.getDiscussionId())) {
                 tagCustomListTemp = tagMap.get(tc.getDiscussionId());
                 tagCustomListTemp.add(tc);
-                tagMap.put(tc.getDiscussionId(),tagCustomListTemp);
-            }else{
+                tagMap.put(tc.getDiscussionId(), tagCustomListTemp);
+            } else {
                 tagCustomListTemp.add(tc);
-                tagMap.put(tc.getDiscussionId(),tagCustomListTemp);
+                tagMap.put(tc.getDiscussionId(), tagCustomListTemp);
             }
         }
         for (Discussion dd : allDiscussions) {
@@ -162,6 +170,7 @@ public class UserSystemController extends BaseController {
 
     /**
      * 分页信息
+     *
      * @param size
      * @return
      */
@@ -176,6 +185,7 @@ public class UserSystemController extends BaseController {
 
     /**
      * 登录页
+     *
      * @param error
      * @param logout
      * @param map
@@ -199,6 +209,7 @@ public class UserSystemController extends BaseController {
 
     /**
      * 注册提交
+     *
      * @param username
      * @param email
      * @param password
@@ -228,6 +239,7 @@ public class UserSystemController extends BaseController {
 
     /**
      * 注册页面
+     *
      * @return
      */
     @RequestMapping("/register")

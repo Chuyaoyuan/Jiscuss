@@ -36,5 +36,4 @@ public class PostCustom extends Post {
     private List<PostCustom> child;
 
 
-
 }

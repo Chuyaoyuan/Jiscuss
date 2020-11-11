@@ -14,44 +14,44 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="tag")
-public class Tag implements Serializable{
+@Table(name = "tag")
+public class Tag implements Serializable {
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
-    @Column(name="name")
+
+    @Column(name = "name")
     private String name;
-    
-    @Column(name="description")
+
+    @Column(name = "description")
     private String description;
-    
-    @Column(name="color")
+
+    @Column(name = "color")
     private String color;
 
-    @Column(name="icon")
+    @Column(name = "icon")
     private String icon;
-    
-    @Column(name="position")
+
+    @Column(name = "position")
     private Integer position;
-    
-    @Column(name="parent_id")
+
+    @Column(name = "parent_id")
     private Integer parentId;
 
-    @Column(name="discussions_count")
+    @Column(name = "discussions_count")
     private String discussionsCount;
-    
-    @Column(name="last_time")
+
+    @Column(name = "last_time")
     private Date lastTime;
-    
-    @Column(name="last_discussion_id")
+
+    @Column(name = "last_discussion_id")
     private Integer lastDiscussionId;
-    
-    @Column(name="create_id")
+
+    @Column(name = "create_id")
     private Integer createId;
-    
-    @Column(name="create_time")
+
+    @Column(name = "create_time")
     private Date createTime;
 }

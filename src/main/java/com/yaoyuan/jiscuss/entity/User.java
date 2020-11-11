@@ -15,62 +15,60 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 
-
-
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Data
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
- 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
- 
-    @Column(name="username")
+
+    @Column(name = "username")
     private String username;
-    
-    @Column(name="realname")
+
+    @Column(name = "realname")
     private String realname;
-    
-    @Column(name="email")
+
+    @Column(name = "email")
     private String email;
-    
-    @Column(name="password")
+
+    @Column(name = "password")
     private String password;
-    
-    @Column(name="join_time")
+
+    @Column(name = "join_time")
     private Date joinTime;
- 
-    @Column(name="age")
+
+    @Column(name = "age")
     private Integer age;
-    
-    @Column(name="gender")
+
+    @Column(name = "gender")
     private String gender;
 
-    @Column(name="avatar")
+    @Column(name = "avatar")
     private String avatar;
-    
-    @Column(name="phone")
+
+    @Column(name = "phone")
     private String phone;
-    
-    @Column(name="discussions_count")
+
+    @Column(name = "discussions_count")
     private Integer discussionsCount;
-    
-    @Column(name="comments_count")
+
+    @Column(name = "comments_count")
     private Integer commentsCount;
-    
-    @Column(name="last_seen_time")
+
+    @Column(name = "last_seen_time")
     private Date lastSeenTime;
- 
-    @Column(name="flag")
+
+    @Column(name = "flag")
     private Integer flag;
-    
-    @Column(name="level")
+
+    @Column(name = "level")
     private Integer level;
 
 }

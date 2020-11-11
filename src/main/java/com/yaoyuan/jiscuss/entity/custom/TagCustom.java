@@ -20,21 +20,21 @@ import javax.persistence.GenerationType;
 @Data
 @Setter
 @Getter
-public class TagCustom  {
+public class TagCustom {
 
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name="description")
+    @Column(name = "description")
     private String description;
 
-    @Column(name="color")
+    @Column(name = "color")
     private String color;
 
-    @Column(name="icon")
+    @Column(name = "icon")
     private String icon;
 
-    @Column(name="discussion_id")
+    @Column(name = "discussion_id")
     private Integer discussionId;
 
 

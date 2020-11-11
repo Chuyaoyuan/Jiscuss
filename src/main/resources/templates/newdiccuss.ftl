@@ -15,35 +15,35 @@
 </head>
 <body>
 <div class="ui container" id="container">
-        <div class=" content" >
-            <form class="ui form">
+    <div class=" content">
+        <form class="ui form">
 
-                <div class="field">
-                    <label>标题</label>
-                    <input type="text" placeholder="标题" id="discussionstitle">
-                </div>
-                <div class="field">
-                    <label>选择标签</label>
-                    <select  multiple="" class="ui fluid dropdown" id="selectTag">
-                        <option value="">选择标签</option>
-                        <#list allTags as tag>
-                            <option value="${tag.id}">${tag.name}</option>
-                        </#list>
-                    </select>
-                </div>
-                <div class="field">
-                    &nbsp;<button class="ui teal button" onclick="onNewtags()">新增标签</button>
-                </div>
+            <div class="field">
+                <label>标题</label>
+                <input type="text" placeholder="标题" id="discussionstitle">
+            </div>
+            <div class="field">
+                <label>选择标签</label>
+                <select multiple="" class="ui fluid dropdown" id="selectTag">
+                    <option value="">选择标签</option>
+                    <#list allTags as tag>
+                        <option value="${tag.id}">${tag.name}</option>
+                    </#list>
+                </select>
+            </div>
+            <div class="field">
+                &nbsp;<button class="ui teal button" onclick="onNewtags()">新增标签</button>
+            </div>
 
 
-                <div class="field">
-                    <label>内容</label>
-                    <textarea id="discussionsContent"></textarea>
-                </div>
+            <div class="field">
+                <label>内容</label>
+                <textarea id="discussionsContent"></textarea>
+            </div>
 
-                <div class="ui fluid large blue  button" id="newDiscussions">提交内容</div>
-            </form>
-        </div>
+            <div class="ui fluid large blue  button" id="newDiscussions">提交内容</div>
+        </form>
+    </div>
 </div>
 
 <script type="text/javascript" charset="UTF-8" src="/static/js/comm/util.js"></script>
@@ -57,15 +57,16 @@
     $(document).ready(function () {
         tinymce.init({
             selector: '#discussionsContent',
+            height: 280, // 高度
         });
     });
 
     function onNewtags() {
-        parent.layx.iframe('createNewTagContent','新建标签','./newTagPage',{
-            alwaysOnTop:true,
-            shadable:true,
-            width:380,
-            height:500
+        parent.layx.iframe('createNewTagContent', '新建标签', './newTagPage', {
+            alwaysOnTop: true,
+            shadable: true,
+            width: 380,
+            height: 500
         });
     }
 
@@ -106,7 +107,7 @@
                     // parent.layx.destroy('createNewTagContent');   // 方法一（推荐）
                     // location.reload();
                 } else {
-                    massage(data.msg,'error', '');
+                    massage(data.msg, 'error', '');
                     return false;
                 }
             }

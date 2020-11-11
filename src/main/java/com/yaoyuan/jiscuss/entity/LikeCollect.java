@@ -15,7 +15,7 @@ import java.util.Date;
  */
 @Data
 @Entity
-@Table(name="likecollect")
+@Table(name = "likecollect")
 public class LikeCollect implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -23,40 +23,40 @@ public class LikeCollect implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name="discussion_id")
+    @Column(name = "discussion_id")
     private Integer discussionId;
 
-    @Column(name="discussion_name")
+    @Column(name = "discussion_name")
     private String discussionName;
 
-    @Column(name="tag_id")
+    @Column(name = "tag_id")
     private Integer tagId;
 
-    @Column(name="post_id")
+    @Column(name = "post_id")
     private Integer postId;
 
-    @Column(name="post_content")
+    @Column(name = "post_content")
     private String postContent;
 
-    @Column(name="user_id")
+    @Column(name = "user_id")
     private Integer userId;
 
-    @Column(name="user_name")
+    @Column(name = "user_name")
     private String userName;
 
-    @Column(name="type")
+    @Column(name = "type")
     private String type;
 
-    @Column(name="like_type")
+    @Column(name = "like_type")
     private String likeType;
 
-    @Column(name="collect_type")
+    @Column(name = "collect_type")
     private String collectType;
 
-    @Column(name="create_id")
+    @Column(name = "create_id")
     private Integer createId;
 
-    @Column(name="create_time")
+    @Column(name = "create_time")
     private Date createTime;
 
 }

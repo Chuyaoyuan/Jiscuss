@@ -13,7 +13,7 @@
         <i class="left chevron icon"></i>
     </a>
 <#--    <li class="page-item"><span class="page-link">共条${totalrecords}记录&nbsp;&nbsp;第${page}页/共${totalpages}页</span></li>-->
-    <a class="item" ><span >共条${totalrecords}记录&nbsp;&nbsp;第${page}页/共${totalpages}页</span></a>
+    <a class="item"><span>共条${totalrecords}记录&nbsp;&nbsp;第${page}页/共${totalpages}页</span></a>
 
 <#--startpage:起始页码就是page，endpage:结束页码，showfirstpage是否显示首页按钮，showlastpage：是否显示末页按钮，showpre是否显示前...，shownext是否显示后...-->
     <#assign startpage = page,endpage=10,showfirstpage=false,showlastpage=false,showpre=false,shownext=false,prepage = 1,nextpage=11>
@@ -50,27 +50,27 @@
 
 <#--首页-->
     <#if showfirstpage>
-<#--        <li class="page-item"><span><a class="page-link" href="${url}&pageNum=1">首页</a></span></li>-->
+    <#--        <li class="page-item"><span><a class="page-link" href="${url}&pageNum=1">首页</a></span></li>-->
         <a class="item" href="${url}&pageNum=1">首页</a>
     </#if>
 <#--前面的...-->
     <#if showpre>
-<#--        <li class="page-item"><span><a class="page-link" href="${url}&page=${prepage}">...</a></span></li>-->
+    <#--        <li class="page-item"><span><a class="page-link" href="${url}&page=${prepage}">...</a></span></li>-->
         <a class="item" href="${url}&pageNum=${prepage}">...</a>
     </#if>
 <#--显示的页码按钮-->
     <#list startpage..endpage as p>
-<#--        <li  class="page-item <#if p == page>active</#if>"><span><a class="page-link" href="${url}&pageNum=${p}">${p}</a></span></li>-->
+    <#--        <li  class="page-item <#if p == page>active</#if>"><span><a class="page-link" href="${url}&pageNum=${p}">${p}</a></span></li>-->
         <a class="item" style="  <#if p == page>background-color: #7d827d;</#if>" href="${url}&pageNum=${p}">${p}</a>
     </#list>
 <#--后面的...-->
     <#if shownext>
-<#--        <li class="page-item"><span><a class="page-link" href="${url}&pageNum=${nextpage}">...</a></span></li>-->
+    <#--        <li class="page-item"><span><a class="page-link" href="${url}&pageNum=${nextpage}">...</a></span></li>-->
         <a class="item" href="${url}&pageNum=${nextpage}">...</a>
     </#if>
 <#--显示尾页-->
     <#if showlastpage>
-<#--        <li class="page-item"><span><a class="page-link" href="${url}&pageNum=${totalpages}">末页</a></span></li>-->
+    <#--        <li class="page-item"><span><a class="page-link" href="${url}&pageNum=${totalpages}">末页</a></span></li>-->
         <a class="item" href="${url}&pageNum=${totalpages}">末页</a>
     </#if>
 </#macro>

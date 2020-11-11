@@ -1,4 +1,4 @@
-<div class="ui main  menu" >
+<div class="ui main  menu" id="menu">
     <div class="ui container">
         <div href="/" class="header borderless item">
             <img class="logo" src="static/assets/images/logo.png">
@@ -10,9 +10,7 @@
             更多
             <i class="dropdown icon"></i>
             <div class="menu transition hidden" tabindex="-1">
-                <div class="item">行为</div>
-                <div class="item">另一个行为</div>
-                <div class="item">其他东西</div>
+                <a class=" item " href="/user">用户页</a>
                 <div class="divider"></div>
                 <div class="item">分割链接</div>
                 <div class="divider"></div>
@@ -28,7 +26,7 @@
             </div>
             <div class="item" id="userlogin">
                 <#if username??>
-                    <form class="ui large form" action="/logout"  id="logoutForm" method="post"  style="display: none;">
+                    <form class="ui large form" action="/logout" id="logoutForm" method="post" style="display: none;">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     </form>
                     ${username} &nbsp;&nbsp;<a href="javascript:document.getElementById('logoutForm').submit();">注销</a>
@@ -39,6 +37,5 @@
         </div>
     </div>
 </div>
-
 
 <script type="text/javascript" charset="UTF-8" src="/static/js/user/header.js"></script>

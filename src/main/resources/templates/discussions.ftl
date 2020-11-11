@@ -20,7 +20,7 @@
         <i class="close icon"></i>
         <div class="header">欢迎来到这里</div>
         <ul class="list">
-            <li>JAVA + DISCUSS = JISCUSS 。${posts?size}</li>
+            <li>JAVA + DISCUSS = JISCUSS 。</li>
             <li>简单的，易用的JAVA论坛。</li>
             <li>请享受发帖回帖带来的乐趣吧！</li>
         </ul>

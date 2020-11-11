@@ -17,48 +17,48 @@ import java.io.PrintWriter;
 
 /**
  * 处理无权请求
- * @author charlie
  *
+ * @author charlie
  */
 @Component
 public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
-	private Logger log = LoggerFactory.getLogger(CustomAccessDeniedHandler.class);
+    private Logger log = LoggerFactory.getLogger(CustomAccessDeniedHandler.class);
 
-	@Override
-	public void handle(HttpServletRequest request, HttpServletResponse response,
-			AccessDeniedException accessDeniedException) throws IOException, ServletException {
-		boolean isAjax = ControllerTools.isAjaxRequest(request);
-		System.out.println("CustomAccessDeniedHandler handle");
-		if (!response.isCommitted()) {
-			if (isAjax) {
-				String msg = accessDeniedException.getMessage();
-				log.info("accessDeniedException.message:" + msg);
-				String accessDenyMsg = "{\"code\":\"403\",\"msg\":\"没有权限\"}";
-				ControllerTools.print(response, accessDenyMsg);
-			} else {
-				request.setAttribute(WebAttributes.ACCESS_DENIED_403, accessDeniedException);
-				response.setStatus(HttpStatus.FORBIDDEN.value());
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/403");
-				dispatcher.forward(request, response);
-			}
-		}
+    @Override
+    public void handle(HttpServletRequest request, HttpServletResponse response,
+                       AccessDeniedException accessDeniedException) throws IOException, ServletException {
+        boolean isAjax = ControllerTools.isAjaxRequest(request);
+        System.out.println("CustomAccessDeniedHandler handle");
+        if (!response.isCommitted()) {
+            if (isAjax) {
+                String msg = accessDeniedException.getMessage();
+                log.info("accessDeniedException.message:" + msg);
+                String accessDenyMsg = "{\"code\":\"403\",\"msg\":\"没有权限\"}";
+                ControllerTools.print(response, accessDenyMsg);
+            } else {
+                request.setAttribute(WebAttributes.ACCESS_DENIED_403, accessDeniedException);
+                response.setStatus(HttpStatus.FORBIDDEN.value());
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/403");
+                dispatcher.forward(request, response);
+            }
+        }
 
-	}
+    }
 
-	public static class ControllerTools {
-		public static boolean isAjaxRequest(HttpServletRequest request) {
-			return "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
-		}
+    public static class ControllerTools {
+        public static boolean isAjaxRequest(HttpServletRequest request) {
+            return "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
+        }
 
-		public static void print(HttpServletResponse response, String msg) throws IOException {
-			response.setCharacterEncoding("UTF-8");
-			response.setContentType("application/json; charset=utf-8");
-			PrintWriter writer = response.getWriter();
-			writer.write(msg);
-			writer.flush();
-			writer.close();
-		}
-	}
+        public static void print(HttpServletResponse response, String msg) throws IOException {
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("application/json; charset=utf-8");
+            PrintWriter writer = response.getWriter();
+            writer.write(msg);
+            writer.flush();
+            writer.close();
+        }
+    }
 
 }

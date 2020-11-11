@@ -21,8 +21,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping(path="/other_api",produces="application/json;charset=utf-8")
-@Api(value = "主题帖子(其他)接口管理", tags = { "主题帖子(其他)接口管理"})
+@RequestMapping(path = "/other_api", produces = "application/json;charset=utf-8")
+@Api(value = "主题帖子(其他)接口管理", tags = {"主题帖子(其他)接口管理"})
 public class RestPostController {
     private static Logger logger = LoggerFactory.getLogger(RestPostController.class);
 
@@ -33,7 +33,7 @@ public class RestPostController {
     @ApiOperation("新增主题")
     public Discussion save(@RequestBody Discussion discussion) {
         Discussion saveDiscussion = discussionsService.insert(discussion);
-        if (saveDiscussion !=null) {
+        if (saveDiscussion != null) {
             return saveDiscussion;
         } else {
             throw new BaseException(ResponseCode.RESOURCES_NOT_EXIST);
@@ -52,7 +52,7 @@ public class RestPostController {
     @ApiOperation("获取全部主题")
     public List<Discussion> getAllDiscussions() {
         List<Discussion> allDiscussions = discussionsService.getAllList();
-        logger.info("全部主题==>：{}",allDiscussions);
+        logger.info("全部主题==>：{}", allDiscussions);
         return allDiscussions;
     }
 

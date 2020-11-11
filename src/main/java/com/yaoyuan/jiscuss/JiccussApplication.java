@@ -8,8 +8,8 @@ import org.springframework.cache.annotation.EnableCaching;
 @EnableCaching
 public class JiccussApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(JiccussApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(JiccussApplication.class, args);
+    }
 
 }

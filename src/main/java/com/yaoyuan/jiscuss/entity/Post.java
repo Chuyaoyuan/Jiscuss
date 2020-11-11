@@ -14,54 +14,54 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="post")
-public class Post implements Serializable{
+@Table(name = "post")
+public class Post implements Serializable {
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
-    @Column(name="discussion_id")
+
+    @Column(name = "discussion_id")
     private Integer discussionId;
-    
-    @Column(name="number")
+
+    @Column(name = "number")
     private Integer number;
-    
-    @Column(name="time")
+
+    @Column(name = "time")
     private Date time;
-    
-    @Column(name="user_id")
+
+    @Column(name = "user_id")
     private Integer userId;
-    
-    @Column(name="type")
+
+    @Column(name = "type")
     private String type;
-    
-    @Column(name="content")
+
+    @Column(name = "content")
     private String content;
 
-    @Column(name="parent_id")
+    @Column(name = "parent_id")
     private Integer parentId;
-    
-    @Column(name="edit_time")
+
+    @Column(name = "edit_time")
     private Date editTime;
-    
-    @Column(name="edit_user_id")
+
+    @Column(name = "edit_user_id")
     private Integer editUserId;
-    
-    @Column(name="ip_address")
+
+    @Column(name = "ip_address")
     private String ipAddress;
-    
-    @Column(name="copyright")
+
+    @Column(name = "copyright")
     private String copyright;
-    
-    @Column(name="is_approved")
+
+    @Column(name = "is_approved")
     private Integer isApproved;
-    
-    @Column(name="create_id")
+
+    @Column(name = "create_id")
     private Integer createId;
-    
-    @Column(name="create_time")
+
+    @Column(name = "create_time")
     private Date createTime;
 }
 

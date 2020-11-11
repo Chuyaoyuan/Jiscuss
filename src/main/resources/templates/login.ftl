@@ -68,7 +68,7 @@
 
     $(document).ready(function () {
         <#if msg??>
-            $('#msgId').show();
+        $('#msgId').show();
         </#if>
     });
 

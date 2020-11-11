@@ -1,8 +1,6 @@
 package com.yaoyuan.jiscuss.service.impl;
 
 
-
-
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -20,7 +18,7 @@ import org.springframework.cache.annotation.Cacheable;
 import com.yaoyuan.jiscuss.entity.User;
 import com.yaoyuan.jiscuss.repository.UsersRepository;
 import com.yaoyuan.jiscuss.service.IUsersService;
- 
+
 @Service
 @Transactional
 public class UsersServiceImpl implements IUsersService {
@@ -29,6 +27,7 @@ public class UsersServiceImpl implements IUsersService {
 
     /**
      * 获取全部用户
+     *
      * @return
      */
     @Cacheable(value = "user")
@@ -39,20 +38,22 @@ public class UsersServiceImpl implements IUsersService {
 
     /**
      * 分页查询
+     *
      * @param pageNum
      * @param pageSize
      * @return
      */
     @Override
     public Page<User> queryAllUsersList(int pageNum, int pageSize) {
-        Sort sort=new Sort(Sort.Direction.DESC,"id");
+        Sort sort = new Sort(Sort.Direction.DESC, "id");
         @SuppressWarnings("deprecation")
-		Pageable pageable=new PageRequest(pageNum,pageSize,sort);
+        Pageable pageable = new PageRequest(pageNum, pageSize, sort);
         return usersRepository.findAll(pageable);
     }
 
     /**
      * 根据名称模糊查询
+     *
      * @param name
      * @return
      */
@@ -63,6 +64,7 @@ public class UsersServiceImpl implements IUsersService {
 
     /**
      * 根据id查询
+     *
      * @param id
      * @return
      */
@@ -74,6 +76,7 @@ public class UsersServiceImpl implements IUsersService {
 
     /**
      * 新增
+     *
      * @param user
      * @return
      */
@@ -85,6 +88,7 @@ public class UsersServiceImpl implements IUsersService {
 
     /**
      * 更新修改
+     *
      * @param user
      * @param id
      * @return
@@ -97,12 +101,13 @@ public class UsersServiceImpl implements IUsersService {
 
     /**
      * 移除
+     *
      * @param id
      */
     @CacheEvict(value = "user", key = "#id")
     @Override
     public void remove(Integer id) {
-    	usersRepository.deleteById(id);
+        usersRepository.deleteById(id);
     }
 
     /**
@@ -110,29 +115,31 @@ public class UsersServiceImpl implements IUsersService {
      */
     @Override
     public void deleteAll() {
-    	usersRepository.deleteAll();
+        usersRepository.deleteAll();
     }
 
     /**
      * 根据名称查询
+     *
      * @param username
      * @return
      */
-	@Override
-	public User getByUsername(String username) {
-		return usersRepository.getByUsername(username);
-	}
+    @Override
+    public User getByUsername(String username) {
+        return usersRepository.getByUsername(username);
+    }
 
     /**
      * 验证用户名密码
+     *
      * @param username
      * @param password
      * @return
      */
-	@Override
-	public User checkByUsernameAndPassword(String username, String password) {
-		return usersRepository.checkByUsernameAndPassword(username,password);
-	}
+    @Override
+    public User checkByUsernameAndPassword(String username, String password) {
+        return usersRepository.checkByUsernameAndPassword(username, password);
+    }
 
 
 }

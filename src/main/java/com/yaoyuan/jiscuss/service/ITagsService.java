@@ -14,4 +14,8 @@ public interface ITagsService {
     List<Tag> findByDId(Integer id);
 
     List<TagCustom> findByDiscussionIdlistId(List<Integer> discussionIdLsit);
+
+    List<Tag> findByParentId(String tag);
+
+    List<Tag> getAllListDiscussions();
 }

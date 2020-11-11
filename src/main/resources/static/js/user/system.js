@@ -20,7 +20,7 @@ $("#upPage").click(function () {
         let page = pageNum - 1
         window.location.href = pageUrl + "?pageNum=" + page;
     } else {
-        massage('已经是首页!','warn', '');
+        massage('已经是首页!', 'warn', '');
     }
 });
 
@@ -32,11 +32,9 @@ $("#nextPage").click(function () {
         let page = pageNum + 1
         window.location.href = pageUrl + "?pageNum=" + page;
     } else {
-        massage('已经是尾页!','warn', '');
+        massage('已经是尾页!', 'warn', '');
     }
 });
-
-
 
 
 $("#createNewDiccuss2").click(function () {
@@ -45,12 +43,12 @@ $("#createNewDiccuss2").click(function () {
 
     if (username && username != null) {
 
-        layx.iframe('createNewDiccussContent','新建主题','./newDiscussionsPage',{
-            shadable:0.8,
+        layx.iframe('createNewDiccussContent', '新建主题', './newDiscussionsPage', {
+            shadable: 0.8,
             event: {
                 ondestroy: {
                     before: function (layxWindow, winform, inside, escKey) {
-                        massage('操作成功!','success', '')
+                        massage('操作成功!', 'success', '')
                         console.log(new Date() + "关闭之前~")
                         console.log(winform);
                         console.log("=============分割线===============")
@@ -58,7 +56,7 @@ $("#createNewDiccuss2").click(function () {
                     after: function () {
                         location.reload();
                         console.log(new Date() + "关闭之后~")
-                        massage('操作成功!','success', '')
+                        massage('操作成功!', 'success', '')
                         console.log("=============分割线===============")
                     }
                 }
@@ -66,19 +64,20 @@ $("#createNewDiccuss2").click(function () {
         });
 
     } else {
-        massage('您未登录，请先登录!','error', '');
+        massage('您未登录，请先登录!', 'error', '');
 
     }
 });
 
 
 function onTags(data) {
-    console.log('123');
-    console.log(data);
+    console.log('点击标签跳转' + data);
+    if (username && username != null) {
+        window.location.href = '/main?tag=' + data
+    } else {
+        window.location.href = '/?tag=' + data
+    }
 }
-
-
-
 
 $('#menu')
     .sticky({

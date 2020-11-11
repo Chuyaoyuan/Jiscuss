@@ -24,62 +24,62 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/user_api")
-@Api(value = "用户接口管理", tags = { "用户接口管理" })
+@Api(value = "用户接口管理", tags = {"用户接口管理"})
 public class RestUserController {
 
-	private static Logger logger = LoggerFactory.getLogger(RestUserController.class);
+    private static Logger logger = LoggerFactory.getLogger(RestUserController.class);
 
-	@Autowired
-	private IUsersService usersService;
+    @Autowired
+    private IUsersService usersService;
 
-	@PostMapping("/user")
-	@ApiOperation("新增用户")
-	public User save(@RequestBody User user) {
-		User saveUser = usersService.insert(user);
-		if (saveUser!=null) {
-			return saveUser;
-		} else {
-			throw new BaseException(ResponseCode.RESOURCES_NOT_EXIST);
-		}
+    @PostMapping("/user")
+    @ApiOperation("新增用户")
+    public User save(@RequestBody User user) {
+        User saveUser = usersService.insert(user);
+        if (saveUser != null) {
+            return saveUser;
+        } else {
+            throw new BaseException(ResponseCode.RESOURCES_NOT_EXIST);
+        }
 
-	}
+    }
 
-	@DeleteMapping("/user/{id}")
-	@ApiOperation("删除用户")
-	public Boolean delete(@PathVariable Integer id) {
-		Boolean delete = true;
-		usersService.remove(id);
-		if (delete) {
-			return delete;
-		} else {
-			throw new BaseException(ResponseCode.RESOURCES_NOT_EXIST);
-		}
-	}
+    @DeleteMapping("/user/{id}")
+    @ApiOperation("删除用户")
+    public Boolean delete(@PathVariable Integer id) {
+        Boolean delete = true;
+        usersService.remove(id);
+        if (delete) {
+            return delete;
+        } else {
+            throw new BaseException(ResponseCode.RESOURCES_NOT_EXIST);
+        }
+    }
 
-	@PutMapping("/user/{id}")
-	@ApiOperation("修改用户")
-	public User update(@RequestBody User user, @PathVariable Integer id) {
-		User updateuser = usersService.update(user, id);
-		if (updateuser!=null) {
-			return updateuser;
-		} else {
-			throw new BaseException(ResponseCode.RESOURCES_NOT_EXIST);
-		}
-	}
+    @PutMapping("/user/{id}")
+    @ApiOperation("修改用户")
+    public User update(@RequestBody User user, @PathVariable Integer id) {
+        User updateuser = usersService.update(user, id);
+        if (updateuser != null) {
+            return updateuser;
+        } else {
+            throw new BaseException(ResponseCode.RESOURCES_NOT_EXIST);
+        }
+    }
 
-	@GetMapping("/user/{id}")
-	@ApiOperation("获取用户")
-	public User getUser(@PathVariable Integer id) {
-		User user = usersService.findOne(id);
-		return user;
-	}
+    @GetMapping("/user/{id}")
+    @ApiOperation("获取用户")
+    public User getUser(@PathVariable Integer id) {
+        User user = usersService.findOne(id);
+        return user;
+    }
 
-	@GetMapping("/user")
-	@ApiOperation("获取全部用户")
-	public List<User> getUser(User user) {
-		List<User> userall = usersService.getAllList();
-		logger.info("全部用户==>：{}",userall);
-		return userall;
-	}
+    @GetMapping("/user")
+    @ApiOperation("获取全部用户")
+    public List<User> getUser(User user) {
+        List<User> userall = usersService.getAllList();
+        logger.info("全部用户==>：{}", userall);
+        return userall;
+    }
 
 }

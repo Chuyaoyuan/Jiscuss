@@ -28,13 +28,13 @@
                         <a class="item ${like}" href="/user?type=like">喜欢收藏</a>
 
                     </div>
-                    <div class="ui bottom attached tab segment ${discussion}" >
+                    <div class="ui bottom attached tab segment ${discussion}">
                         主题...
                     </div>
-                    <div class="ui bottom attached tab segment ${change}" >
+                    <div class="ui bottom attached tab segment ${change}">
                         动态...
                     </div>
-                    <div class="ui bottom attached tab segment ${like}" >
+                    <div class="ui bottom attached tab segment ${like}">
                         喜欢收藏...
                     </div>
                 </div>

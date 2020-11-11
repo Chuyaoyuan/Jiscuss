@@ -37,7 +37,7 @@
             <div class="ui stacked segment">
                 <div class="required field">
                     <label>用户名</label>
-                    <input type="text"  name="username"  placeholder="用户名">
+                    <input type="text" name="username" placeholder="用户名">
                 </div>
                 <div class="required field">
                     <label>邮箱地址</label>

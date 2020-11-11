@@ -32,7 +32,8 @@
     <div class="ui four column grid">
         <div class="widescreen  large screen computer tablet only four wide column">
 
-            <div class="fluid ui animated fade primary button" tabindex="0" id="createNewDiccuss2" style=" margin-bottom: 20px;">
+            <div class="fluid ui animated fade primary button" tabindex="0" id="createNewDiccuss2"
+                 style=" margin-bottom: 20px;">
                 <div class="visible content">
                     <i class="pen square icon"></i>创建新帖
                 </div>
@@ -41,12 +42,12 @@
                 </div>
             </div>
 
-            <div class="ui modal createNewDiccuss" id = "createNewDiccussContent">
+            <div class="ui modal createNewDiccuss" id="createNewDiccussContent">
                 <i class="close icon"></i>
                 <div class="header">
                     创建新帖
                 </div>
-                <div class=" content" >
+                <div class=" content">
                     <form class="ui form">
 
                         <div class="field">
@@ -64,9 +65,9 @@
                         </div>
 
                         <div class="field">
-<#--                            <button class="ui teal button" id="newtags">新增标签</button>-->
-<#--                            <a href="/login" id="loginmodel">登录&nbsp;&nbsp;&&nbsp;&nbsp;注册</a>-->
-                            &nbsp;<a  onclick="onNewtags()">新增标签</a>
+                            <#--                            <button class="ui teal button" id="newtags">新增标签</button>-->
+                            <#--                            <a href="/login" id="loginmodel">登录&nbsp;&nbsp;&&nbsp;&nbsp;注册</a>-->
+                            &nbsp;<a onclick="onNewtags()">新增标签</a>
                         </div>
 
                         <div class="field" id="createNewtagsDiv" style="display:none">
@@ -74,11 +75,11 @@
                             <input type="text" placeholder="标签名" id="tagsname">
                         </div>
                         <div class="two fields" id="tagDescriptionDiv" style="display:none">
-                            <div class="field"  >
+                            <div class="field">
                                 <label>描述</label>
                                 <input type="text" placeholder="描述" id="tagdescription">
                             </div>
-                            <div class="field"  >
+                            <div class="field">
                                 <label>父标签</label>
                                 <select class="ui fluid dropdown" id="parentTag">
                                     <#list allTags as tag>
@@ -95,19 +96,58 @@
                                     <i class="dropdown icon"></i>
                                     <div class="default text">选择颜色</div>
                                     <div class="menu">
-                                        <div class="item" data-value="red"><div class="ui red empty circular label"></div>红色</div>
-                                        <div class="item" data-value="orange"><div class="ui orange empty circular label"></div>橙色</div>
-                                        <div class="item" data-value="yellow"><div class="ui yellow empty circular label"></div>黄色</div>
-                                        <div class="item" data-value="olive"><div class="ui olive empty circular label"></div>橄榄绿</div>
-                                        <div class="item" data-value="green"><div class="ui green empty circular label"></div>纯绿</div>
-                                        <div class="item" data-value="teal"><div class="ui teal empty circular label"></div>水鸭蓝</div>
-                                        <div class="item" data-value="blue"><div class="ui blue empty circular label"></div>纯蓝</div>
-                                        <div class="item" data-value="violet"><div class="ui violet empty circular label"></div>紫罗兰</div>
-                                        <div class="item" data-value="purple"><div class="ui purple empty circular label"></div>纯紫</div>
-                                        <div class="item" data-value="pink"><div class="ui pink empty circular label"></div>粉红</div>
-                                        <div class="item" data-value="brown"><div class="ui brown empty circular label"></div>棕色</div>
-                                        <div class="item" data-value="grey"><div class="ui grey empty circular label"></div>灰色</div>
-                                        <div class="item" data-value="black"><div class="ui black empty circular label"></div>黑色</div>
+                                        <div class="item" data-value="red">
+                                            <div class="ui red empty circular label"></div>
+                                            红色
+                                        </div>
+                                        <div class="item" data-value="orange">
+                                            <div class="ui orange empty circular label"></div>
+                                            橙色
+                                        </div>
+                                        <div class="item" data-value="yellow">
+                                            <div class="ui yellow empty circular label"></div>
+                                            黄色
+                                        </div>
+                                        <div class="item" data-value="olive">
+                                            <div class="ui olive empty circular label"></div>
+                                            橄榄绿
+                                        </div>
+                                        <div class="item" data-value="green">
+                                            <div class="ui green empty circular label"></div>
+                                            纯绿
+                                        </div>
+                                        <div class="item" data-value="teal">
+                                            <div class="ui teal empty circular label"></div>
+                                            水鸭蓝
+                                        </div>
+                                        <div class="item" data-value="blue">
+                                            <div class="ui blue empty circular label"></div>
+                                            纯蓝
+                                        </div>
+                                        <div class="item" data-value="violet">
+                                            <div class="ui violet empty circular label"></div>
+                                            紫罗兰
+                                        </div>
+                                        <div class="item" data-value="purple">
+                                            <div class="ui purple empty circular label"></div>
+                                            纯紫
+                                        </div>
+                                        <div class="item" data-value="pink">
+                                            <div class="ui pink empty circular label"></div>
+                                            粉红
+                                        </div>
+                                        <div class="item" data-value="brown">
+                                            <div class="ui brown empty circular label"></div>
+                                            棕色
+                                        </div>
+                                        <div class="item" data-value="grey">
+                                            <div class="ui grey empty circular label"></div>
+                                            灰色
+                                        </div>
+                                        <div class="item" data-value="black">
+                                            <div class="ui black empty circular label"></div>
+                                            黑色
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -124,8 +164,12 @@
                                         <div class="item" data-value="fax"><i class="fax"></i>fax</div>
                                         <div class="item" data-value="bug"><i class="bug"></i>bug</div>
                                         <div class="item" data-value="keyboard"><i class="keyboard"></i>keyboard</div>
-                                        <div class="item" data-value="folder open outline"><i class="folder open outline"></i>folder open outline</div>
-                                        <div class="item" data-value="comment outline"><i class="comment outline"></i>comment outline</div>
+                                        <div class="item" data-value="folder open outline"><i
+                                                    class="folder open outline"></i>folder open outline
+                                        </div>
+                                        <div class="item" data-value="comment outline"><i class="comment outline"></i>comment
+                                            outline
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -145,7 +189,7 @@
                 </div>
             </div>
 
-<#--            <div class="ui section divider"></div>-->
+            <#--            <div class="ui section divider"></div>-->
 
             <div class="ui card red ">
                 <div class="content">
@@ -153,28 +197,31 @@
                 </div>
                 <div class="content">
                     <div class="ui ordered list">
-                        <div class="item">
-                            <i class="folder icon"></i>
-                            <div class="content">
-                                <div class="header">test</div>
-                                <div class="description">test files for test</div>
-                                <div class="list">
-                                    <div class="item">
-                                        <i class="folder icon"></i>
-                                        <div class="content">
-                                            <div class="header">test2</div>
-                                            <div class="description">Test2 site's test</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <#list allTags as tags>
                             <div class="item">
                                 <i class="icon ${tags.icon} ${tags.color}"></i>
                                 <div class="content">
                                     <a class="header" onclick="onTags(${tags.id})">${tags.name}</a>
                                     <div class="description">${tags.description}</div>
+
+                                    <div class="list">
+
+                                        <#list allChildTags as childTags>
+                                            <#if childTags.parentId == tags.id>
+                                                <div class="item">
+                                                    <i class="icon ${childTags.icon} ${childTags.color}"></i>
+                                                    <div class="content">
+                                                        <a class="header"
+                                                           onclick="onTags(${childTags.id})">${childTags.name}</a>
+                                                        <div class="description">${childTags.description}</div>
+                                                    </div>
+                                                </div>
+                                            </#if>
+                                        </#list>
+
+                                    </div>
+
+
                                 </div>
                             </div>
                         </#list>
@@ -249,20 +296,20 @@
                 <div class="ui secondary menu">
 
                     <#if username??>
-                        <a class="item ${typeAll}"  href="/main?type=all">
+                        <a class="item ${typeAll}" href="/main?type=all">
                             <i class="icon mail"></i>
                             最新回复
                             <div class="floating ui red label">1</div>
                         </a>
-                        <a class="item ${typeHot}"   href="/main?type=hot">热门</a>
+                        <a class="item ${typeHot}" href="/main?type=hot">热门</a>
                         <a class="item ${typeNew}" href="/main?type=new">新帖</a>
                     <#else>
-                        <a class="item ${typeAll}"  href="/?type=all" > <i class="icon mail"></i>
+                        <a class="item ${typeAll}" href="/?type=all"> <i class="icon mail"></i>
                             最新回复
                             <div class="floating ui red label">1</div>
                         </a>
                         <a class="item ${typeHot}" href="/?type=hot">热门</a>
-                        <a class="item ${typeNew}"  href="/?type=new">新帖</a>
+                        <a class="item ${typeNew}" href="/?type=new">新帖</a>
                     </#if>
 
                 </div>
@@ -295,7 +342,8 @@
                                         ${discussions.content}
                                     </div>
                                     <div class="meta">
-                                        <div class=" description "><i class="edit icon"></i> <a><b>${discussions.username}</b></a>&nbsp;&nbsp;•&nbsp;&nbsp;
+                                        <div class=" description "><i class="edit icon"></i>
+                                            <a><b>${discussions.username}</b></a>&nbsp;&nbsp;•&nbsp;&nbsp;
                                             <i class="reply icon"></i>最后由 <a><b>${discussions.usernameLast}</b></a>
                                             回复于${discussions.lastTime}.
                                         </div>
@@ -344,7 +392,8 @@
                                         ${discussions.content}
                                     </div>
                                     <div class="meta">
-                                        <div class=" description "><i class="edit icon"></i> <a><b>${discussions.username}</b></a>&nbsp;&nbsp;•&nbsp;&nbsp;
+                                        <div class=" description "><i class="edit icon"></i>
+                                            <a><b>${discussions.username}</b></a>&nbsp;&nbsp;•&nbsp;&nbsp;
                                             <i class="reply icon"></i>最后由 <a><b>${discussions.usernameLast}</b></a>
                                             回复于${discussions.lastTime}.
                                         </div>
@@ -392,7 +441,8 @@
                                         ${discussions.content}
                                     </div>
                                     <div class="meta">
-                                        <div class=" description "><i class="edit icon"></i> <a><b>${discussions.username}</b></a>&nbsp;&nbsp;•&nbsp;&nbsp;
+                                        <div class=" description "><i class="edit icon"></i>
+                                            <a><b>${discussions.username}</b></a>&nbsp;&nbsp;•&nbsp;&nbsp;
                                             <i class="reply icon"></i>最后由 <a><b>${discussions.usernameLast}</b></a>
                                             回复于${discussions.lastTime}.
                                         </div>

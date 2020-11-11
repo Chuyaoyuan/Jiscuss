@@ -11,37 +11,33 @@ import com.yaoyuan.jiscuss.entity.User;
 
 
 @Repository
-public interface UsersRepository extends JpaRepository<User,Integer> {
-   /**
-    *
-    * @param username
-    * @return
-    */
-   @Query("from User where username like %:username%")
-   List<User> getByUsernameIsLike(@Param("username")String username);
+public interface UsersRepository extends JpaRepository<User, Integer> {
+    /**
+     * @param username
+     * @return
+     */
+    @Query("from User where username like %:username%")
+    List<User> getByUsernameIsLike(@Param("username") String username);
 
-   /**
-    *
-    * @param id
-    * @return
-    */
-   User getById(Integer id);
+    /**
+     * @param id
+     * @return
+     */
+    User getById(Integer id);
 
-   /**
-    *
-    * @param username
-    * @return
-    */
-   @Query("from User where username = :username")
-   User getByUsername(String username);
+    /**
+     * @param username
+     * @return
+     */
+    @Query("from User where username = :username")
+    User getByUsername(String username);
 
-   /**
-    *
-    * @param username
-    * @param password
-    * @return
-    */
-   @Query("from User where username = :username and password = :password")
-   User checkByUsernameAndPassword(String username, String password);
-   
+    /**
+     * @param username
+     * @param password
+     * @return
+     */
+    @Query("from User where username = :username and password = :password")
+    User checkByUsernameAndPassword(String username, String password);
+
 }

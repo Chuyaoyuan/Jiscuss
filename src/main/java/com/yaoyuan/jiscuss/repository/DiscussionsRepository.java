@@ -13,12 +13,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface DiscussionsRepository extends JpaRepository<Discussion,Integer> {
+public interface DiscussionsRepository extends JpaRepository<Discussion, Integer> {
 
     @Query(value = "SELECT * from discussion where id in (\n" +
             "SELECT discussion_id from discussiontag where tag_id = ?1 )  ", nativeQuery = true)
     Page<Discussion> findByQuery(String tagId, Pageable pageable);
-
 
 
 }

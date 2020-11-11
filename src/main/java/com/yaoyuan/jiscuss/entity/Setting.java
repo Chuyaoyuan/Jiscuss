@@ -8,20 +8,20 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="setting")
-public class Setting implements Serializable{
+@Table(name = "setting")
+public class Setting implements Serializable {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-	@Column(name="setting_key")
+    @Column(name = "setting_key")
     private String settingKey;
-    
-    @Column(name="setting_value")
+
+    @Column(name = "setting_value")
     private String settingValue;
 }

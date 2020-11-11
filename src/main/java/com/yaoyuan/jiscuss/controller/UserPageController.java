@@ -49,10 +49,11 @@ public class UserPageController {
 
     /**
      * 用户页面
+     *
      * @return
      */
     @RequestMapping("/user")
-    public String user( @RequestParam(defaultValue = "discussion") String type, ModelMap map) {
+    public String user(@RequestParam(defaultValue = "discussion") String type, ModelMap map) {
 
         if (type.equals("discussion")) {
             map.put("discussion", "active");

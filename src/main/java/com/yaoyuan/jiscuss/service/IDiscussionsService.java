@@ -13,6 +13,6 @@ public interface IDiscussionsService {
     Discussion insert(Discussion discussion);
 
     Discussion findOne(Integer id);
-    
+
     Page<Discussion> queryAllDiscussionsList(Discussion discussion, int pageNumNew, int pageSiz, String tag, String type);
 }

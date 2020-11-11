@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface DiscussionsTagsRepository extends JpaRepository<DiscussionTag,Integer> {
+public interface DiscussionsTagsRepository extends JpaRepository<DiscussionTag, Integer> {
 }

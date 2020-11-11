@@ -13,8 +13,8 @@ public interface IUsersService {
     Page<User> queryAllUsersList(int pageNum, int pageSize);
 
     List<User> getByUsernameIsLike(String name);
- 
-//    @Cacheable("myCache")
+
+    //    @Cacheable("myCache")
     User findOne(Integer id);
 
     User insert(User user);
@@ -22,10 +22,10 @@ public interface IUsersService {
     void remove(Integer id);
 
     void deleteAll();
-    
-	User getByUsername(String username);
 
-	User checkByUsernameAndPassword(String username, String password);
+    User getByUsername(String username);
+
+    User checkByUsernameAndPassword(String username, String password);
 
     User update(User user, Integer id);
 

@@ -45,7 +45,7 @@ insert into discussion
 values (11, '测试主题11', '测试内容3测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试',null,null,null,null,null,null,null,1,null,null,null,null,null,null,null);
 
 insert into tag
-values (1, '测试标签1',null,null,null,null,null,null,null,null,null,null);
+values (1, '测试标签1',null,null,'edit',null,null,null,null,null,null,null);
 
 
 insert into post

@@ -119,8 +119,8 @@ public class UserPostController extends BaseController {
         if (null != discussion.getTag()) {
             //执行组装标签
             String[] strArray = discussion.getTag().split(",");
-            for(String str : strArray){
-                DiscussionTag dtag= new DiscussionTag();
+            for (String str : strArray) {
+                DiscussionTag dtag = new DiscussionTag();
                 dtag.setDiscussionId(saveDiscussion.getId());
                 dtag.setTagId(Integer.parseInt(str));
                 iDiscussionsTagsService.insert(dtag);
@@ -201,15 +201,16 @@ public class UserPostController extends BaseController {
 
     /**
      * 新建主题页
+     *
      * @param request
      * @param map
      * @return
      */
     @RequestMapping({"/newDiscussionsPage"})
-    public String newdiccuss( HttpServletRequest request, ModelMap map) {
+    public String newdiccuss(HttpServletRequest request, ModelMap map) {
 
         //获取所有标签（以后尝试去缓存中取）
-        List<Tag> allTags = tagsService.getAllList();
+        List<Tag> allTags = tagsService.getAllListDiscussions();
         map.put("allTags", allTags);
 
         UserInfo user = getUserInfo(request);
@@ -222,12 +223,13 @@ public class UserPostController extends BaseController {
 
     /**
      * 新建标签页
+     *
      * @param request
      * @param map
      * @return
      */
     @RequestMapping({"/newTagPage"})
-    public String newtag( HttpServletRequest request, ModelMap map) {
+    public String newtag(HttpServletRequest request, ModelMap map) {
 
         //获取所有标签（以后尝试去缓存中取）
         List<Tag> allTags = tagsService.getAllList();

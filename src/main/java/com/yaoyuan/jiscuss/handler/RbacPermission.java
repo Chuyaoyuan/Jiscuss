@@ -9,19 +9,19 @@ import java.util.List;
 
 /**
  * RBAC数据模型控制权限
- * @author charlie
  *
+ * @author charlie
  */
 @Component("rbacPermission")
-public class RbacPermission{
+public class RbacPermission {
 
-	private AntPathMatcher antPathMatcher = new AntPathMatcher();
+    private AntPathMatcher antPathMatcher = new AntPathMatcher();
 
-	public boolean hasPermission(HttpServletRequest request, Authentication authentication) {
-		Object principal = authentication.getPrincipal();
-		boolean hasPermission = false;
+    public boolean hasPermission(HttpServletRequest request, Authentication authentication) {
+        Object principal = authentication.getPrincipal();
+        boolean hasPermission = false;
 
-		hasPermission = true;
+        hasPermission = true;
 //		if (principal instanceof UserEntity) {
 //			// 读取用户所拥有的权限菜单
 //			List<Menu> menus = ((UserEntity) principal).getRoleMenus();
@@ -33,6 +33,6 @@ public class RbacPermission{
 //				}
 //			}
 //		}
-		return hasPermission;
-	}
+        return hasPermission;
+    }
 }
