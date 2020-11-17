@@ -13,7 +13,7 @@
 <#include "comm/header.ftl"/>
 
 <div class="ui container" id="container">
-    <h1>用户1的个人主页</h1>
+    <h1>${username}的个人主页</h1>
 
     <h2 class="ui dividing header">详情</h2>
 
@@ -69,7 +69,7 @@
             <div class="row">
                 <div class="center aligned column">
                     <button class="ui basic button" id="userButton">
-                        <i class="icon user"></i>
+                        <i class="icon hand peace outline"></i>
                         小按钮·点下试试
                     </button>
                 </div>

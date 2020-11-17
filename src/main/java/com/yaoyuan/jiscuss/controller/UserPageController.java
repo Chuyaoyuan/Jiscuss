@@ -33,7 +33,7 @@ import java.util.*;
  * @date
  */
 @Controller
-public class UserPageController {
+public class UserPageController extends BaseController {
 
     private static Logger logger = LoggerFactory.getLogger(UserPageController.class);
 
@@ -53,7 +53,7 @@ public class UserPageController {
      * @return
      */
     @RequestMapping("/user")
-    public String user(@RequestParam(defaultValue = "discussion") String type, ModelMap map) {
+    public String user(@RequestParam(defaultValue = "discussion") String type, HttpServletRequest request, ModelMap map) {
 
         if (type.equals("discussion")) {
             map.put("discussion", "active");
@@ -63,6 +63,12 @@ public class UserPageController {
         }
         if (type.equals("like")) {
             map.put("like", "active");
+        }
+
+        UserInfo user = getUserInfo(request);
+        if (user != null) {
+            map.put("username", user.getUsername());
+            map.put("data", "Jiscuss 用户:" + user.getUsername());
         }
         return "user";
     }

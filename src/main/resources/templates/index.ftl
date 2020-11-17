@@ -2,10 +2,6 @@
 <html>
 <title>Jiscuss Demo</title>
 <head>
-    <!-- <link rel="stylesheet" type="text/css" href="static/semanticui/semantic.css"> -->
-    <!-- <script src="static/jquery/jquery-3.4.1.min.js"></script> -->
-    <!-- <script src="static/semanticui/semantic.min.js"></script> -->
-
     <!-- default header name is X-CSRF-TOKEN -->
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
@@ -240,7 +236,7 @@
                         <div class="event">
                             <div class="content">
                                 <div class="summary">
-                                    <a>Jiscuss</a> 一直持续更新， <a>Jiscuss</a> 一直更新完善，感谢支持！
+                                    <a>Jiscuss</a> 会持续更新， <a>Jiscuss</a> 将一直更新完善，感谢支持！
                                 </div>
                             </div>
                         </div>
@@ -343,7 +339,7 @@
                                     </div>
                                     <div class="meta">
                                         <div class=" description "><i class="edit icon"></i>
-                                            <a><b>${discussions.username}</b></a>&nbsp;&nbsp;•&nbsp;&nbsp;
+                                            <a data-tooltip="${discussions.username}" data-position="top center"><b>${discussions.username}</b></a>&nbsp;&nbsp;•&nbsp;&nbsp;
                                             <i class="reply icon"></i>最后由 <a><b>${discussions.usernameLast}</b></a>
                                             回复于${discussions.lastTime}.
                                         </div>
@@ -531,10 +527,6 @@
 
     </div>
 
-    <br>
-    <div class="ui button" data-tooltip="预留" data-position="top center">
-        预留
-    </div>
 </div>
 
 <#include "comm/footer.ftl"/>

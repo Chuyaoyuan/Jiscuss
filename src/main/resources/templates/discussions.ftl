@@ -28,10 +28,7 @@
 
     <h3 class="ui center aligned header"></h3>
     <div class="ui four column grid">
-
-        <div
-                class="widescreen  large screen computer tablet only twelve wide column">
-
+        <div class="widescreen  large screen computer tablet only twelve wide column">
             <div id="context2">
 
                 <h2 class="ui header">
