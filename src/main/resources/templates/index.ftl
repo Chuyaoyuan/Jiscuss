@@ -9,7 +9,7 @@
     <#include "comm/commjs.ftl"/>
 
 </head>
-<body>
+<body style="  background: #f7f8fa;">
 <#include "comm/header.ftl"/>
 
 <div class="ui container" id="container">
