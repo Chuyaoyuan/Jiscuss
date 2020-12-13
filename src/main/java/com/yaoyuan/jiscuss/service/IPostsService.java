@@ -1,10 +1,9 @@
 package com.yaoyuan.jiscuss.service;
 
-import java.util.List;
-import java.util.Map;
-
 import com.yaoyuan.jiscuss.entity.Post;
 import com.yaoyuan.jiscuss.entity.custom.PostCustom;
+
+import java.util.List;
 
 public interface IPostsService {
     List<Post> getAllList();

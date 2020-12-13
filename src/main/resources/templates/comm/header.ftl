@@ -1,4 +1,4 @@
-<div class="ui fixed menu" id="menu">
+<div class="ui main  menu" id="menu">
     <div class="ui container">
         <div href="/" class="header borderless item">
             <img class="logo" src="static/assets/images/logo.png">
@@ -26,7 +26,7 @@
             </div>
             <div class="item" id="userlogin">
                 <#if username??>
-                    <form class="ui large form" action="/logout" id="logoutForm" method="post" style="display: none;">
+                    <form class="ui large form" action="/logout"  id="logoutForm" method="post"  style="display: none;">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     </form>
                     ${username} &nbsp;&nbsp;<a href="javascript:document.getElementById('logoutForm').submit();">注销</a>
@@ -37,5 +37,6 @@
         </div>
     </div>
 </div>
+
 
 <script type="text/javascript" charset="UTF-8" src="/static/js/user/header.js"></script>

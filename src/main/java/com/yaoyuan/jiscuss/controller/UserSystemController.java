@@ -2,8 +2,8 @@ package com.yaoyuan.jiscuss.controller;
 
 import com.yaoyuan.jiscuss.entity.Discussion;
 import com.yaoyuan.jiscuss.entity.Tag;
-import com.yaoyuan.jiscuss.entity.UserInfo;
 import com.yaoyuan.jiscuss.entity.User;
+import com.yaoyuan.jiscuss.entity.UserInfo;
 import com.yaoyuan.jiscuss.entity.custom.DiscussionCustom;
 import com.yaoyuan.jiscuss.entity.custom.TagCustom;
 import com.yaoyuan.jiscuss.service.IDiscussionsService;
@@ -17,10 +17,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 首页页面系统控制器
@@ -78,7 +85,7 @@ public class UserSystemController extends BaseController {
         List<Tag> allTags = tagsService.getAllList();
         logger.info("全部标签==>：{}", allTags);
 
-        if(!tag.equals("all")){
+        if (!tag.equals("all")) {
             //获取是否有子标签
             List<Tag> allChildTags = tagsService.findByParentId(tag);
             map.put("allChildTags", allChildTags);
@@ -152,15 +159,15 @@ public class UserSystemController extends BaseController {
             newdd.setContent(newCon);
             if (null != newdd.getStartUserId()) {
                 User startUser = usersService.findOne(newdd.getStartUserId());
-                newdd.setAvatar(startUser.getAvatar());
-                newdd.setRealname(startUser.getRealname());
-                newdd.setUsername(startUser.getUsername());
+                newdd.setAvatar(startUser != null && startUser.getAvatar() != null ? startUser.getAvatar() : "");
+                newdd.setRealname(startUser != null && startUser.getRealname() != null ? startUser.getRealname() : "");
+                newdd.setUsername(startUser != null && startUser.getUsername() != null ? startUser.getUsername() : "");
             }
             if (null != newdd.getLastUserId()) {
                 User lastUser = usersService.findOne(newdd.getLastUserId());
-                newdd.setAvatarLast(lastUser.getAvatar());
-                newdd.setRealnameLast(lastUser.getRealname());
-                newdd.setUsernameLast(lastUser.getUsername());
+                newdd.setAvatarLast(lastUser != null && lastUser.getAvatar() != null ? lastUser.getAvatar() : "");
+                newdd.setRealnameLast(lastUser != null && lastUser.getRealname() != null ? lastUser.getRealname() : "");
+                newdd.setUsernameLast(lastUser != null && lastUser.getUsername() != null ? lastUser.getUsername() : "");
             }
             //组装tag
             newdd.setTagList(tagMap.get(dd.getId()));

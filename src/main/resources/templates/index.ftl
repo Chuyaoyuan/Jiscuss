@@ -339,7 +339,8 @@
                                     </div>
                                     <div class="meta">
                                         <div class=" description "><i class="edit icon"></i>
-                                            <a data-tooltip="${discussions.username}" data-position="top center"><b>${discussions.username}</b></a>&nbsp;&nbsp;•&nbsp;&nbsp;
+                                            <a data-tooltip="${discussions.username}"
+                                               data-position="top center"><b>${discussions.username}</b></a>&nbsp;&nbsp;•&nbsp;&nbsp;
                                             <i class="reply icon"></i>最后由 <a><b>${discussions.usernameLast}</b></a>
                                             回复于${discussions.lastTime}.
                                         </div>

@@ -1,10 +1,9 @@
 package com.yaoyuan.jiscuss.service;
 
-import java.util.List;
-
+import com.yaoyuan.jiscuss.entity.Discussion;
 import org.springframework.data.domain.Page;
 
-import com.yaoyuan.jiscuss.entity.Discussion;
+import java.util.List;
 
 public interface IDiscussionsService {
 

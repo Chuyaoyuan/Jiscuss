@@ -52,9 +52,9 @@ spring:
       stat-view-servlet:
         enabled: true
         url-pattern: /druid/*
-#          reset-enable: false
-#          login-username: root
-#          login-password: root
+  #          reset-enable: false
+  #          login-username: root
+  #          login-password: root
   freemarker:
     # 设置模板后缀名
     suffix: .ftl

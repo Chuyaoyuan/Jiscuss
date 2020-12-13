@@ -1,11 +1,11 @@
 <#--jquery-->
 <script crossorigin="anonymous" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh"
-      src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
+        src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
 
 <#--semantic-ui-->
- <link rel="stylesheet" type="text/css" href="static/semanticui/semantic.css">
+<link rel="stylesheet" type="text/css" href="/static/semanticui/semantic.css">
 <#-- <script  type="text/javascript" src="static/jquery/jquery-3.4.1.min.js"></script>-->
- <script  type="text/javascript" src="static/semanticui/semantic.js"></script>
+<script type="text/javascript" src="/static/semanticui/semantic.js"></script>
 
 <#--<link crossorigin="anonymous" integrity="sha384-ATvSpJEmy1egycrmomcFxVn4Z0A6rfjwlzDQrts/1QRerQhR9EEpEYtdysLpQPuQ"-->
 <#--      href="https://lib.baomitu.com/semantic-ui/2.4.1/semantic.min.css" rel="stylesheet">-->
@@ -17,17 +17,11 @@
 <script crossorigin="anonymous" integrity="sha384-CpsBIlOAWHuSRRN235sCBzEeKN6hLT6SpOGRkGadKpYj0gDP7+s3Q8pC38z8uGHH"
         src="https://lib.baomitu.com/tinymce/5.1.1/tinymce.min.js"></script>
 
-<#--toastr-->
-<#--<link crossorigin="anonymous" integrity="sha384-YzEqZ2pBV0i9OmlTyoz75PqwTR8If8GsXBv7HLQclEVqIC3VxIt98/U94ES6CJTR"-->
-<#--      href="https://lib.baomitu.com/toastr.js/2.1.4/toastr.min.css" rel="stylesheet">-->
-
-<#--<script crossorigin="anonymous" integrity="sha384-VDls8ImYGI8SwVxpmjX2Bn27U2TcNodzTNROTusVEWO55+lmL+H9NczoQJk6mwZR"-->
-<#--        src="https://lib.baomitu.com/toastr.js/2.1.4/toastr.min.js"></script>-->
 
 <#--layx-->
-<link href="static/layx/layx.min.css?b14794a8a3baf3e8b58e" rel="stylesheet">
+<link href="/static/layx/layx.min.css?b14794a8a3baf3e8b58e" rel="stylesheet">
 
-<script type="text/javascript" src="static/layx/layx.min.js?b14794a8a3baf3e8b58e"></script>
+<script type="text/javascript" src="/static/layx/layx.min.js?b14794a8a3baf3e8b58e"></script>
 
 <script type="text/javascript" charset="UTF-8" src="/static/js/comm/util.js"></script>
 

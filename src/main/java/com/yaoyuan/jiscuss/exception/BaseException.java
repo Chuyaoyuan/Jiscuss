@@ -1,7 +1,6 @@
 package com.yaoyuan.jiscuss.exception;
 
 import com.yaoyuan.jiscuss.response.ResponseCode;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

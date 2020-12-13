@@ -1,14 +1,10 @@
 package com.yaoyuan.jiscuss.entity.custom;
 
-import com.yaoyuan.jiscuss.entity.Post;
-import com.yaoyuan.jiscuss.entity.Tag;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 
 /**
  * @author yaoyuan2.chu

@@ -1,9 +1,9 @@
 package com.yaoyuan.jiscuss.response;
 
-import java.io.Serializable;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import java.io.Serializable;
 
 /**
  * 统一的公共响应体

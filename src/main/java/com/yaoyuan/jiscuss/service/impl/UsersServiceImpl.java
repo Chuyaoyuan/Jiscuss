@@ -1,23 +1,21 @@
 package com.yaoyuan.jiscuss.service.impl;
 
 
-import java.util.List;
-
-import javax.transaction.Transactional;
-
+import com.yaoyuan.jiscuss.entity.User;
+import com.yaoyuan.jiscuss.repository.UsersRepository;
+import com.yaoyuan.jiscuss.service.IUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.cache.annotation.Cacheable;
 
-import com.yaoyuan.jiscuss.entity.User;
-import com.yaoyuan.jiscuss.repository.UsersRepository;
-import com.yaoyuan.jiscuss.service.IUsersService;
+import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional

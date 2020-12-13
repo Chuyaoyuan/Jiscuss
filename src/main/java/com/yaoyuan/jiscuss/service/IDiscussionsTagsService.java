@@ -1,8 +1,8 @@
 package com.yaoyuan.jiscuss.service;
 
-import java.util.List;
-
 import com.yaoyuan.jiscuss.entity.DiscussionTag;
+
+import java.util.List;
 
 public interface IDiscussionsTagsService {
 

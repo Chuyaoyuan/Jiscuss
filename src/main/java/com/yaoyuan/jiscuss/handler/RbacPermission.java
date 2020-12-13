@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 /**
  * RBAC数据模型控制权限

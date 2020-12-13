@@ -1,9 +1,9 @@
 package com.yaoyuan.jiscuss.service;
 
-import java.util.List;
-
 import com.yaoyuan.jiscuss.entity.Tag;
 import com.yaoyuan.jiscuss.entity.custom.TagCustom;
+
+import java.util.List;
 
 public interface ITagsService {
 

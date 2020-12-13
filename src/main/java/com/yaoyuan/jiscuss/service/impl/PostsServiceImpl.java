@@ -1,25 +1,21 @@
 package com.yaoyuan.jiscuss.service.impl;
 
-import java.io.BufferedReader;
-import java.io.Reader;
-import java.sql.Clob;
-import java.util.*;
-
 import com.yaoyuan.jiscuss.common.Node;
 import com.yaoyuan.jiscuss.common.PostCommonUtil;
-import com.yaoyuan.jiscuss.entity.Discussion;
-import com.yaoyuan.jiscuss.entity.custom.DiscussionCustom;
-import com.yaoyuan.jiscuss.entity.custom.PostCustom;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.yaoyuan.jiscuss.entity.Post;
+import com.yaoyuan.jiscuss.entity.custom.PostCustom;
 import com.yaoyuan.jiscuss.repository.PostsRepository;
 import com.yaoyuan.jiscuss.service.IPostsService;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 
 @Service

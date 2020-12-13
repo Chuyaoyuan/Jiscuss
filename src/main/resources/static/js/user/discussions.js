@@ -1,17 +1,17 @@
-
 let discussionsId = null;
 
 function setDiscussionsId(id) {
-    console.log('setDiscussionsId：'+id);
+    console.log('setDiscussionsId：' + id);
     discussionsId = id;           // id
 }
+
 $("#addPost").click(function () {
     console.log("点击  addPost");
     console.log(username);
     console.log(discussionsId);
     let postId = $("#postId").val();
     console.log(postId);
-    if(username && username!=null){
+    if (username && username != null) {
         var token = $("meta[name='_csrf']").attr("content");
         var header = $("meta[name='_csrf_header']").attr("content");
         console.warn(header)
@@ -27,24 +27,24 @@ $("#addPost").click(function () {
                 parentId: postId
             }),
             contentType: 'application/json',
-            beforeSend: function(request) {
+            beforeSend: function (request) {
                 request.setRequestHeader(header, token); // 添加  CSRF Token
             },
             dataType: "JSON",
             success: function (data) {
                 console.log(data);
-                if(data.flag){
-                    massage(content+',添加成功!','success','');
+                if (data.flag) {
+                    massage(content + ',添加成功!', 'success', '');
                     location.reload();
-                    massage('评论添加成功!','success','');
-                }else{
-                    massage(data.msg,'error','');
+                    massage('评论添加成功!', 'success', '');
+                } else {
+                    massage(data.msg, 'error', '');
                     return false;
                 }
             }
         });
-    }else{
-        massage('您未登录，请先登录!','error','');
+    } else {
+        massage('您未登录，请先登录!', 'error', '');
 
     }
 });

@@ -1,7 +1,11 @@
 package com.yaoyuan.jiscuss.controller.api;
 
-import java.util.List;
-
+import com.yaoyuan.jiscuss.entity.Discussion;
+import com.yaoyuan.jiscuss.exception.BaseException;
+import com.yaoyuan.jiscuss.response.ResponseCode;
+import com.yaoyuan.jiscuss.service.IDiscussionsService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yaoyuan.jiscuss.entity.Discussion;
-import com.yaoyuan.jiscuss.exception.BaseException;
-import com.yaoyuan.jiscuss.response.ResponseCode;
-import com.yaoyuan.jiscuss.service.IDiscussionsService;
-
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/other_api", produces = "application/json;charset=utf-8")

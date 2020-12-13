@@ -1,7 +1,6 @@
 package com.yaoyuan.jiscuss.repository;
 
 import com.yaoyuan.jiscuss.entity.Post;
-import com.yaoyuan.jiscuss.entity.custom.PostCustom;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

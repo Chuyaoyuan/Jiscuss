@@ -1,16 +1,14 @@
 package com.yaoyuan.jiscuss.service.impl;
 
-import java.util.List;
-
-import javax.transaction.Transactional;
-
+import com.yaoyuan.jiscuss.entity.Tag;
 import com.yaoyuan.jiscuss.entity.custom.TagCustom;
+import com.yaoyuan.jiscuss.repository.TagsRepository;
+import com.yaoyuan.jiscuss.service.ITagsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yaoyuan.jiscuss.entity.Tag;
-import com.yaoyuan.jiscuss.repository.TagsRepository;
-import com.yaoyuan.jiscuss.service.ITagsService;
+import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -44,7 +42,7 @@ public class TagsServiceImpl implements ITagsService {
     }
 
     @Override
-    public List<Tag> findByParentId(String tag){
+    public List<Tag> findByParentId(String tag) {
         int tagId = Integer.parseInt(tag);
         return tagsRepository.findByParentId(tagId);
     }

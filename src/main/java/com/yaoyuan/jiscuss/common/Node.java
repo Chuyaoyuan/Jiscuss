@@ -4,7 +4,6 @@ import com.yaoyuan.jiscuss.entity.custom.PostCustom;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
-import javax.persistence.Column;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

@@ -28,8 +28,8 @@
 
     <h3 class="ui center aligned header"></h3>
     <div class="ui four column grid">
-        <div class="ui widescreen  large screen computer tablet only twelve wide column segment">
-            <div id="context2" >
+        <div class="ui widescreen  large screen computer tablet only twelve wide column">
+            <div id="context2" style="padding-left: 14px;  padding-right: 14px;background: #FFFFFF; padding: 1em 1em; border-radius: 0.28571429rem; border: 1px solid rgba(34, 36, 38, 0.15);">
 
                 <h2 class="ui header">
                     <i class="edit outline icon"></i>

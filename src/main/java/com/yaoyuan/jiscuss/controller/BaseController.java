@@ -3,7 +3,6 @@ package com.yaoyuan.jiscuss.controller;
 import com.yaoyuan.jiscuss.entity.UserInfo;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.userdetails.User;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

@@ -1,7 +1,7 @@
 package com.yaoyuan.jiscuss.service.impl;
 
-import com.yaoyuan.jiscuss.entity.UserInfo;
 import com.yaoyuan.jiscuss.entity.User;
+import com.yaoyuan.jiscuss.entity.UserInfo;
 import com.yaoyuan.jiscuss.service.IUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

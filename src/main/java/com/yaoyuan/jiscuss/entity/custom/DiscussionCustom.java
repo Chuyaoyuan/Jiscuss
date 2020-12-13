@@ -1,12 +1,10 @@
 package com.yaoyuan.jiscuss.entity.custom;
 
 import com.yaoyuan.jiscuss.entity.Discussion;
-import com.yaoyuan.jiscuss.entity.Tag;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
 import java.util.List;
 
 /**
