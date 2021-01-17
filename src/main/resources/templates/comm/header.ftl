@@ -14,7 +14,7 @@
                 <div class="divider"></div>
                 <div class="item">分割链接</div>
                 <div class="divider"></div>
-                <div class="item">后台管理</div>
+                <a class="item" href="/admin/home">后台管理</a>
             </div>
         </div>
         <div class="right menu">

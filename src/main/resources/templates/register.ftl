@@ -6,7 +6,7 @@
 
     <style type="text/css">
         body {
-            background-color: #DADADA;
+            background-color: #f7f8fa;
         }
 
         body > .grid {

@@ -1,6 +1,6 @@
 <#--<div class="ui section divider"></div>-->
 
-<div class="ui  vertical footer segment">
+<div class="ui  vertical footer segment" style=" top: 20px;  background: white;">
     <div class="ui center aligned container">
         <div class="ui  section divider"></div>
         <div class="ui stackable  divided grid">
