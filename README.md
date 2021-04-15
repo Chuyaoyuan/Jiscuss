@@ -1,7 +1,7 @@
 中文 &nbsp; | &nbsp; [English](./README.md)
 <p align="center"><img src="https://s3.ax1x.com/2021/01/16/srNEa6.png" height="200" alt="logo"/></p>
 <h1 align="center"> Jiscuss </h1>
-<h3 align="center">基于java的简单论坛系统，Jiscuss = Java + Discuss.</h3>
+<h3 align="center">基于java的简单论坛系统，Jiscuss = Java + Discuss。</h3>
 
 ---
 
@@ -38,6 +38,9 @@
 
 ## [二]、下载代码
 
+```
+// https://github.com/chuyaoyuan/Jiscuss或https://gitee.com/chuyaoyuan/Jiscuss
+```
 
 
 ## [三]、运行启动
