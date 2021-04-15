@@ -39,7 +39,8 @@
 ## [二]、下载代码
 
 ```
-// https://github.com/chuyaoyuan/Jiscuss或https://gitee.com/chuyaoyuan/Jiscuss
+// https://gitee.com/chuyaoyuan/Jiscuss.git
+// https://github.com/Chuyaoyuan/Jiscuss.git
 ```
 
 
