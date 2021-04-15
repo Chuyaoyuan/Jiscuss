@@ -33,14 +33,14 @@
 ## [一]、开发环境配置
 
 ```
-// 需jdk 1.8以上，maven3以上
+// 需jdk 1.8以上，maven3以上。
 ```
 
 ## [二]、下载代码
 
 ```
-// https://gitee.com/chuyaoyuan/Jiscuss.git
-// https://github.com/Chuyaoyuan/Jiscuss.git
+// Github - https://gitee.com/chuyaoyuan/Jiscuss.git
+// Gitee - https://github.com/Chuyaoyuan/Jiscuss.git
 ```
 
 
