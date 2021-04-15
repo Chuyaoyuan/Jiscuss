@@ -1,7 +1,7 @@
 中文 &nbsp; | &nbsp; [English](./README.md)
 <p align="center"><img src="https://s3.ax1x.com/2021/01/16/srNEa6.png" height="200" alt="logo"/></p>
 <h1 align="center"> Jiscuss </h1>
-<h3 align="center">基于java的简单论坛系统，Jiscuss = Java + Discuss</h3>
+<h3 align="center">基于java的简单论坛系统，Jiscuss = Java + Discuss.</h3>
 
 ---
 
@@ -23,7 +23,7 @@
 
 
 # 简介
-基于JAVA，使用SpringBoot + H2 Database + Semantic-UI 构建，[[www.jiscuss.com]](http://www.jiscuss.com/)
+基于JAVA，使用SpringBoot + H2 Database + Semantic-UI 构建，官网：[[www.jiscuss.com]](http://www.jiscuss.com/)
 
 # 在线体验
 
