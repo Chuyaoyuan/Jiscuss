@@ -23,7 +23,7 @@
 
 
 # 简介
-基于JAVA，使用SpringBoot + H2 Database + Semantic-UI 构建，官网：[[www.jiscuss.com]](http://www.jiscuss.com/)
+基于JAVA，使用SpringBoot + H2 Database + Semantic-UI + Freemarker 构建，官网：[[www.jiscuss.com]](http://www.jiscuss.com/)
 
 # 在线体验
 
