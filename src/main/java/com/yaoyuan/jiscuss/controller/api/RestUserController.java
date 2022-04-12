@@ -69,6 +69,7 @@ public class RestUserController {
     @ApiOperation("获取用户")
     public User getUser(@PathVariable Integer id) {
         User user = usersService.findOne(id);
+        logger.info("获取用户==>：{}", JSONObject.valueToString(user));
         return user;
     }
 
@@ -76,7 +77,7 @@ public class RestUserController {
     @ApiOperation("获取全部用户")
     public List<User> getUser(User user) {
         List<User> userall = usersService.getAllList();
-        logger.info("全部用户==>：{}", userall);
+        logger.info("全部用户==>：{}", JSONObject.valueToString(userall));
         return userall;
     }
 
