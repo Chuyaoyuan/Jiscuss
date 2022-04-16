@@ -39,7 +39,6 @@ public class UserPostController extends BaseController {
 
     private static Logger logger = LoggerFactory.getLogger(UserPostController.class);
 
-
     @Autowired
     private IDiscussionsService discussionsService;
 
@@ -85,11 +84,8 @@ public class UserPostController extends BaseController {
 
 
         List<Tag> tags = tagsService.findByDId(id);
-
         List postsObj = postsService.findPostCustomById(id);
-
         map.put("tags", tags);
-
         map.put("discussions", newdd);
         map.put("posts", postsObj);
         UserInfo user = getUserInfo(request);
@@ -99,8 +95,11 @@ public class UserPostController extends BaseController {
         return "discussions";
     }
 
-
-    //新建主题
+    /**
+     * 新建主题
+     * @param discussion
+     * @return
+     */
     @PostMapping(value = "/newDiscussions")
     @ResponseBody
     public String newDiscussions(@RequestBody DiscussionCustom discussion) {
@@ -146,11 +145,23 @@ public class UserPostController extends BaseController {
     }
 
 
-    //编辑主题
+    /**
+     * 编辑主题
+     * @param post
+     * @return
+     */
 
-    //删除主题
+    /**
+     * 删除主题
+     * @param post
+     * @return
+     */
 
-    //新建评论
+    /**
+     * 新建评论
+     * @param post
+     * @return
+     */
     @PostMapping(value = "/newPost")
     @ResponseBody
     public String newPosts(@RequestBody Post post) {
@@ -179,9 +190,17 @@ public class UserPostController extends BaseController {
         return resultobj.toString(); //
     }
 
-    //删除评论
+    /**
+     * 删除评论
+     * @param tag
+     * @return
+     */
 
-    //新建标签
+    /**
+     * 新建标签
+     * @param tag
+     * @return
+     */
     @PostMapping(value = "/newtags")
     @ResponseBody
     public String newTags(@RequestBody Tag tag) {

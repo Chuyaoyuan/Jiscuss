@@ -43,7 +43,6 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
                 dispatcher.forward(request, response);
             }
         }
-
     }
 
     public static class ControllerTools {

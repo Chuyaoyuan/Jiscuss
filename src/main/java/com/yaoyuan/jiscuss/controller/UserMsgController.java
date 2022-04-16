@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class UserMsgController extends BaseController {
-    //首页最新消息
-
+    
+    /**
+     * 首页最新消息
+     */
 }
