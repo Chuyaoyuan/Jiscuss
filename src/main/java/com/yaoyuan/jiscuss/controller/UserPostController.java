@@ -32,6 +32,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * @author yaoyuan2.chu
  * 主题帖子评论控制器
  */
 @Controller
@@ -55,10 +56,18 @@ public class UserPostController extends BaseController {
     private IUsersService usersService;
 
 
-    //首页查看主题列表（各种条件筛选，最热最新标签等）
+    /**
+     * 首页查看主题列表（各种条件筛选，最热最新标签等）
+     */
 
 
-    //查看主题详情
+    /**
+     * 查看主题详情
+     * @param request
+     * @param map
+     * @param id
+     * @return
+     */
     @RequestMapping("/getdiscussionsbyid")
     public String getDiscussionsById(HttpServletRequest request, ModelMap map, @RequestParam("id") Integer id) {
         logger.info(">>> getDiscussionsById{}", id);
@@ -225,7 +234,9 @@ public class UserPostController extends BaseController {
 
     }
 
-    //排行榜等
+    /**
+     * 排行榜等
+     */
 
     /**
      * 新建主题页

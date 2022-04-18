@@ -9,20 +9,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * @author yaoyuan2.chu
  * 后台系统控制器
  */
 @Controller
 public class AdminSystemController {
 
-    //后台登录
+    /**
+     * 后台登录
+     */
 
-    //后台退出
+    /**
+     * 后台退出
+     */
 
-    //后台设置管理
+    /**
+     * 后台设置管理
+     */
 
     /**
      * 后台页面
-     *
      * @return
      */
     @RequestMapping("/admin/home")
