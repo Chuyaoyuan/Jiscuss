@@ -35,7 +35,6 @@ import java.util.Map;
  */
 @Controller
 public class UserSystemController extends BaseController {
-
     private static Logger logger = LoggerFactory.getLogger(UserSystemController.class);
 
     @Autowired

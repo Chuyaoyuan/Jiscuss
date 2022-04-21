@@ -91,7 +91,6 @@ public class UserPostController extends BaseController {
             newdd.setUsernameLast(lastUser.getUsername());
         }
 
-
         List<Tag> tags = tagsService.findByDId(id);
         List postsObj = postsService.findPostCustomById(id);
         map.put("tags", tags);
