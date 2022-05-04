@@ -21,7 +21,6 @@ import java.util.Map;
  */
 public class PostCommonUtil {
 
-
     public static List<PostCustom> getNewPostsObjMap(List<Map<String, Object>> posts) {
 
         List<PostCustom> postCustomList = new ArrayList<>();
@@ -105,13 +104,15 @@ public class PostCommonUtil {
         return mainListResult;
     }
 
-    // Clob类型转换成String类型
+    /**
+     * Clob类型转换成String类型
+     * @param clob
+     * @return
+     */
     public static String clobToString(final Clob clob) {
-
         if (clob == null) {
             return null;
         }
-
         Reader is = null;
         try {
             is = clob.getCharacterStream();
@@ -119,14 +120,12 @@ public class PostCommonUtil {
             e.printStackTrace();
         }
         BufferedReader br = new BufferedReader(is);
-
         String str = null;
         try {
             str = br.readLine();    // 读取第一行
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         StringBuffer sb = new StringBuffer();
         while (str != null) {    // 如果没有到达流的末尾，则继续读取下一行
             sb.append(str);
@@ -136,9 +135,7 @@ public class PostCommonUtil {
                 e.printStackTrace();
             }
         }
-
         String returnString = sb.toString();
-
         return returnString;
     }
 }
