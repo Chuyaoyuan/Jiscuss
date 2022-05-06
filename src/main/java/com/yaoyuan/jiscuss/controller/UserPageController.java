@@ -53,7 +53,6 @@ public class UserPageController extends BaseController {
         if (type.equals("like")) {
             map.put("like", "active");
         }
-
         UserInfo user = getUserInfo(request);
         if (user != null) {
             map.put("username", user.getUsername());

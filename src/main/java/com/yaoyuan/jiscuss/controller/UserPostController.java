@@ -122,14 +122,12 @@ public class UserPostController extends BaseController {
             discussion.setCreateId(user.getId());
         }
 
-
         discussion.setCreateTime(new Date());
         discussion.setStartTime(new Date());
         discussion.setLastTime(new Date());
 
         Discussion discussionOne = new Discussion();
         BeanUtils.copyProperties(discussion, discussionOne);
-
         Discussion saveDiscussion = discussionsService.insert(discussionOne);
 
         if (null != discussion.getTag()) {
@@ -186,7 +184,6 @@ public class UserPostController extends BaseController {
         if (null != post.getParentId()) {
             Post temp = postsService.findOneByid(post.getParentId());
             post.setUserId(temp.getCreateId());
-
         }
 
         Post savePost = postsService.insert(post);
@@ -229,8 +226,7 @@ public class UserPostController extends BaseController {
         logger.info(">>>{}", saveTag);
         resultobj.put("msg", "添加成功");
         resultobj.put("flag", true);
-        return resultobj.toString(); //
-
+        return resultobj.toString();
     }
 
     /**

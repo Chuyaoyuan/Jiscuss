@@ -15,7 +15,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class ResponseResult implements Serializable {
 
-
     /**
      * serialVersionUID
      */
