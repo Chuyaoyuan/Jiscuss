@@ -144,7 +144,7 @@ public class UserPostController extends BaseController {
         JSONObject resultobj = new JSONObject();
 
         logger.info(">>>{}", saveDiscussion);
-        resultobj.put("msg", "添加成功");
+        resultobj.put("msg", "添加主题成功");
         resultobj.put("flag", true);
         return resultobj.toString(); //
 
@@ -190,7 +190,7 @@ public class UserPostController extends BaseController {
         JSONObject resultobj = new JSONObject();
 
         logger.info(">>>{}", savePost);
-        resultobj.put("msg", "添加成功");
+        resultobj.put("msg", "添加评论成功");
         resultobj.put("flag", true);
         return resultobj.toString(); //
     }
@@ -210,7 +210,6 @@ public class UserPostController extends BaseController {
     @ResponseBody
     public String newTags(@RequestBody Tag tag) {
         logger.info(">>> newTags" + tag);
-
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = servletRequestAttributes.getRequest();
 
@@ -224,7 +223,7 @@ public class UserPostController extends BaseController {
         JSONObject resultobj = new JSONObject();
 
         logger.info(">>>{}", saveTag);
-        resultobj.put("msg", "添加成功");
+        resultobj.put("msg", "添加标签成功");
         resultobj.put("flag", true);
         return resultobj.toString();
     }
@@ -242,7 +241,6 @@ public class UserPostController extends BaseController {
      */
     @RequestMapping({"/newDiscussionsPage"})
     public String newdiccuss(HttpServletRequest request, ModelMap map) {
-
         //获取所有标签（以后尝试去缓存中取）
         List<Tag> allTags = tagsService.getAllListDiscussions();
         map.put("allTags", allTags);
