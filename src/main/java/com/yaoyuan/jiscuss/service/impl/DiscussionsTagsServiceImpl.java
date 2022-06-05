@@ -12,6 +12,7 @@ import java.util.List;
 @Service
 @Transactional
 public class DiscussionsTagsServiceImpl implements IDiscussionsTagsService {
+
     @Autowired
     private DiscussionsTagsRepository discussionsTagsRepository;
 
@@ -24,6 +25,4 @@ public class DiscussionsTagsServiceImpl implements IDiscussionsTagsService {
     public DiscussionTag insert(DiscussionTag discussionTag) {
         return discussionsTagsRepository.save(discussionTag);
     }
-
-
 }
