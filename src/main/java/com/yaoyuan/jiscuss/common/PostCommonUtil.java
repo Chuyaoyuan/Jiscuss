@@ -14,15 +14,14 @@ import java.util.Map;
 
 /**
  * @author yaoyuan2.chu
- * @Title:
+ * @Title: 工具类
  * @Package com.yaoyuan.jiscuss.common
- * @Description:
+ * @Description: 通用工具类
  * @date 2020/9/10 15:47
  */
 public class PostCommonUtil {
 
     public static List<PostCustom> getNewPostsObjMap(List<Map<String, Object>> posts) {
-
         List<PostCustom> postCustomList = new ArrayList<>();
         for (Map<String, Object> mapObj : posts) {
             PostCustom postCustom = new PostCustom();
@@ -71,6 +70,11 @@ public class PostCommonUtil {
         return postCustomList;
     }
 
+    /**
+     * 获取post
+     * @param postCustomList
+     * @return List<PostCustom>
+     */
     public static List<PostCustom> getNewPostsObjCustom(List<PostCustom> postCustomList) {
         List<PostCustom> mainList = new ArrayList<>();
         Map<String, Object> postMap = new LinkedHashMap<>();
@@ -100,7 +104,6 @@ public class PostCommonUtil {
                 mainListResult.add(mapObj);
             }
         }
-
         return mainListResult;
     }
 
