@@ -36,7 +36,6 @@ public class RestPostController {
         } else {
             throw new BaseException(ResponseCode.RESOURCES_NOT_EXIST);
         }
-
     }
 
     @GetMapping("/discussion/{id}")
