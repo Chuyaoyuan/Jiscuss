@@ -33,7 +33,6 @@ public class AdminSystemController {
      */
     @RequestMapping("/admin/home")
     public String user(@RequestParam(defaultValue = "discussion") String type, HttpServletRequest request, ModelMap map) {
-
         return "admin/home";
     }
 }
