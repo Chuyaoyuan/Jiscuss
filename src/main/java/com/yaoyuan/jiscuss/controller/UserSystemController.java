@@ -48,7 +48,6 @@ public class UserSystemController extends BaseController {
 
     /**
      * 首页index
-     *
      * @param tag
      * @param type
      * @param pageNum
@@ -62,7 +61,6 @@ public class UserSystemController extends BaseController {
         logger.info(">>> index");
         logger.info(">>> tag:" + tag);
         logger.info(">>> pageNum:" + pageNum);
-
         int pageSiz = 10;
         int pageNumNew = pageNum - 1;
         Discussion discussion = new Discussion();
@@ -71,14 +69,12 @@ public class UserSystemController extends BaseController {
 
         List<Discussion> allDiscussions = allDiscussionsPage.getContent();
         List<DiscussionCustom> newAllD = new ArrayList<>();
-
         setTagAndUserList(newAllD, allDiscussions);
-
         logger.info("全部主题==>：{}", allDiscussions);
 
         Long total = allDiscussionsPage.getTotalElements();
 
-        //获取主题帖子的分页数据
+        //获取主题帖子的分页数据（以后尝试去缓存中取）
         List<String> pageNumList = getPageNumList(allDiscussionsPage.getTotalPages());
 
         //获取所有标签（以后尝试去缓存中取） 
@@ -169,7 +165,7 @@ public class UserSystemController extends BaseController {
                 newdd.setRealnameLast(lastUser != null && lastUser.getRealname() != null ? lastUser.getRealname() : "");
                 newdd.setUsernameLast(lastUser != null && lastUser.getUsername() != null ? lastUser.getUsername() : "");
             }
-            //组装tag
+            // 组装tag
             newdd.setTagList(tagMap.get(dd.getId()));
             newAllD.add(newdd);
         }
@@ -216,7 +212,6 @@ public class UserSystemController extends BaseController {
 
     /**
      * 注册提交
-     *
      * @param username
      * @param email
      * @param password
@@ -232,7 +227,6 @@ public class UserSystemController extends BaseController {
             return "register";
         } else {
             User user = new User();
-
             user.setEmail(email);
             user.setPassword(password);
             user.setUsername(username);
@@ -253,7 +247,6 @@ public class UserSystemController extends BaseController {
     public String register() {
         return "register";
     }
-
 
     //获取设置信息
 
