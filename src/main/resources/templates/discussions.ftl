@@ -5,7 +5,6 @@
     <!-- <link rel="stylesheet" type="text/css" href="static/semanticui/semantic.css"> -->
     <!-- <script src="static/jquery/jquery-3.4.1.min.js"></script> -->
     <!-- <script src="static/semanticui/semantic.min.js"></script> -->
-
     <!-- default header name is X-CSRF-TOKEN -->
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
@@ -30,7 +29,6 @@
     <div class="ui four column grid">
         <div class="ui widescreen  large screen computer tablet only twelve wide column">
             <div id="context2" style="padding-left: 14px;  padding-right: 14px;background: #FFFFFF; padding: 1em 1em; border-radius: 0.28571429rem; border: 1px solid rgba(34, 36, 38, 0.15);">
-
                 <h2 class="ui header">
                     <i class="edit outline icon"></i>
                     <div class="content">
@@ -198,14 +196,14 @@
 
             <div class="ui card">
                 <div class="content">
-                    <div class="header">作者的热门主题</div>
+                    <div class="header">作者热门主题</div>
                 </div>
                 <div class="content">
                     <div class="ui middle aligned divided list">
                         <div class="item">
                             <img class="ui avatar image" src="/static/assets/images/logo.png">
                             <div class="content">
-                                <a class="header">他的测试主题1</a>
+                                <a class="header">its here</a>
                             </div>
                         </div>
                         <div class="item">
@@ -301,7 +299,6 @@
         console.log('已经登陆：' + username);
         </#if>
         setDiscussionsId('${discussions.id}');
-
     });
 
 </script>
