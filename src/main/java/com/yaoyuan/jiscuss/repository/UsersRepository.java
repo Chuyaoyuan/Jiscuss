@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
 @Repository
 public interface UsersRepository extends JpaRepository<User, Integer> {
     /**
@@ -38,5 +37,4 @@ public interface UsersRepository extends JpaRepository<User, Integer> {
      */
     @Query("from User where username = :username and password = :password")
     User checkByUsernameAndPassword(String username, String password);
-
 }
