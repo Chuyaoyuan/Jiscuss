@@ -35,7 +35,6 @@ public class UserPageController extends BaseController {
     @Autowired
     private ITagsService tagsService;
 
-
     /**
      * 用户页面
      *
@@ -44,20 +43,26 @@ public class UserPageController extends BaseController {
     @RequestMapping("/user")
     public String user(@RequestParam(defaultValue = "discussion") String type, HttpServletRequest request, ModelMap map) {
 
+        // type 判断
         if (type.equals("discussion")) {
             map.put("discussion", "active");
         }
+        
         if (type.equals("change")) {
             map.put("change", "active");
         }
+        
         if (type.equals("like")) {
             map.put("like", "active");
         }
+        
         UserInfo user = getUserInfo(request);
         if (user != null) {
             map.put("username", user.getUsername());
             map.put("data", "Jiscuss 用户:" + user.getUsername());
         }
+        
+        
         return "user";
     }
 }
