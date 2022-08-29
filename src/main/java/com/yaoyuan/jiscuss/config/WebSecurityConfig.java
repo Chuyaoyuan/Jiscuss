@@ -18,15 +18,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
  * prePostEnabled :决定Spring Security的前注解是否可用 [@PreAuthorize,@PostAuthorize,..]
  * secureEnabled : 决定是否Spring Security的保障注解 [@Secured] 是否可用
  * jsr250Enabled ：决定 JSR-250 annotations 注解[@RolesAllowed..] 是否可用.
+ * 开启 Spring Security 方法级安全注解 @EnableGlobalMethodSecurity
  */
 @Configurable
 @EnableWebSecurity
-//开启 Spring Security 方法级安全注解 @EnableGlobalMethodSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private CustomAccessDeniedHandler customAccessDeniedHandler;
+    
     @Qualifier("userDetailServiceImpl")
     @Autowired
     private UserDetailsService userDetailsService;
@@ -61,13 +62,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login/**", "/initUserData")//不拦截登录相关方法
                 .permitAll()
                 //.antMatchers("/user").hasRole("ADMIN")  // user接口只有ADMIN角色的可以访问
-//			.anyRequest()
-//			.authenticated()// 任何尚未匹配的URL只需要验证用户即可访问
+                //.anyRequest()
+                //.authenticated()// 任何尚未匹配的URL只需要验证用户即可访问
                 .anyRequest()
                 .access("@rbacPermission.hasPermission(request, authentication)")//根据账号权限访问
                 .and()
                 .formLogin()
-//			.loginPage("/")
+                //.loginPage("/")
                 .loginPage("/login")   //登录请求页
                 .loginProcessingUrl("/login")  //登录POST请求路径
                 .usernameParameter("username") //登录用户名参数
@@ -92,7 +93,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 密码加密算法
-     *
      * @return
      */
     @Bean
@@ -100,4 +100,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
 
     }
+    
 }
