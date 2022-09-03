@@ -5,13 +5,10 @@
     <!-- <link rel="stylesheet" type="text/css" href="static/semanticui/semantic.css"> -->
     <!-- <script src="static/jquery/jquery-3.4.1.min.js"></script> -->
     <!-- <script src="static/semanticui/semantic.min.js"></script> -->
-
     <!-- default header name is X-CSRF-TOKEN -->
     <meta name="_csrf" content="${_csrf.token}"/>
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
-
     <#include "comm/commjs.ftl"/>
-
 </head>
 <body>
 <div class="ui container" id="container">
@@ -34,7 +31,6 @@
             <div class="field">
                 &nbsp;<button class="ui teal button" onclick="onNewtags()">新增标签</button>
             </div>
-
 
             <div class="field">
                 <label>内容</label>
@@ -70,6 +66,7 @@
         });
     }
 
+    //点击事件
     $("#newDiscussions").click(function () {
 
         var token = $("meta[name='_csrf']").attr("content");
@@ -114,8 +111,6 @@
         });
 
     });
-
-
 </script>
 
 </body>
