@@ -3,7 +3,6 @@ package com.yaoyuan.jiscuss.common;
 import com.yaoyuan.jiscuss.entity.custom.PostCustom;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,8 +17,11 @@ import java.util.List;
 @Data
 public class Node {
 
+    /**
+    * Node
+    * 空方法
+    **/
     public Node() {
-
     }
 
     private Integer id;
