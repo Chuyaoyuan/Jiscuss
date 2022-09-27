@@ -54,7 +54,10 @@ public class Node {
 
     private Date createTime;
 
-    //用户表相关
+    /**
+    * avatar
+    * 用户表相关
+    **/
     private String avatar;
 
     private String username;
@@ -118,7 +121,10 @@ public class Node {
         return firstList;
     }
 
-    //打印
+    /**
+    * 打印
+    * show
+    **/
     public static void show(List<Node> list) {
         for (Node node : list) {
             System.out.println(node.getUserId() + " 用户回复了你：" + node.getContent());
