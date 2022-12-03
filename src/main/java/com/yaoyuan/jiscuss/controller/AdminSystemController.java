@@ -21,7 +21,11 @@ public class AdminSystemController {
 
     /**
      * 后台退出
-     */
+     */  
+    @RequestMapping("/admin/logout")
+    public String logout(@RequestParam(defaultValue = "discussion") String type, HttpServletRequest request, ModelMap map) {
+        return "admin/logout";
+    }
 
     /**
      * 后台设置管理
@@ -32,7 +36,7 @@ public class AdminSystemController {
      * @return
      */
     @RequestMapping("/admin/home")
-    public String user(@RequestParam(defaultValue = "discussion") String type, HttpServletRequest request, ModelMap map) {
+    public String home(@RequestParam(defaultValue = "discussion") String type, HttpServletRequest request, ModelMap map) {
         return "admin/home";
     }
 }
