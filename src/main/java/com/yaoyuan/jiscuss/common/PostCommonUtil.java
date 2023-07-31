@@ -14,16 +14,14 @@ import java.util.Map;
 
 /**
  * @author yaoyuan2.chu
- * @Title:
+ * @Title: 工具类
  * @Package com.yaoyuan.jiscuss.common
- * @Description:
+ * @Description: 通用工具类
  * @date 2020/9/10 15:47
  */
 public class PostCommonUtil {
 
-
     public static List<PostCustom> getNewPostsObjMap(List<Map<String, Object>> posts) {
-
         List<PostCustom> postCustomList = new ArrayList<>();
         for (Map<String, Object> mapObj : posts) {
             PostCustom postCustom = new PostCustom();
@@ -72,6 +70,11 @@ public class PostCommonUtil {
         return postCustomList;
     }
 
+    /**
+     * 获取post
+     * @param postCustomList
+     * @return List<PostCustom>
+     */
     public static List<PostCustom> getNewPostsObjCustom(List<PostCustom> postCustomList) {
         List<PostCustom> mainList = new ArrayList<>();
         Map<String, Object> postMap = new LinkedHashMap<>();
@@ -101,17 +104,18 @@ public class PostCommonUtil {
                 mainListResult.add(mapObj);
             }
         }
-
         return mainListResult;
     }
 
-    // Clob类型转换成String类型
+    /**
+     * Clob类型转换成String类型
+     * @param clob
+     * @return
+     */
     public static String clobToString(final Clob clob) {
-
         if (clob == null) {
             return null;
         }
-
         Reader is = null;
         try {
             is = clob.getCharacterStream();
@@ -119,14 +123,12 @@ public class PostCommonUtil {
             e.printStackTrace();
         }
         BufferedReader br = new BufferedReader(is);
-
         String str = null;
         try {
             str = br.readLine();    // 读取第一行
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         StringBuffer sb = new StringBuffer();
         while (str != null) {    // 如果没有到达流的末尾，则继续读取下一行
             sb.append(str);
@@ -136,9 +138,7 @@ public class PostCommonUtil {
                 e.printStackTrace();
             }
         }
-
         String returnString = sb.toString();
-
         return returnString;
     }
 }

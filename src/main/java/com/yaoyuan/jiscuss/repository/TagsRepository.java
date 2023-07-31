@@ -15,7 +15,6 @@ public interface TagsRepository extends JpaRepository<Tag, Integer> {
     @Query(value = "FROM Tag a, DiscussionTag b WHERE a.id = b.tagId and b.discussionId = :dId")
     List<Tag> findByDId(@Param("dId") Integer dId);
 
-
     @Query("select new com.yaoyuan.jiscuss.entity.custom.TagCustom(" +
             "u.name,u.color,u.icon,u.description, d.discussionId" +
             ") " +

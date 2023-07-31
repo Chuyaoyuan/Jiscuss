@@ -17,10 +17,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-
 @Service
 @Transactional
 public class PostsServiceImpl implements IPostsService {
+    
     @Autowired
     private PostsRepository postsRepository;
 
@@ -31,7 +31,6 @@ public class PostsServiceImpl implements IPostsService {
 
     @Override
     public List<Post> findOneBy(Integer id) {
-
         List<Post> posts = postsRepository.findOneBy(id);
         return posts;
     }
@@ -49,19 +48,14 @@ public class PostsServiceImpl implements IPostsService {
     public List findPostCustomById(Integer id) {
         //查询id为1且parentId为null的评论
         List<Map<String, Object>> firstposts = postsRepository.findAllByDIdAndparentIdNull(id);
-
         List<PostCustom> firstpostCustomList = PostCommonUtil.getNewPostsObjMap(firstposts);
-
 //        List<PostCustom> firstpostCustomListNew = PostCommonUtil.getNewPostsObjCustom(firstpostCustomList);
 
         //查询id为1且parentId不为null的评论
         List<Map<String, Object>> thenposts = postsRepository.findAllByDIdAndparentIdNotNull(id);
-
         List<PostCustom> thenpostCustomList = PostCommonUtil.getNewPostsObjMap(thenposts);
 
 //        List<PostCustom> thenpostCustomListNew = PostCommonUtil.getNewPostsObjCustom(thenpostCustomList);
-
-
         //新建一个Node集合。
         ArrayList<Node> nodes = new ArrayList<>();
         //将第一层评论都添加都Node集合中
@@ -76,16 +70,11 @@ public class PostsServiceImpl implements IPostsService {
         //打印回复链表
         Node.show(list);
 
-
 //        List<Map<String, Object>> posts = postsRepository.findPostCustomById(id);
-//
 //        List<PostCustom> postCustomList = PostCommonUtil.getNewPostsObjMap(posts);
-//
 //        List<PostCustom> postCustomListNew = PostCommonUtil.getNewPostsObjCustom(postCustomList);
-
         return list;
     }
-
 
     @Override
     public Post insert(Post post) {

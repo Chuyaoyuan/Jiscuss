@@ -3,7 +3,6 @@
 <title>Jiscuss Demo</title>
 <head>
     <#include "comm/commjs.ftl"/>
-
     <style type="text/css">
         body {
             background-color: #f7f8fa;
@@ -44,7 +43,7 @@
                 <div class="field">
                     <div class="ui left icon input">
                         <i class="lock icon"></i>
-                        <input type="password" name="password" placeholder="密码">
+                        <input type="password" name="password" placeholder="密 码">
                     </div>
                 </div>
                 <div class="field" id="msgId" style="display:none">
@@ -52,7 +51,8 @@
                         ${msg}
                     </div>
                 </div>
-                <button class="ui fluid large blue button" type="submit">登录</button>
+                
+                <button class="ui fluid large blue button" type="submit">登 录</button>
             </div>
 
             <div class="ui error message"></div>
@@ -68,7 +68,7 @@
 
     $(document).ready(function () {
         <#if msg??>
-        $('#msgId').show();
+         $('#msgId').show();
         </#if>
     });
 

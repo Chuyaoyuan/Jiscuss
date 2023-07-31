@@ -15,9 +15,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class ResponseResult implements Serializable {
 
-
     /**
-     *
+     * serialVersionUID
      */
     private static final long serialVersionUID = 1L;
 

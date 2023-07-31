@@ -2,7 +2,6 @@ package com.yaoyuan.jiscuss.service;
 
 import com.yaoyuan.jiscuss.entity.User;
 import org.springframework.data.domain.Page;
-
 import java.util.List;
 
 public interface IUsersService {
@@ -11,9 +10,10 @@ public interface IUsersService {
 
     Page<User> queryAllUsersList(int pageNum, int pageSize);
 
+    //Cacheable
     List<User> getByUsernameIsLike(String name);
 
-    //    @Cacheable("myCache")
+    //@Cacheable("myCache")
     User findOne(Integer id);
 
     User insert(User user);
@@ -27,5 +27,4 @@ public interface IUsersService {
     User checkByUsernameAndPassword(String username, String password);
 
     User update(User user, Integer id);
-
 }

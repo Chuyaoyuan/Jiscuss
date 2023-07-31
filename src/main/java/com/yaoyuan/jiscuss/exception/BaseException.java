@@ -16,13 +16,21 @@ public class BaseException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
-
     private ResponseCode code;
 
+    /**
+    *  BaseException
+    *  ResponseCode code
+    **/
     public BaseException(ResponseCode code) {
         this.code = code;
     }
 
+    /**
+    *  BaseException
+    *  ResponseCode code
+    *  Throwable  cause
+    **/
     public BaseException(Throwable cause, ResponseCode code) {
         super(cause);
         this.code = code;

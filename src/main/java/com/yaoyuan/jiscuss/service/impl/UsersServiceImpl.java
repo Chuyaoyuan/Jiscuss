@@ -1,6 +1,5 @@
 package com.yaoyuan.jiscuss.service.impl;
 
-
 import com.yaoyuan.jiscuss.entity.User;
 import com.yaoyuan.jiscuss.repository.UsersRepository;
 import com.yaoyuan.jiscuss.service.IUsersService;
@@ -20,6 +19,7 @@ import java.util.List;
 @Service
 @Transactional
 public class UsersServiceImpl implements IUsersService {
+    
     @Autowired
     private UsersRepository usersRepository;
 
@@ -110,6 +110,7 @@ public class UsersServiceImpl implements IUsersService {
 
     /**
      * 删除所有
+     *
      */
     @Override
     public void deleteAll() {

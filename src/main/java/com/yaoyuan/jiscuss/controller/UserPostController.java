@@ -32,6 +32,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * @author yaoyuan2.chu
  * 主题帖子评论控制器
  */
 @Controller
@@ -55,10 +56,18 @@ public class UserPostController extends BaseController {
     private IUsersService usersService;
 
 
-    //首页查看主题列表（各种条件筛选，最热最新标签等）
+    /**
+     * 首页查看主题列表（各种条件筛选，最热最新标签等）
+     */
 
 
-    //查看主题详情
+    /**
+     * 查看主题详情
+     * @param request
+     * @param map
+     * @param id
+     * @return
+     */
     @RequestMapping("/getdiscussionsbyid")
     public String getDiscussionsById(HttpServletRequest request, ModelMap map, @RequestParam("id") Integer id) {
         logger.info(">>> getDiscussionsById{}", id);
@@ -81,7 +90,6 @@ public class UserPostController extends BaseController {
             newdd.setRealnameLast(lastUser.getRealname());
             newdd.setUsernameLast(lastUser.getUsername());
         }
-
 
         List<Tag> tags = tagsService.findByDId(id);
         List postsObj = postsService.findPostCustomById(id);
@@ -114,14 +122,12 @@ public class UserPostController extends BaseController {
             discussion.setCreateId(user.getId());
         }
 
-
         discussion.setCreateTime(new Date());
         discussion.setStartTime(new Date());
         discussion.setLastTime(new Date());
 
         Discussion discussionOne = new Discussion();
         BeanUtils.copyProperties(discussion, discussionOne);
-
         Discussion saveDiscussion = discussionsService.insert(discussionOne);
 
         if (null != discussion.getTag()) {
@@ -138,7 +144,7 @@ public class UserPostController extends BaseController {
         JSONObject resultobj = new JSONObject();
 
         logger.info(">>>{}", saveDiscussion);
-        resultobj.put("msg", "添加成功");
+        resultobj.put("msg", "添加主题成功");
         resultobj.put("flag", true);
         return resultobj.toString(); //
 
@@ -178,14 +184,13 @@ public class UserPostController extends BaseController {
         if (null != post.getParentId()) {
             Post temp = postsService.findOneByid(post.getParentId());
             post.setUserId(temp.getCreateId());
-
         }
 
         Post savePost = postsService.insert(post);
         JSONObject resultobj = new JSONObject();
 
         logger.info(">>>{}", savePost);
-        resultobj.put("msg", "添加成功");
+        resultobj.put("msg", "添加评论成功");
         resultobj.put("flag", true);
         return resultobj.toString(); //
     }
@@ -205,7 +210,6 @@ public class UserPostController extends BaseController {
     @ResponseBody
     public String newTags(@RequestBody Tag tag) {
         logger.info(">>> newTags" + tag);
-
         ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = servletRequestAttributes.getRequest();
 
@@ -219,13 +223,14 @@ public class UserPostController extends BaseController {
         JSONObject resultobj = new JSONObject();
 
         logger.info(">>>{}", saveTag);
-        resultobj.put("msg", "添加成功");
+        resultobj.put("msg", "添加标签成功");
         resultobj.put("flag", true);
-        return resultobj.toString(); //
-
+        return resultobj.toString();
     }
 
-    //排行榜等
+    /**
+     * 排行榜等
+     */
 
     /**
      * 新建主题页
@@ -236,7 +241,6 @@ public class UserPostController extends BaseController {
      */
     @RequestMapping({"/newDiscussionsPage"})
     public String newdiccuss(HttpServletRequest request, ModelMap map) {
-
         //获取所有标签（以后尝试去缓存中取）
         List<Tag> allTags = tagsService.getAllListDiscussions();
         map.put("allTags", allTags);

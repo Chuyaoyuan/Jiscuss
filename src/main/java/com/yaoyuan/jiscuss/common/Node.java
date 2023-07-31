@@ -3,7 +3,6 @@ package com.yaoyuan.jiscuss.common;
 import com.yaoyuan.jiscuss.entity.custom.PostCustom;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,8 +17,11 @@ import java.util.List;
 @Data
 public class Node {
 
+    /**
+    * Node
+    * 空方法
+    **/
     public Node() {
-
     }
 
     private Integer id;
@@ -52,7 +54,10 @@ public class Node {
 
     private Date createTime;
 
-    //用户表相关
+    /**
+    * avatar
+    * 用户表相关
+    **/
     private String avatar;
 
     private String username;
@@ -116,7 +121,10 @@ public class Node {
         return firstList;
     }
 
-    //打印
+    /**
+    * 打印
+    * show
+    **/
     public static void show(List<Node> list) {
         for (Node node : list) {
             System.out.println(node.getUserId() + " 用户回复了你：" + node.getContent());
