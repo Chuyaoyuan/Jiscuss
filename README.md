@@ -18,12 +18,11 @@
 
 
 
-# 预览
-[![sykhy4.md.png](https://s3.ax1x.com/2021/01/17/sykhy4.md.png)](https://imgchr.com/i/sykhy4)
+# 预览(预留)
 
 
 # 简介
-基于JAVA，使用SpringBoot + H2 Database + Semantic-UI + Freemarker 构建，官网：[[www.jiscuss.com]](http://www.jiscuss.com/)
+基于JAVA 构建，官网：[[www.jiscuss.com]](http://www.jiscuss.com/)
 
 # 在线体验
 
@@ -44,7 +43,7 @@
 ```
 
 
-## [三]、运行启动(默认使用H2数据库，可以在配置文件切换MYSQL)
+## [三]、运行启动(默认使用MYSQL数据库)
 
 ```
 // 1、代码导入IDE
