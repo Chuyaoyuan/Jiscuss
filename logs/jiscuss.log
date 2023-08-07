@@ -1,0 +1,92 @@
+INFO  2023-08-07 20:18:44.163 [-main][*][o.noear.solon.Solon]: 
+App: Start loading
+INFO  2023-08-07 20:18:44.175 [-Solon-executor-1][*][o.noear.solon.Solon]: 
+Logging: console {level=TRACE, enable=true}
+INFO  2023-08-07 20:18:44.203 [-main][*][o.noear.solon.Solon]: 
+App: Plugin starting
+INFO  2023-08-07 20:18:44.315 [-main][*][o.noear.solon.Solon]: 
+View: load: BeetlRender
+INFO  2023-08-07 20:18:44.316 [-main][*][o.noear.solon.Solon]: 
+View: load: org.noear.solon.view.beetl.BeetlRender
+INFO  2023-08-07 20:18:44.316 [-main][*][o.noear.solon.Solon]: 
+View: mapping: .htm=BeetlRender
+INFO  2023-08-07 20:18:44.317 [-main][*][o.noear.solon.Solon]: 
+View: mapping: .btl=BeetlRender
+INFO  2023-08-07 20:18:44.326 [-main][*][o.noear.solon.Solon]: 
+App: Bean scanning
+INFO  2023-08-07 20:18:44.352 [-main][*][o.noear.solon.Solon]: 
+View: mapping: @json=StringSerializerRender#SnackSerializer
+INFO  2023-08-07 20:18:44.352 [-main][*][o.noear.solon.Solon]: 
+View: mapping: @type_json=StringSerializerRender#SnackSerializer
+INFO  2023-08-07 20:18:44.365 [-main][*][o.noear.solon.Solon]: 
+Connector:main: jlhttp: Started ServerConnector@{HTTP/1.1,[http/1.1]}{http://localhost:80}
+INFO  2023-08-07 20:18:44.365 [-main][*][o.noear.solon.Solon]: 
+Server:main: jlhttp: Started (jlhttp 2.6/2.4.2) @10ms
+INFO  2023-08-07 20:18:44.366 [-main][*][o.noear.solon.Solon]: 
+App: End loading elapsed=838ms pid=28784 v=2.4.2
+INFO  2023-08-07 20:21:20.710 [-Thread-2][*][o.noear.solon.Solon]: 
+Server:main: jlhttp: Has Stopped (jlhttp 2.6/2.4.2)
+INFO  2023-08-07 20:21:27.896 [-main][*][o.noear.solon.Solon]: 
+App: Start loading
+INFO  2023-08-07 20:21:27.912 [-Solon-executor-1][*][o.noear.solon.Solon]: 
+Logging: console {level=TRACE, enable=true}
+INFO  2023-08-07 20:21:27.946 [-main][*][o.noear.solon.Solon]: 
+App: Plugin starting
+INFO  2023-08-07 20:21:28.195 [-main][*][o.noear.solon.Solon]: 
+View: load: BeetlRender
+INFO  2023-08-07 20:21:28.198 [-main][*][o.noear.solon.Solon]: 
+View: load: org.noear.solon.view.beetl.BeetlRender
+INFO  2023-08-07 20:21:28.198 [-main][*][o.noear.solon.Solon]: 
+View: mapping: .htm=BeetlRender
+INFO  2023-08-07 20:21:28.198 [-main][*][o.noear.solon.Solon]: 
+View: mapping: .btl=BeetlRender
+INFO  2023-08-07 20:21:28.213 [-main][*][o.noear.solon.Solon]: 
+App: Bean scanning
+INFO  2023-08-07 20:21:28.260 [-main][*][o.noear.solon.Solon]: 
+View: mapping: @json=StringSerializerRender#SnackSerializer
+INFO  2023-08-07 20:21:28.261 [-main][*][o.noear.solon.Solon]: 
+View: mapping: @type_json=StringSerializerRender#SnackSerializer
+INFO  2023-08-07 20:21:28.282 [-main][*][o.noear.solon.Solon]: 
+Connector:main: jlhttp: Started ServerConnector@{HTTP/1.1,[http/1.1]}{http://localhost:80}
+INFO  2023-08-07 20:21:28.283 [-main][*][o.noear.solon.Solon]: 
+Server:main: jlhttp: Started (jlhttp 2.6/2.4.2) @16ms
+INFO  2023-08-07 20:21:28.285 [-main][*][o.noear.solon.Solon]: 
+App: End loading elapsed=1027ms pid=32548 v=2.4.2
+INFO  2023-08-07 20:21:30.257 [-Thread-2][*][o.noear.solon.Solon]: 
+Server:main: jlhttp: Has Stopped (jlhttp 2.6/2.4.2)
+INFO  2023-08-07 20:21:35.121 [-main][*][o.noear.solon.Solon]: 
+App: Start loading
+INFO  2023-08-07 20:21:35.135 [-Solon-executor-1][*][o.noear.solon.Solon]: 
+Logging: console {level=TRACE, enable=true}
+INFO  2023-08-07 20:21:35.160 [-main][*][o.noear.solon.Solon]: 
+App: Plugin starting
+INFO  2023-08-07 20:21:35.266 [-main][*][o.noear.solon.Solon]: 
+View: load: BeetlRender
+INFO  2023-08-07 20:21:35.266 [-main][*][o.noear.solon.Solon]: 
+View: load: org.noear.solon.view.beetl.BeetlRender
+INFO  2023-08-07 20:21:35.266 [-main][*][o.noear.solon.Solon]: 
+View: mapping: .htm=BeetlRender
+INFO  2023-08-07 20:21:35.266 [-main][*][o.noear.solon.Solon]: 
+View: mapping: .btl=BeetlRender
+INFO  2023-08-07 20:21:35.275 [-main][*][o.noear.solon.Solon]: 
+App: Bean scanning
+INFO  2023-08-07 20:21:35.312 [-main][*][o.noear.solon.Solon]: 
+View: mapping: @json=StringSerializerRender#SnackSerializer
+INFO  2023-08-07 20:21:35.312 [-main][*][o.noear.solon.Solon]: 
+View: mapping: @type_json=StringSerializerRender#SnackSerializer
+INFO  2023-08-07 20:21:35.330 [-main][*][o.noear.solon.Solon]: 
+Connector:main: jlhttp: Started ServerConnector@{HTTP/1.1,[http/1.1]}{http://localhost:80}
+INFO  2023-08-07 20:21:35.331 [-main][*][o.noear.solon.Solon]: 
+Server:main: jlhttp: Started (jlhttp 2.6/2.4.2) @14ms
+INFO  2023-08-07 20:21:35.332 [-main][*][o.noear.solon.Solon]: 
+App: End loading elapsed=796ms pid=29432 v=2.4.2
+INFO  2023-08-07 20:21:40.308 [-jlhttp-1][*][c.j.c.DemoController]: 
+test
+INFO  2023-08-07 20:21:42.146 [-jlhttp-1][*][c.j.c.DemoController]: 
+test
+INFO  2023-08-07 20:21:42.929 [-jlhttp-1][*][c.j.c.DemoController]: 
+test
+INFO  2023-08-07 20:21:43.975 [-jlhttp-1][*][c.j.c.DemoController]: 
+test
+INFO  2023-08-07 20:21:51.555 [-Thread-2][*][o.noear.solon.Solon]: 
+Server:main: jlhttp: Has Stopped (jlhttp 2.6/2.4.2)

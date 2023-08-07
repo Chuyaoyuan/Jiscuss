@@ -3,3 +3,6 @@ server.port: 80
 solon.app:
   name: jiscuss
   group: jiscuss
+
+# 可选: *,disk,cpu,jvm,memory,os,qps
+solon.health.detector: "*"
